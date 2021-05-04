@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html><head>
+	<title>Project Details</title>
+	<style type="text/css">
+		body{
+			font-family: sans-serif;
+		}
+		.page{
+			margin:20px 0px;
+			background: silver;
+			padding:20px;
+		}
+		.page p{
+			font-weight: bold;
+			font-size: 20px;
+		}
+		textarea{
+			width:100%;
+			height:200px;
+		}
+	</style>
+</head>
+<body id="top">
+	<h1 align="center">PAGES DETAILS</h1>
+	<div id="container">
+	
+			<div class="page">
+				<p>Name: Home</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/</li><li>/Home</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>Header -&gt; site logo(left), (if not logged in)-&gt;login/register route links(right) else-&gt; dashboard link, profile setting link, chat box link</li><li>Banner -&gt; container banner image and some text with search area</li><li>Some popular freelancers list(their gigs actually)</li><li>some categories list</li><li>Footer -&gt; About(short), links to contact-us, about-us, privacy-policy</li><li></li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>Title of page will be required for all routes</li><li>current user(if logged in else null)</li><li></li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: About | contact-us</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/About (for about us)</li><li>/Contact (for contact us)</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>header and footer as described in Home</li><li>about page: list of all group members and details of website.</li><li>contact-us: form for contact (FormObject will use validator)</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>same as Home plus in contact us page. after post method. send email to ContactsManager and add data in DB too.</li><li>Incase of error, show error on contact-us page</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: Search page</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/search/<query>/<filters></filters></query></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>header footer as Home page</li><li>must have a filtering area. filter by price, filter by category, local, and many more etc</li><li>by the way, filtering page must be different for buyer and seller, like freelancer can search for jobs/tasks and add bid. but buyer can only see freelancers gigs and profiles.</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>respective search result</li><li>other details same as home</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: Login Page</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/login</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>loginform(use validator for this purpose)</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>validate login credentials on post. if error redirect back to login page</li><li>if success then save result in session/cookies(backend developer will think about this all)</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: Signup Page</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/register</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>Register form(use validator)</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>user by default will be created as a client. and can promote himself as freelancer when he want.. for this purpose each page will have a become freelancer option.</li><li>validate user email if already exist and also validate username. then create a slug that will be fix for each user.</li><li>if error go to register page and show error else success message will be displayed and email will be send to user for verifications.</li><li>user cannot login unless his account is not verified, unverified user must be redirected to verification page.</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: Become Seller page</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/become_seller</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>ask for user qualification</li><li>ask for user expertise, can be a dropdown menu or text in case field is not in menu</li><li>as for user description</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>send a success email to user. indicating that he become seller.</li><li>update database accordingly. can have seperate freelancer table.</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: Freelancer Dashboard</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/freelancer/dashboard</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>show user short profile card</li><li>show user orders data</li><li>show earning overview</li><li>header: must contain home page link, profile setting link, logout link, chat link, gigs link, orders link, earning page link</li><li>footer: must be same as other pages</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>as described in components. send respective data</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: Client Dashboard</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/user/dashboard</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>running projects</li><li>header: must contain home page link, chat page link and profile/logout page links</li><li>footer: same as home page</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>as described, send respective data to client</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: forget password</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/forget-password</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>ask for email</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>validate email and send verification code. if success then goto add code page</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: change password page</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/change-password</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>ask for user code, verify it and ask for new password</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>self explanatory</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: update-profile</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/update-profile</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>ask for user details to update. depending upon seller/freelancer expand fields.</li><li>header and footer will be same as home page</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>self explanatory</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: chat page</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/chat/[with/<user>]</user></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>header will be same as dashboard</li><li>footer will be same as home page</li><li>chat page will have 2 pans. showing all users and showing current chat</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>use socket for chat</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: add gig</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/add-gig</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>header footer will be same as dashboard</li><li>can divide page in multiple sections asking for basic gig details, pricing, categories, keywords for searching, screenshots etc.</li><li>we will not do much things like fiverr.... asking for standard, basic, premier etc.. it will be much simpler but complete</li><li>no draft gig concept for now.</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>categories details will be sent as required</li><li>other details are already understood i guess</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: add job offer</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/add-job</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>basic details of job</li><li>qualification required like age, expertise etc. each freelancer will add expertise for their known skills while becoming seller</li><li>header footer will be same as dashboard</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>I guess you all know better</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: view profile</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/user/<user-slug></user-slug></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>show user details and his rating as a buyer and also as a seller. and gigs</li><li>header footer will be same as homepage</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>u know i know u know :D</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: view gig</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/user/<user-slug>/gig/<gig-slug></gig-slug></user-slug></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>showing screenshots</li><li>showing breadcrumb [user-&gt;gig] for navigation to user profile</li><li>showing all details and pricing and a place order option and contact option</li><li>header footer same as homepage</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>all details are simple </li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: view job offer</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/user/<user-slug>/job-offer/<job-slug></job-slug></user-slug></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>show job details and qualification</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>if user is qualified then show apply button</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: show my gigs page</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/freelancer/dashboard/gigs</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>showing all gigs ... we will not add impression feature. if want to add then it will be much simpler</li><li>header footer same as dashboard</li><li>must have edit delete buttons</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>:))</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: show my jobs page</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/client/dashboard/jobs</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>show all job stuff</li><li>header footer will be same as dashboard</li><li>must have edit delete options</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>:))</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: apply for job page</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/user/<user-slug>/job-offer/<job-slug>/apply</job-slug></user-slug></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>a form asking for CV etc and expected pricing and timing etc.</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>send email to client and also a job message to his chat</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: add order</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/user/<user-slug>/gig/<gig-slug>/place-order</gig-slug></user-slug></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>ask for payment and other details</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>add a order and send email to freelancer</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: hire user</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/user/<user-slug>/job-offer/<job-slug>/hire/<freelancer-slug></freelancer-slug></job-slug></user-slug></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>lets think together about it</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>lets think about it</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: view-order</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/order/<order-id></order-id></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>header footer same as dashboard</li><li>order details from client and freelancer</li><li>also have respective buttons -&gt; accept/reject/send order etc... we will decide to make it simple</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>on accept reject etc ask for user rating and also send mails to both users</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: cutom offer</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/custom-offer/<offer-id></offer-id></li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>details of offer</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>:))</li>
+				</ol>
+
+			</div>
+			
+			<div class="page">
+				<p>Name: admin dashboard</p>
+				<p>Routes:</p>
+				<ol>
+					<li>/admin/dashboard</li>
+				</ol>
+				<p>Components:</p>
+				<ol>
+					<li>users details</li><li>categories list</li><li>if we want to add resolution center for canceling order purposes then that area</li><li>contact us form responser page all pages will also be created accordingly</li>
+				</ol>
+				<p>Requirements:</p>
+				<ol>
+					<li>respective details</li>
+				</ol>
+
+			</div>
+			</div>
+
+</body></html>
