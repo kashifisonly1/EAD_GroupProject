@@ -3,7 +3,6 @@
 |=>user id                            |
 |=> email (unique)                    |
 |=> full name                         |
-|=> gender                            |
 |=> role (admin, client, freelancer)  |
 |=> password                          |
 |=> created_datetime ****             |
