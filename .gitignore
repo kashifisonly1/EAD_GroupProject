@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+*.cache
+/JobPortal.Database/JobPortal.Database.jfm
+/JobPortal.Database/JobPortal.Database.dbmdl
