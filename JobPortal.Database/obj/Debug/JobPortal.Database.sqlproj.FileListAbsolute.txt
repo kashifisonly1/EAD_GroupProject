@@ -4,3 +4,9 @@ E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Databas
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.sqlprojAssemblyReference.cache
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.dll
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dacpac
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dll
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.pdb
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.sqlprojAssemblyReference.cache
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.dll
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb

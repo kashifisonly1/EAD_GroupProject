@@ -18,3 +18,23 @@ E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPo
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.dll
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.pdb
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.genruntimeconfig.cache
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\bin\Debug\netcoreapp3.1\appsettings.json
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\bin\Debug\netcoreapp3.1\JobPortal.WebApi.exe
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\bin\Debug\netcoreapp3.1\JobPortal.WebApi.deps.json
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\bin\Debug\netcoreapp3.1\JobPortal.WebApi.runtimeconfig.json
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\bin\Debug\netcoreapp3.1\JobPortal.WebApi.runtimeconfig.dev.json
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\bin\Debug\netcoreapp3.1\JobPortal.WebApi.dll
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\bin\Debug\netcoreapp3.1\JobPortal.WebApi.pdb
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.csprojAssemblyReference.cache
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.AssemblyInfoInputs.cache
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.AssemblyInfo.cs
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.csproj.CoreCompileInputs.cache
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.MvcApplicationPartsAssemblyInfo.cache
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\staticwebassets\JobPortal.WebApi.StaticWebAssets.Manifest.cache
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\staticwebassets\JobPortal.WebApi.StaticWebAssets.xml
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\scopedcss\bundle\JobPortal.WebApi.styles.css
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.RazorTargetAssemblyInfo.cache
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.dll
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.pdb
+E:\EAD\EAD Project\EAD_GroupProject\JobPortal.WebApi\obj\Debug\netcoreapp3.1\JobPortal.WebApi.genruntimeconfig.cache

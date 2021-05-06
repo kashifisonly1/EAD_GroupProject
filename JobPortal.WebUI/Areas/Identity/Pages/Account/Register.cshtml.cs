@@ -47,6 +47,31 @@ namespace JobPortal.WebUI.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [Display(Name = "Upload Your Image")]
+            public byte[] Image { get; set; }
+
+            [Required]
+            [Display(Name = "Full Name")]
+            public string FullName { get; set; }
+
+            [Required]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [Required]
+            [Display(Name = "Birthday")]
+            public DateTime Birthday{ get; set; }
+
+
+            [Required]
+            [Display(Name = "Gender")]
+            public string Gender { get; set; }
+
+            [Required]
+            [Display(Name = "Phone NUmber")]
+            public Decimal Phone { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -75,7 +100,7 @@ namespace JobPortal.WebUI.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email , FullName=Input.FullName, Role="Client"};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

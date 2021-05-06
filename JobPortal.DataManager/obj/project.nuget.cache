@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+CZMh3CmuyhTSTH1I6SqeeTGloJ2RThK+F/8pdsd4hmpw4ynY1n94EKs01I8j3QXVTzjQC/qvkvPanZzFtekBQ==",
+  "dgSpecHash": "WJrsLD1ELMK4q66dMIAaxoqv5EUiBdlfgstRyIMQSyo+STsn/5TPY9y6wI1Z+D2uuSTNUjbpIm066gVmuGIrBg==",
   "success": true,
-  "projectFilePath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
+  "projectFilePath": "E:\\EAD\\EAD Project\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JobPortal.Database", "JobPortal.Database\JobPortal.Database.sqlproj", "{0EA0AA73-F104-421A-B3F8-DA2CBC6F542C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortal.WebUI", "JobPortal.WebUI\JobPortal.WebUI.csproj", "{09AA3EFD-7E45-414B-BE77-E07C92C31C46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.WebUI", "JobPortal.WebUI\JobPortal.WebUI.csproj", "{09AA3EFD-7E45-414B-BE77-E07C92C31C46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortal.WebApi", "JobPortal.WebApi\JobPortal.WebApi.csproj", "{D0A50AD6-DCBD-4A20-984A-1D235215D1F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.WebApi", "JobPortal.WebApi\JobPortal.WebApi.csproj", "{D0A50AD6-DCBD-4A20-984A-1D235215D1F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortal.DataManager", "JobPortal.DataManager\JobPortal.DataManager.csproj", "{5E3BBE06-BAEF-4087-A68C-987DBB4CD765}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.DataManager", "JobPortal.DataManager\JobPortal.DataManager.csproj", "{5E3BBE06-BAEF-4087-A68C-987DBB4CD765}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanningPhase", "PlanningPhase\PlanningPhase.csproj", "{8DFC8089-B228-47E9-853C-2F2AD221C185}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPhase", "PlanningPhase\PlanningPhase.csproj", "{8DFC8089-B228-47E9-853C-2F2AD221C185}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

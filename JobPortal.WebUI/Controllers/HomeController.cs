@@ -5,12 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using JobPortal.WebUI.Models;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace JobPortal.WebUI.Controllers
 {
+	//[Authorize]
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
@@ -29,6 +30,14 @@ namespace JobPortal.WebUI.Controllers
 		{
 			return View();
 		}
+		public IActionResult Action()
+        {
+			return View();
+        }
+		public IActionResult AboutUs()
+        {
+			return View();
+        }
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

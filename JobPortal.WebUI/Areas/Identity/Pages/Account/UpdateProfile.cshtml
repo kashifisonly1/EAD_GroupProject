@@ -1,7 +1,7 @@
 ﻿@page
-@model RegisterModel
+@model JobPortal.WebUI.Areas.Identity.Pages.Account.UpdateProfileModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "UpdateProfile";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -15,8 +15,8 @@
         <div class="row">
             <div class="file-field">
                 <div class="mb-4">
-                    <img  src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                         class="rounded mx-auto d-block  rounded-circle avatar-pic " alt="example placeholder avatar"  >
+                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                         class="rounded mx-auto d-block  rounded-circle avatar-pic " alt="example placeholder avatar">
                 </div>
                 <div class="d-flex justify-content-center">
                     <div class="btn btn-mdb-color btn-rounded float-left">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        
+
 
 
         <div class="row">
@@ -95,9 +95,3 @@
     </form>
 </div>
 
-       
-
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
