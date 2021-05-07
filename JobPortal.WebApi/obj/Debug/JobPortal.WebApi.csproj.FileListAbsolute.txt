@@ -94,3 +94,5 @@ E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\bin\roslyn\System.Buffers.dll
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\bin\roslyn\System.Memory.dll
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\bin\roslyn\System.Numerics.Vectors.dll
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\bin\Swashbuckle.Core.dll
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebApi\bin\WebActivatorEx.dll
