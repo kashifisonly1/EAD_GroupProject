@@ -513,3 +513,8 @@ E:\kashif\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\JobPortal.Web
 E:\kashif\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\JobPortal.WebUI.genruntimeconfig.cache
 E:\kashif\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
 E:\kashif\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
