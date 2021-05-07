@@ -14,11 +14,13 @@
         <div class="row">
             <div class="col-12 col-md-4 mx-auto">
                 <div class="mb-4">
-                    <img  src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                         class="rounded mx-auto  rounded-circle avatar-pic w-100" alt="Avatar"  >
+                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                         class="rounded mx-auto  rounded-circle avatar-pic w-100" alt="Avatar">
                 </div>
                 <div class="text-left">
                     <div class="btn btn-mdb-color btn-rounded">
+                        @{ /* TODO -- Restrict Input to only contain Image file types*/ }
+
                         <input type="file" asp-for="Input.Image">
                     </div>
                 </div>
@@ -90,7 +92,7 @@
     </form>
 </div>
 
-       
+
 
 
 @section Scripts {
