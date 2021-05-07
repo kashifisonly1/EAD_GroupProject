@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -19,7 +20,7 @@ namespace JobPortal.WebUI.Areas.Identity.Pages.Account
         {
             [Required]
             [Display(Name = "Upload Your Image")]
-            public byte[] Image { get; set; }
+            public IFormFile Image { get; set; }
 
             [Required]
             [Display(Name = "Full Name")]
@@ -39,7 +40,7 @@ namespace JobPortal.WebUI.Areas.Identity.Pages.Account
             public string Gender { get; set; }
 
             [Required]
-            [Display(Name = "Phone NUmber")]
+            [Display(Name = "Phone Number")]
             public Decimal Phone { get; set; }
 
             [Required]

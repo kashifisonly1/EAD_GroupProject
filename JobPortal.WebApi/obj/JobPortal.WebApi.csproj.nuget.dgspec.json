@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\EAD\\EAD Project\\EAD_GroupProject\\JobPortal.WebApi\\JobPortal.WebApi.csproj": {}
+    "E:\\kashif\\EAD_GroupProject\\JobPortal.WebApi\\JobPortal.WebApi.csproj": {}
   },
   "projects": {
-    "E:\\EAD\\EAD Project\\EAD_GroupProject\\JobPortal.WebApi\\JobPortal.WebApi.csproj": {
+    "E:\\kashif\\EAD_GroupProject\\JobPortal.WebApi\\JobPortal.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\EAD\\EAD Project\\EAD_GroupProject\\JobPortal.WebApi\\JobPortal.WebApi.csproj",
+        "projectUniqueName": "E:\\kashif\\EAD_GroupProject\\JobPortal.WebApi\\JobPortal.WebApi.csproj",
         "projectName": "JobPortal.WebApi",
-        "projectPath": "E:\\EAD\\EAD Project\\EAD_GroupProject\\JobPortal.WebApi\\JobPortal.WebApi.csproj",
-        "packagesPath": "C:\\Users\\xam\\.nuget\\packages\\",
-        "outputPath": "E:\\EAD\\EAD Project\\EAD_GroupProject\\JobPortal.WebApi\\obj\\",
+        "projectPath": "E:\\kashif\\EAD_GroupProject\\JobPortal.WebApi\\JobPortal.WebApi.csproj",
+        "packagesPath": "C:\\Users\\junaid tariq\\.nuget\\packages\\",
+        "outputPath": "E:\\kashif\\EAD_GroupProject\\JobPortal.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\xam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\junaid tariq\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

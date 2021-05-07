@@ -7,3 +7,12 @@ E:\Semester6\EAD\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\Planning
 E:\Semester6\EAD\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.csproj.CoreCompileInputs.cache
 E:\Semester6\EAD\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.dll
 E:\Semester6\EAD\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.pdb
+E:\kashif\EAD_GroupProject\PlanningPhase\bin\Debug\netcoreapp3.1\PlanningPhase.deps.json
+E:\kashif\EAD_GroupProject\PlanningPhase\bin\Debug\netcoreapp3.1\PlanningPhase.dll
+E:\kashif\EAD_GroupProject\PlanningPhase\bin\Debug\netcoreapp3.1\PlanningPhase.pdb
+E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.csprojAssemblyReference.cache
+E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.AssemblyInfoInputs.cache
+E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.AssemblyInfo.cs
+E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.csproj.CoreCompileInputs.cache
+E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.dll
+E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.pdb

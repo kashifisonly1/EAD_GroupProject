@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace JobPortal.WebUI.Areas.Identity.Pages.Account
 {
@@ -46,9 +47,8 @@ namespace JobPortal.WebUI.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
             [Display(Name = "Upload Your Image")]
-            public byte[] Image { get; set; }
+            public IFormFile Image { get; set; }
 
             [Required]
             [Display(Name = "Full Name")]
@@ -68,7 +68,7 @@ namespace JobPortal.WebUI.Areas.Identity.Pages.Account
             public string Gender { get; set; }
 
             [Required]
-            [Display(Name = "Phone NUmber")]
+            [Display(Name = "Phone Number")]
             public Decimal Phone { get; set; }
 
             [Required]

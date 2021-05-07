@@ -10,3 +10,9 @@ E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Datab
 E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.sqlprojAssemblyReference.cache
 E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.dll
 E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb
+E:\kashif\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dacpac
+E:\kashif\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dll
+E:\kashif\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.pdb
+E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.sqlprojAssemblyReference.cache
+E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.dll
+E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb

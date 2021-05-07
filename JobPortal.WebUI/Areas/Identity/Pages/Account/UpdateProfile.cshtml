@@ -1,15 +1,12 @@
 ﻿@page
 @model JobPortal.WebUI.Areas.Identity.Pages.Account.UpdateProfileModel
 @{
-    ViewData["Title"] = "UpdateProfile";
+    ViewData["Title"] = "Update Profile";
 }
 
 <h1>@ViewData["Title"]</h1>
-<h4>Create a new account.</h4>
 <div>
-
     <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-
         <hr />
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="row">
@@ -26,9 +23,6 @@
                 </div>
             </div>
         </div>
-
-
-
         <div class="row">
             <div class="form-group col-4">
                 <label asp-for="Input.FullName"></label>
@@ -42,7 +36,6 @@
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
         </div>
-
         <div class="row">
             <div class="form-group col-4">
                 <label asp-for="Input.Phone"></label>
@@ -75,8 +68,6 @@
             </div>
 
         </div>
-
-
         <div>
             <label asp-for="Input.Gender"></label><br />
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -88,10 +79,6 @@
         </div>
         <br />
         <button type="submit" class="btn btn-primary">Register</button>
-
-
-
-
     </form>
 </div>
 

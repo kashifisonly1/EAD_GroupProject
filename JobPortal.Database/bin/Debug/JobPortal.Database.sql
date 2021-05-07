@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "JobPortal.Database_2"
 :setvar DefaultFilePrefix "JobPortal.Database_2"
-:setvar DefaultDataPath "C:\Users\xam\AppData\Local\Microsoft\VisualStudio\SSDT\EAD_GroupProject"
-:setvar DefaultLogPath "C:\Users\xam\AppData\Local\Microsoft\VisualStudio\SSDT\EAD_GroupProject"
+:setvar DefaultDataPath "C:\Users\junaid tariq\AppData\Local\Microsoft\VisualStudio\SSDT\EAD_GroupProject"
+:setvar DefaultLogPath "C:\Users\junaid tariq\AppData\Local\Microsoft\VisualStudio\SSDT\EAD_GroupProject"
 
 GO
 :on error exit
