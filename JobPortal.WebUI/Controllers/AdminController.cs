@@ -13,41 +13,33 @@ using Microsoft.Extensions.Logging;
 namespace JobPortal.WebUI.Controllers
 {
 	//[Authorize]
-	public class HomeController : Controller
+	public class AdminController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly ILogger<AdminController> _logger;
 
-		public HomeController(ILogger<HomeController> logger)
+		public AdminController(ILogger<AdminController> logger)
 		{
 			_logger = logger;
 		}
-
 		public IActionResult Index()
 		{
+			
 			return View();
 		}
-
-		public IActionResult Privacy()
+		public IActionResult Category()
 		{
 			return View();
 		}
-		public IActionResult Action()
+		public IActionResult User()
 		{
 			return View();
 		}
-		public IActionResult About()
+		
+		public IActionResult ContactUs(ContactForm form)
 		{
-			return View();
-		}
-		[HttpGet]
-		public IActionResult Contact()
-		{
-			return View();
-		}
-		[HttpPost]
-		public IActionResult Contact(ContactForm form)
-		{
-			return View();
+			form = new ContactForm { Email = "xamimran8991@gmail.com", Subject = "Client Mis behaviour", Name = "Usama", Message = "I want to report kashif"};
+			
+			return View("ContactUs",form);
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
