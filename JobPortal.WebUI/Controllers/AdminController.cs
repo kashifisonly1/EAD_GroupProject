@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -21,7 +21,11 @@ namespace JobPortal.WebUI.Controllers
 		{
 			_logger = logger;
 		}
-
+		public IActionResult Index()
+		{
+			
+			return View();
+		}
 		public IActionResult Category()
 		{
 			return View();
@@ -30,9 +34,12 @@ namespace JobPortal.WebUI.Controllers
 		{
 			return View();
 		}
+		
 		public IActionResult ContactUs(ContactForm form)
 		{
-			return View();
+			form = new ContactForm { Email = "xamimran8991@gmail.com", Subject = "Client Mis behaviour", Name = "Usama", Message = "I want to report kashif"};
+			
+			return View("ContactUs",form);
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
