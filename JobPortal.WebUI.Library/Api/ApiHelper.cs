@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using JobPortal.WebUI.Library.Api.Models;
 
-namespace JobPortal.WebUI.Api
+namespace JobPortal.WebUI.Library.Api
 {
 	public class ApiHelper
 	{
@@ -21,7 +21,7 @@ namespace JobPortal.WebUI.Api
 		private void InitializeClient()
 		{
 			ApiClient = new HttpClient();
-			ApiClient.BaseAddress = new Uri("https://localhost:44366/"); // TODO -- Update Api Base address during production
+			ApiClient.BaseAddress = new Uri("https://localhost:44343/"); // TODO -- Update Api Base address during production
 			ApiClient.DefaultRequestHeaders.Accept.Clear();
 			ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 		}
@@ -47,6 +47,11 @@ namespace JobPortal.WebUI.Api
 					throw new Exception(response.ReasonPhrase);
 				}
 			}
+		}
+
+		private async Task CreateRoles()
+		{
+
 		}
 
 	}
