@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using JobPortal.WebUI.Library.Api;
+using JobPortal.WebUI.Temp;
 
 namespace JobPortal.WebUI.Areas.Identity.Pages.Account
 {
@@ -75,7 +76,7 @@ namespace JobPortal.WebUI.Areas.Identity.Pages.Account
 
 		public async Task<IActionResult> OnPostAsync(string returnUrl = null)
 		{
-			returnUrl = returnUrl ?? Url.Content("~/");
+			returnUrl = returnUrl ?? Url.Content("~/Home/Index");
 
 			if (ModelState.IsValid)
 			{
@@ -83,10 +84,11 @@ namespace JobPortal.WebUI.Areas.Identity.Pages.Account
 				// To enable password failures to trigger account lockout, set lockoutOnFailure: true
 				var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
 
-				var user = await _userManager.GetUserAsync(HttpContext.User);
-
 				ApiHelper apiHelper = new ApiHelper();
+
 				var authUser = await apiHelper.Authenticate(Input.Email, Input.Password);
+
+				TokenStore.Token = authUser.Access_Token;
 
 				if (result.Succeeded)
 				{

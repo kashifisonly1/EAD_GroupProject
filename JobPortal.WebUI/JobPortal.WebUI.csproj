@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JobPortal.DataManager\JobPortal.DataManager.csproj" />
     <ProjectReference Include="..\JobPortal.WebUI.Library\JobPortal.WebUI.Library.csproj" />
   </ItemGroup>
 
