@@ -518,3 +518,7 @@ E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\bin\Debug\netcoreapp3.1\JobPortal.WebUI.Library.dll
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI\bin\Debug\netcoreapp3.1\JobPortal.WebUI.Library.pdb

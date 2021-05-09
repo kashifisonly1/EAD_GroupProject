@@ -14,10 +14,10 @@
     [LockoutEnd]           DATETIMEOFFSET (7) NULL,
     [LockoutEnabled]       BIT                NOT NULL,
     [AccessFailedCount]    INT                NOT NULL,
-    [FullName]             NVARCHAR (50)      NOT NULL,
-    [Role]                 NVARCHAR (50)      NOT NULL,
+    [FullName]             NVARCHAR (50)      NULL,
+    [Role]                 NVARCHAR (50)      NULL,
     [DateCreated]          DATETIME2 (7)      NOT NULL,
-    [ProfileImage]         VARBINARY (MAX)    NOT NULL,
+    [ProfileImage]         VARBINARY (MAX)    NULL,
     CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
