@@ -91,7 +91,8 @@ namespace JobPortal.Api.Controllers
 			var output = new
 			{
 				Access_Token = accessToken,
-				Username = username
+				Username = username,
+				Expires_On = DateTime.Now.AddMinutes(10)
 				// HACK -- Add other fields to token (if needed)
 			};
 
