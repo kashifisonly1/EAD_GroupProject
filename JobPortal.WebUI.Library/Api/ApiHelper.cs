@@ -11,7 +11,7 @@ namespace JobPortal.WebUI.Library.Api
 {
 	public class ApiHelper
 	{
-		private HttpClient ApiClient { get; set; }
+		public HttpClient ApiClient { get; set; }
 
 		public ApiHelper()
 		{
@@ -49,10 +49,24 @@ namespace JobPortal.WebUI.Library.Api
 			}
 		}
 
-		private async Task CreateRoles()
+		public async Task PerformAction(string token)
 		{
+			ApiClient.DefaultRequestHeaders.Clear();
+			ApiClient.DefaultRequestHeaders.Accept.Clear();
+			ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			ApiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
+			using (HttpResponseMessage response = await ApiClient.GetAsync("/api/someAction"))
+			{
+				if (response.IsSuccessStatusCode)
+				{
+					var result = await response.Content.ReadAsAsync<AuthenticatedUser>();
+				}
+				else
+				{
+					throw new Exception(response.ReasonPhrase);
+				}
+			}
 		}
-
 	}
 }
