@@ -6,5 +6,6 @@ namespace JobPortal.DataManager.Data
 {
 	public class UserData
 	{
+
 	}
 }

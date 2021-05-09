@@ -16,7 +16,8 @@ namespace JobPortal.DataManager.Internal.Data
 			get
 			{
 				// UNDONE -- Update connection string
-				return ConfigurationManager.ConnectionStrings["JobPortal-DB"].ConnectionString;
+				//return ConfigurationManager.ConnectionStrings["JobPortal-DB"].ConnectionString;
+				return "Server=.;Database=JobPortal-DB;Trusted_Connection=True";
 			}
 		}
 
@@ -37,5 +38,19 @@ namespace JobPortal.DataManager.Internal.Data
 			}
 		}
 
+		public void SaveData(string storedProcedure, SqlParameter[] parameters = null)
+		{
+			using (SqlConnection cnn = new SqlConnection(ConnectionString))
+			{
+				cnn.Open();
+				SqlCommand cmd = new SqlCommand(storedProcedure, cnn)
+				{
+					CommandType = CommandType.StoredProcedure
+				};
+				if (parameters != null)
+					cmd.Parameters.AddRange(parameters);
+				cmd.ExecuteNonQuery();
+			}
+		}
 	}
 }
