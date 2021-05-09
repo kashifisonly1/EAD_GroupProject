@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 using JobPortal.Api.Data;
@@ -14,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace JobPortal.Api
 {
@@ -33,9 +35,27 @@ namespace JobPortal.Api
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+				.AddRoles<IdentityRole>()
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 			services.AddControllersWithViews();
 			services.AddRazorPages();
+			services.AddAuthentication(options =>
+			{
+				options.DefaultAuthenticateScheme = "JwtBearer";
+				options.DefaultChallengeScheme = "JwtBearer";
+			})
+				.AddJwtBearer("JwtBearer", jwtBearerOptions =>
+				{
+					jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+					{
+						ValidateIssuerSigningKey = true,
+						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsMySuperSecretSecurityKeyDoNotShare")),
+						ValidateIssuer = false,
+						ValidateAudience = false,
+						ValidateLifetime = true,
+						ClockSkew = TimeSpan.FromMinutes(5)
+					};
+				});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

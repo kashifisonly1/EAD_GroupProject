@@ -18,11 +18,13 @@ namespace JobPortal.Api.Controllers
 	{
 		private readonly ApplicationDbContext _context;
 		private readonly UserManager<IdentityUser> _userManager;
+		private readonly RoleManager<IdentityRole> _roleManager;
 
-		public TokenController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+		public TokenController(ApplicationDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
 		{
 			_context = context;
 			_userManager = userManager;
+			_roleManager = roleManager;
 		}
 
 		[Route("/token")]
@@ -47,6 +49,16 @@ namespace JobPortal.Api.Controllers
 
 		private async Task<dynamic> GenerateToken(string username)
 		{
+			string[] applicationRoles = { "Admin", "Client", "Freelancer" };
+			foreach (var role in applicationRoles)
+			{
+				var roleExists = await _roleManager.RoleExistsAsync(role);
+				if (!roleExists)
+				{
+					await _roleManager.CreateAsync(new IdentityRole(role));
+				}
+			}
+
 			var user = await _userManager.FindByEmailAsync(username);
 			var roles = from ur in _context.UserRoles
 						join r in _context.Roles on ur.RoleId equals r.Id
@@ -69,14 +81,16 @@ namespace JobPortal.Api.Controllers
 
 			var token = new JwtSecurityToken(
 				new JwtHeader(new SigningCredentials(
-					new SymmetricSecurityKey(Encoding.UTF8.GetBytes("OurSecretKey")),
+					new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsMySuperSecretSecurityKeyDoNotShare")),
 					SecurityAlgorithms.HmacSha256)),
 				new JwtPayload(claims)
 				);
 
+			var accessToken = new JwtSecurityTokenHandler().WriteToken(token);
+
 			var output = new
 			{
-				Access_Token = new JwtSecurityTokenHandler().WriteToken(token),
+				Access_Token = accessToken,
 				Username = username
 				// HACK -- Add other fields to token (if needed)
 			};
