@@ -12,7 +12,11 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="JobPortal.Database.dll" />
+<<<<<<< HEAD
 			<Metadata Name="FileName" Value="E:\SEMESTER6\EAD\EAD_GROUPPROJECT\JOBPORTAL.DATABASE\OBJ\DEBUG\JOBPORTAL.DATABASE.DLL" />
+=======
+			<Metadata Name="FileName" Value="E:\KASHIF\EAD_GROUPPROJECT\JOBPORTAL.DATABASE\OBJ\DEBUG\JOBPORTAL.DATABASE.DLL" />
+>>>>>>> master
 			<Metadata Name="AssemblyName" Value="JobPortal.Database" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +24,11 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
+<<<<<<< HEAD
 			<Metadata Name="AssemblySymbolsName" Value="E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb" />
+=======
+			<Metadata Name="AssemblySymbolsName" Value="E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb" />
+>>>>>>> master
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
@@ -145,7 +153,11 @@
 				<Value><![CDATA[
 
 INSERT INTO [ContactUs]([Email], [Subject], [Message], [Name])
+<<<<<<< HEAD
 VALUES(@Email, @Subject, @Message, @Name);]]></Value>
+=======
+VALUES(@email, @subject, @message, @name);]]></Value>
+>>>>>>> master
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="BodyDependencies">
@@ -165,6 +177,7 @@ VALUES(@Email, @Subject, @Message, @Name);]]></Value>
 					<References Name="[dbo].[ContactUs].[Name]" />
 				</Entry>
 				<Entry>
+<<<<<<< HEAD
 					<References Name="[dbo].[AddMessageToContactUs].[@Email]" />
 				</Entry>
 				<Entry>
@@ -175,11 +188,27 @@ VALUES(@Email, @Subject, @Message, @Name);]]></Value>
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[AddMessageToContactUs].[@Name]" />
+=======
+					<References Name="[dbo].[AddMessageToContactUs].[@email]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AddMessageToContactUs].[@subject]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AddMessageToContactUs].[@message]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[AddMessageToContactUs].[@name]" />
+>>>>>>> master
 				</Entry>
 			</Relationship>
 			<Relationship Name="Parameters">
 				<Entry>
+<<<<<<< HEAD
 					<Element Type="SqlSubroutineParameter" Name="[dbo].[AddMessageToContactUs].[@Email]">
+=======
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[AddMessageToContactUs].[@email]">
+>>>>>>> master
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -195,7 +224,11 @@ VALUES(@Email, @Subject, @Message, @Name);]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
+<<<<<<< HEAD
 					<Element Type="SqlSubroutineParameter" Name="[dbo].[AddMessageToContactUs].[@Subject]">
+=======
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[AddMessageToContactUs].[@subject]">
+>>>>>>> master
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -211,7 +244,11 @@ VALUES(@Email, @Subject, @Message, @Name);]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
+<<<<<<< HEAD
 					<Element Type="SqlSubroutineParameter" Name="[dbo].[AddMessageToContactUs].[@Message]">
+=======
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[AddMessageToContactUs].[@message]">
+>>>>>>> master
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -227,7 +264,11 @@ VALUES(@Email, @Subject, @Message, @Name);]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
+<<<<<<< HEAD
 					<Element Type="SqlSubroutineParameter" Name="[dbo].[AddMessageToContactUs].[@Name]">
+=======
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[AddMessageToContactUs].[@name]">
+>>>>>>> master
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -252,7 +293,11 @@ VALUES(@Email, @Subject, @Message, @Name);]]></Value>
 				<Property Name="Length" Value="261" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
+<<<<<<< HEAD
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[AddMessageToContactUs]&#xD;&#xA;&#x9; @Email nvarchar(256)&#xD;&#xA;&#x9;,@Subject nvarchar(256)&#xD;&#xA;&#x9;,@Message nvarchar(max)&#xD;&#xA;&#x9;,@Name nvarchar(256)&#xD;&#xA;&#xD;&#xA;AS" />
+=======
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[AddMessageToContactUs]&#xD;&#xA;&#x9; @email nvarchar(256)&#xD;&#xA;&#x9;,@subject nvarchar(256)&#xD;&#xA;&#x9;,@message nvarchar(max)&#xD;&#xA;&#x9;,@name nvarchar(256)&#xD;&#xA;&#xD;&#xA;AS" />
+>>>>>>> master
 			</Annotation>
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[AspNetRoleClaims]">

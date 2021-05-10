@@ -9267,19 +9267,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ST\\.nuget\\packages\\": {}
+    "C:\\Users\\junaid tariq\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj",
+      "projectUniqueName": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj",
       "projectName": "JobPortal.WebUI",
-      "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj",
-      "packagesPath": "C:\\Users\\ST\\.nuget\\packages\\",
-      "outputPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\obj\\",
+      "projectPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj",
+      "packagesPath": "C:\\Users\\junaid tariq\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ST\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\junaid tariq\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9293,14 +9293,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj": {
-              "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj"
+            "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj": {
+              "projectPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj"
             },
-            "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj": {
-              "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj"
+            "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj": {
+              "projectPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj"
             },
-            "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj": {
-              "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj"
+            "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj": {
+              "projectPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj"
             }
           }
         }
@@ -9360,8 +9360,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
