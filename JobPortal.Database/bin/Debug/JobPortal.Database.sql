@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "JobPortal.Database_2"
 :setvar DefaultFilePrefix "JobPortal.Database_2"
-:setvar DefaultDataPath "C:\Users\ST\AppData\Local\Microsoft\VisualStudio\SSDT\EAD_GroupProject"
-:setvar DefaultLogPath "C:\Users\ST\AppData\Local\Microsoft\VisualStudio\SSDT\EAD_GroupProject"
+:setvar DefaultDataPath "C:\Users\junaid tariq\AppData\Local\Microsoft\VisualStudio\SSDT\EAD_GroupProject"
+:setvar DefaultLogPath "C:\Users\junaid tariq\AppData\Local\Microsoft\VisualStudio\SSDT\EAD_GroupProject"
 
 GO
 :on error exit
@@ -40,308 +40,84 @@ USE [$(DatabaseName)];
 
 
 GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET ARITHABORT ON,
-                CONCAT_NULL_YIELDS_NULL ON,
-                CURSOR_DEFAULT LOCAL 
-            WITH ROLLBACK IMMEDIATE;
-    END
+PRINT N'Altering [dbo].[AspNetUsers]...';
 
 
 GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET PAGE_VERIFY NONE,
-                DISABLE_BROKER 
-            WITH ROLLBACK IMMEDIATE;
-    END
+ALTER TABLE [dbo].[AspNetUsers] ALTER COLUMN [FullName] NVARCHAR (50) NULL;
+
+ALTER TABLE [dbo].[AspNetUsers] ALTER COLUMN [ProfileImage] VARBINARY (MAX) NULL;
+
+ALTER TABLE [dbo].[AspNetUsers] ALTER COLUMN [Role] NVARCHAR (50) NULL;
 
 
 GO
-ALTER DATABASE [$(DatabaseName)]
-    SET TARGET_RECOVERY_TIME = 0 SECONDS 
-    WITH ROLLBACK IMMEDIATE;
+PRINT N'Creating [dbo].[ContactUs]...';
 
 
 GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET QUERY_STORE (CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 367)) 
-            WITH ROLLBACK IMMEDIATE;
-    END
-
-
-GO
-PRINT N'Creating [dbo].[__EFMigrationsHistory]...';
-
-
-GO
-CREATE TABLE [dbo].[__EFMigrationsHistory] (
-    [MigrationId]    NVARCHAR (150) NOT NULL,
-    [ProductVersion] NVARCHAR (32)  NOT NULL,
-    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED ([MigrationId] ASC)
+CREATE TABLE [dbo].[ContactUs] (
+    [Id]          INT            IDENTITY (1, 1) NOT NULL,
+    [Email]       NVARCHAR (256) NOT NULL,
+    [Subject]     NVARCHAR (256) NOT NULL,
+    [Message]     NVARCHAR (MAX) NOT NULL,
+    [Name]        NVARCHAR (256) NOT NULL,
+    [IsResponded] BIT            NOT NULL,
+    [MessageDate] DATETIME2 (7)  NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
 
 GO
-PRINT N'Creating [dbo].[AspNetRoleClaims]...';
+PRINT N'Creating unnamed constraint on [dbo].[ContactUs]...';
 
 
 GO
-CREATE TABLE [dbo].[AspNetRoleClaims] (
-    [Id]         INT            IDENTITY (1, 1) NOT NULL,
-    [RoleId]     NVARCHAR (450) NOT NULL,
-    [ClaimType]  NVARCHAR (MAX) NULL,
-    [ClaimValue] NVARCHAR (MAX) NULL,
-    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+ALTER TABLE [dbo].[ContactUs]
+    ADD DEFAULT 0 FOR [IsResponded];
 
 
 GO
-PRINT N'Creating [dbo].[AspNetRoleClaims].[IX_AspNetRoleClaims_RoleId]...';
+PRINT N'Creating unnamed constraint on [dbo].[ContactUs]...';
 
 
 GO
-CREATE NONCLUSTERED INDEX [IX_AspNetRoleClaims_RoleId]
-    ON [dbo].[AspNetRoleClaims]([RoleId] ASC);
+ALTER TABLE [dbo].[ContactUs]
+    ADD DEFAULT GETDATE() FOR [MessageDate];
 
 
 GO
-PRINT N'Creating [dbo].[AspNetRoles]...';
+PRINT N'Creating [dbo].[AddMessageToContactUs]...';
 
 
 GO
-CREATE TABLE [dbo].[AspNetRoles] (
-    [Id]               NVARCHAR (450) NOT NULL,
-    [Name]             NVARCHAR (256) NULL,
-    [NormalizedName]   NVARCHAR (256) NULL,
-    [ConcurrencyStamp] NVARCHAR (MAX) NULL,
-    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+CREATE PROCEDURE [dbo].[AddMessageToContactUs]
+	 @email nvarchar(256)
+	,@subject nvarchar(256)
+	,@message nvarchar(max)
+	,@name nvarchar(256)
 
+AS
+
+INSERT INTO [ContactUs]([Email], [Subject], [Message], [Name])
+VALUES(@email, @subject, @message, @name);
+GO
+-- Refactoring step to update target server with deployed transaction logs
+
+IF OBJECT_ID(N'dbo.__RefactorLog') IS NULL
+BEGIN
+    CREATE TABLE [dbo].[__RefactorLog] (OperationKey UNIQUEIDENTIFIER NOT NULL PRIMARY KEY)
+    EXEC sp_addextendedproperty N'microsoft_database_tools_support', N'refactoring log', N'schema', N'dbo', N'table', N'__RefactorLog'
+END
+GO
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'bc8c8848-872d-49a4-9386-8c1f8d204a5f')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('bc8c8848-872d-49a4-9386-8c1f8d204a5f')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '81d2ee4d-4d87-4e95-a859-2d49592859ff')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('81d2ee4d-4d87-4e95-a859-2d49592859ff')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '2265b443-6083-460c-85cc-ec714554713e')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('2265b443-6083-460c-85cc-ec714554713e')
 
 GO
-PRINT N'Creating [dbo].[AspNetRoles].[RoleNameIndex]...';
-
-
-GO
-CREATE UNIQUE NONCLUSTERED INDEX [RoleNameIndex]
-    ON [dbo].[AspNetRoles]([NormalizedName] ASC) WHERE ([NormalizedName] IS NOT NULL);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUserClaims]...';
-
-
-GO
-CREATE TABLE [dbo].[AspNetUserClaims] (
-    [Id]         INT            IDENTITY (1, 1) NOT NULL,
-    [UserId]     NVARCHAR (450) NOT NULL,
-    [ClaimType]  NVARCHAR (MAX) NULL,
-    [ClaimValue] NVARCHAR (MAX) NULL,
-    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY CLUSTERED ([Id] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUserClaims].[IX_AspNetUserClaims_UserId]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_AspNetUserClaims_UserId]
-    ON [dbo].[AspNetUserClaims]([UserId] ASC);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUserLogins]...';
-
-
-GO
-CREATE TABLE [dbo].[AspNetUserLogins] (
-    [LoginProvider]       NVARCHAR (128) NOT NULL,
-    [ProviderKey]         NVARCHAR (128) NOT NULL,
-    [ProviderDisplayName] NVARCHAR (MAX) NULL,
-    [UserId]              NVARCHAR (450) NOT NULL,
-    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY CLUSTERED ([LoginProvider] ASC, [ProviderKey] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUserLogins].[IX_AspNetUserLogins_UserId]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_AspNetUserLogins_UserId]
-    ON [dbo].[AspNetUserLogins]([UserId] ASC);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUserRoles]...';
-
-
-GO
-CREATE TABLE [dbo].[AspNetUserRoles] (
-    [UserId] NVARCHAR (450) NOT NULL,
-    [RoleId] NVARCHAR (450) NOT NULL,
-    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY CLUSTERED ([UserId] ASC, [RoleId] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUserRoles].[IX_AspNetUserRoles_RoleId]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_AspNetUserRoles_RoleId]
-    ON [dbo].[AspNetUserRoles]([RoleId] ASC);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUsers]...';
-
-
-GO
-CREATE TABLE [dbo].[AspNetUsers] (
-    [Id]                   NVARCHAR (450)     NOT NULL,
-    [UserName]             NVARCHAR (256)     NULL,
-    [NormalizedUserName]   NVARCHAR (256)     NULL,
-    [Email]                NVARCHAR (256)     NULL,
-    [NormalizedEmail]      NVARCHAR (256)     NULL,
-    [EmailConfirmed]       BIT                NOT NULL,
-    [PasswordHash]         NVARCHAR (MAX)     NULL,
-    [SecurityStamp]        NVARCHAR (MAX)     NULL,
-    [ConcurrencyStamp]     NVARCHAR (MAX)     NULL,
-    [PhoneNumber]          NVARCHAR (MAX)     NULL,
-    [PhoneNumberConfirmed] BIT                NOT NULL,
-    [TwoFactorEnabled]     BIT                NOT NULL,
-    [LockoutEnd]           DATETIMEOFFSET (7) NULL,
-    [LockoutEnabled]       BIT                NOT NULL,
-    [AccessFailedCount]    INT                NOT NULL,
-    [FullName]             NVARCHAR (50)      NOT NULL,
-    [Role]                 NVARCHAR (50)      NOT NULL,
-    [DateCreated]          DATETIME2 (7)      NOT NULL,
-    [ProfileImage]         VARBINARY (MAX)    NOT NULL,
-    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUsers].[EmailIndex]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [EmailIndex]
-    ON [dbo].[AspNetUsers]([NormalizedEmail] ASC);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUsers].[UserNameIndex]...';
-
-
-GO
-CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex]
-    ON [dbo].[AspNetUsers]([NormalizedUserName] ASC) WHERE ([NormalizedUserName] IS NOT NULL);
-
-
-GO
-PRINT N'Creating [dbo].[AspNetUserTokens]...';
-
-
-GO
-CREATE TABLE [dbo].[AspNetUserTokens] (
-    [UserId]        NVARCHAR (450) NOT NULL,
-    [LoginProvider] NVARCHAR (128) NOT NULL,
-    [Name]          NVARCHAR (128) NOT NULL,
-    [Value]         NVARCHAR (MAX) NULL,
-    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY CLUSTERED ([UserId] ASC, [LoginProvider] ASC, [Name] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[FK_AspNetRoleClaims_AspNetRoles_RoleId]...';
-
-
-GO
-ALTER TABLE [dbo].[AspNetRoleClaims] WITH NOCHECK
-    ADD CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[AspNetRoles] ([Id]) ON DELETE CASCADE;
-
-
-GO
-PRINT N'Creating [dbo].[FK_AspNetUserClaims_AspNetUsers_UserId]...';
-
-
-GO
-ALTER TABLE [dbo].[AspNetUserClaims] WITH NOCHECK
-    ADD CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE;
-
-
-GO
-PRINT N'Creating [dbo].[FK_AspNetUserLogins_AspNetUsers_UserId]...';
-
-
-GO
-ALTER TABLE [dbo].[AspNetUserLogins] WITH NOCHECK
-    ADD CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE;
-
-
-GO
-PRINT N'Creating [dbo].[FK_AspNetUserRoles_AspNetRoles_RoleId]...';
-
-
-GO
-ALTER TABLE [dbo].[AspNetUserRoles] WITH NOCHECK
-    ADD CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[AspNetRoles] ([Id]) ON DELETE CASCADE;
-
-
-GO
-PRINT N'Creating [dbo].[FK_AspNetUserRoles_AspNetUsers_UserId]...';
-
-
-GO
-ALTER TABLE [dbo].[AspNetUserRoles] WITH NOCHECK
-    ADD CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE;
-
-
-GO
-PRINT N'Creating [dbo].[FK_AspNetUserTokens_AspNetUsers_UserId]...';
-
-
-GO
-ALTER TABLE [dbo].[AspNetUserTokens] WITH NOCHECK
-    ADD CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE;
-
-
-GO
-PRINT N'Checking existing data against newly created constraints';
-
-
-GO
-USE [$(DatabaseName)];
-
-
-GO
-ALTER TABLE [dbo].[AspNetRoleClaims] WITH CHECK CHECK CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId];
-
-ALTER TABLE [dbo].[AspNetUserClaims] WITH CHECK CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId];
-
-ALTER TABLE [dbo].[AspNetUserLogins] WITH CHECK CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId];
-
-ALTER TABLE [dbo].[AspNetUserRoles] WITH CHECK CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId];
-
-ALTER TABLE [dbo].[AspNetUserRoles] WITH CHECK CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId];
-
-ALTER TABLE [dbo].[AspNetUserTokens] WITH CHECK CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId];
-
 
 GO
 PRINT N'Update complete.';

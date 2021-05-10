@@ -16,3 +16,7 @@ E:\kashif\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.pdb
 E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.sqlprojAssemblyReference.cache
 E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.dll
 E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb
+E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\Model.xml
+E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\refactor.xml
+E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\postdeploy.sql
+E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\predeploy.sql

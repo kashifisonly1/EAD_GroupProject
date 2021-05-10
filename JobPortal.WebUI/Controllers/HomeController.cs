@@ -15,7 +15,6 @@ using Microsoft.Extensions.Logging;
 
 namespace JobPortal.WebUI.Controllers
 {
-	[Authorize]
 	public class HomeController : Controller
 	{
 		public IActionResult Index()

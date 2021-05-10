@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj": {}
+    "E:\\kashif\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj": {}
   },
   "projects": {
-    "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj": {
+    "E:\\kashif\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
+        "projectUniqueName": "E:\\kashif\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
         "projectName": "JobPortal.DataManager",
-        "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
-        "packagesPath": "C:\\Users\\ST\\.nuget\\packages\\",
-        "outputPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\obj\\",
+        "projectPath": "E:\\kashif\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
+        "packagesPath": "C:\\Users\\junaid tariq\\.nuget\\packages\\",
+        "outputPath": "E:\\kashif\\EAD_GroupProject\\JobPortal.DataManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ST\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\junaid tariq\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
