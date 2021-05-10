@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0">
+  <Operation Name="Rename Refactor" Key="bc8c8848-872d-49a4-9386-8c1f8d204a5f" ChangeDateTime="05/08/2021 08:42:54" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[AspNetUsers].[LockoutEnd]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[AspNetUsers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LockoutEndDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="81d2ee4d-4d87-4e95-a859-2d49592859ff" ChangeDateTime="05/08/2021 08:47:59" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[AspNetUsers].[LockoutEndDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[AspNetUsers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LockoutEndDateUtc" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2265b443-6083-460c-85cc-ec714554713e" ChangeDateTime="05/08/2021 09:25:05" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[AspNetUsers].[LockoutEndDateUtc]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[AspNetUsers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LockoutEnd" />
+  </Operation>
+</Operations>

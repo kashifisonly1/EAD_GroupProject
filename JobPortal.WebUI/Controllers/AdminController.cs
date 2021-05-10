@@ -23,7 +23,7 @@ namespace JobPortal.WebUI.Controllers
 		}
 		public IActionResult Index()
 		{
-			
+
 			return View();
 		}
 		public IActionResult Category()
@@ -34,12 +34,12 @@ namespace JobPortal.WebUI.Controllers
 		{
 			return View();
 		}
-		
+
 		public IActionResult ContactUs(ContactForm form)
 		{
-			form = new ContactForm { Email = "xamimran8991@gmail.com", Subject = "Client Mis behaviour", Name = "Usama", Message = "I want to report kashif"};
-			
-			return View("ContactUs",form);
+			form = new ContactForm { Email = "xamimran8991@gmail.com", Subject = "Client Mis behaviour", Name = "Usama", Message = "I want to report kashif" };
+
+			return View("ContactUs", form);
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

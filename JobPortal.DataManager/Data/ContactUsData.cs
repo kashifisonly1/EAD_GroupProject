@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 
+using JobPortal.BusinessModels;
 using JobPortal.DataManager.Internal.Data;
-using JobPortal.DataManager.Models;
 
 namespace JobPortal.DataManager.Data
 {
@@ -13,14 +14,32 @@ namespace JobPortal.DataManager.Data
 		public void SaveMessage(ContactUsModel model)
 		{
 			DataAccess access = new DataAccess();
-			List<SqlParameter> parameters = new List<SqlParameter>
-			{
-				new SqlParameter("@email", model.Email),
-				new SqlParameter("@subject", model.Subject),
-				new SqlParameter("@message", model.Message),
-				new SqlParameter("@name", model.Name)
-			};
-			access.SaveData("dbo.AddMessageToContactUs", parameters.ToArray());
+			access.SaveData<dynamic>("dbo.AddMessageToContactUs", new { Email = model.Email, Subject = model.Subject, Message = model.Message, Name = model.Name });
 		}
+
+		public ContactUsModel GetContactUsModel(string email)
+		{
+			DataAccess access = new DataAccess();
+			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetContactUsMessageByEmail]", new { Email = email }).FirstOrDefault();
+
+			return result;
+		}
+
+		public List<ContactUsModel> GetAllContactUsModel()
+		{
+			DataAccess access = new DataAccess();
+			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetAllContactUsMessage]", new { });
+
+			return result;
+		}
+
+		public List<ContactUsModel> GetAllContactUsModelByEmail(string email)
+		{
+			DataAccess access = new DataAccess();
+			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetAllContactUsMessage]", new { Email = email });
+
+			return result;
+		}
+
 	}
 }

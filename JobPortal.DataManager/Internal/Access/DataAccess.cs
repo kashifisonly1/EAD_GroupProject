@@ -38,19 +38,5 @@ namespace JobPortal.DataManager.Internal.Data
 			}
 		}
 
-		public void SaveData(string storedProcedure, SqlParameter[] parameters = null)
-		{
-			using (SqlConnection cnn = new SqlConnection(ConnectionString))
-			{
-				cnn.Open();
-				SqlCommand cmd = new SqlCommand(storedProcedure, cnn)
-				{
-					CommandType = CommandType.StoredProcedure
-				};
-				if (parameters != null)
-					cmd.Parameters.AddRange(parameters);
-				cmd.ExecuteNonQuery();
-			}
-		}
 	}
 }

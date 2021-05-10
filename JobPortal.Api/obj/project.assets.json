@@ -2919,11 +2919,22 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "JobPortal.BusinessModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/JobPortal.BusinessModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/JobPortal.BusinessModels.dll": {}
+        }
+      },
       "JobPortal.DataManager/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Dapper": "2.0.90",
+          "JobPortal.BusinessModels": "1.0.0",
           "System.Configuration.ConfigurationManager": "5.0.0",
           "System.Data.SqlClient": "4.8.2"
         },
@@ -2938,6 +2949,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "JobPortal.BusinessModels": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.7"
         },
         "compile": {
@@ -9494,6 +9506,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "JobPortal.BusinessModels/1.0.0": {
+      "type": "project",
+      "path": "../JobPortal.BusinessModels/JobPortal.BusinessModels.csproj",
+      "msbuildProject": "../JobPortal.BusinessModels/JobPortal.BusinessModels.csproj"
+    },
     "JobPortal.DataManager/1.0.0": {
       "type": "project",
       "path": "../JobPortal.DataManager/JobPortal.DataManager.csproj",
@@ -9507,6 +9524,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "JobPortal.BusinessModels >= 1.0.0",
       "JobPortal.DataManager >= 1.0.0",
       "JobPortal.WebUI.Library >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.14",
@@ -9551,6 +9569,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj": {
+              "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj"
+            },
             "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj": {
               "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj"
             },

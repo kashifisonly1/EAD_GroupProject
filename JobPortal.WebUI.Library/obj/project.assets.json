@@ -1441,6 +1441,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
+      },
+      "JobPortal.BusinessModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/JobPortal.BusinessModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/JobPortal.BusinessModels.dll": {}
+        }
       }
     }
   },
@@ -5272,10 +5282,16 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "JobPortal.BusinessModels/1.0.0": {
+      "type": "project",
+      "path": "../JobPortal.BusinessModels/JobPortal.BusinessModels.csproj",
+      "msbuildProject": "../JobPortal.BusinessModels/JobPortal.BusinessModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "JobPortal.BusinessModels >= 1.0.0",
       "Microsoft.AspNet.WebApi.Client >= 5.2.7"
     ]
   },
@@ -5305,7 +5321,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj": {
+              "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

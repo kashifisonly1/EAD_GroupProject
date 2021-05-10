@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
+using JobPortal.BusinessModels;
 using JobPortal.WebUI.Library.Api.EndPoints;
 using JobPortal.WebUI.Library.Api.Models;
 using JobPortal.WebUI.Models;
@@ -47,7 +48,6 @@ namespace JobPortal.WebUI.Controllers
 
 			if (ModelState.IsValid)
 			{
-				AdminEndPoints points = new AdminEndPoints();
 				ContactUsModel model = new ContactUsModel()
 				{
 					Email = form.Email,
@@ -56,6 +56,11 @@ namespace JobPortal.WebUI.Controllers
 					Message = form.Message
 				};
 
+				AdminEndPoints points = new AdminEndPoints();
+
+				var recieved = await points.GetSomethingFromAPi(TokenStore.Token);
+
+				var contactModel = await points.GetSomeObjectFromAPi(TokenStore.Token);
 				// TODO -- send token
 				//await points.PostContactUsMessage(TokenStore.Token, model);
 
