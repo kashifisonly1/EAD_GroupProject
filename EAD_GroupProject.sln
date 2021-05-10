@@ -7,11 +7,13 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JobPortal.Database", "JobPo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.WebUI", "JobPortal.WebUI\JobPortal.WebUI.csproj", "{09AA3EFD-7E45-414B-BE77-E07C92C31C46}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.WebApi", "JobPortal.WebApi\JobPortal.WebApi.csproj", "{D0A50AD6-DCBD-4A20-984A-1D235215D1F8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.DataManager", "JobPortal.DataManager\JobPortal.DataManager.csproj", "{5E3BBE06-BAEF-4087-A68C-987DBB4CD765}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPhase", "PlanningPhase\PlanningPhase.csproj", "{8DFC8089-B228-47E9-853C-2F2AD221C185}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.WebUI.Library", "JobPortal.WebUI.Library\JobPortal.WebUI.Library.csproj", "{FEE5A698-C2BE-4833-A3DC-D52F6E84953D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortal.Api", "JobPortal.Api\JobPortal.Api.csproj", "{B8C1D21A-7F99-48BB-805B-1C4E956AE090}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,6 @@ Global
 		{09AA3EFD-7E45-414B-BE77-E07C92C31C46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09AA3EFD-7E45-414B-BE77-E07C92C31C46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09AA3EFD-7E45-414B-BE77-E07C92C31C46}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0A50AD6-DCBD-4A20-984A-1D235215D1F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0A50AD6-DCBD-4A20-984A-1D235215D1F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0A50AD6-DCBD-4A20-984A-1D235215D1F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0A50AD6-DCBD-4A20-984A-1D235215D1F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E3BBE06-BAEF-4087-A68C-987DBB4CD765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E3BBE06-BAEF-4087-A68C-987DBB4CD765}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E3BBE06-BAEF-4087-A68C-987DBB4CD765}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,6 +39,14 @@ Global
 		{8DFC8089-B228-47E9-853C-2F2AD221C185}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DFC8089-B228-47E9-853C-2F2AD221C185}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DFC8089-B228-47E9-853C-2F2AD221C185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEE5A698-C2BE-4833-A3DC-D52F6E84953D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEE5A698-C2BE-4833-A3DC-D52F6E84953D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEE5A698-C2BE-4833-A3DC-D52F6E84953D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEE5A698-C2BE-4833-A3DC-D52F6E84953D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8C1D21A-7F99-48BB-805B-1C4E956AE090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C1D21A-7F99-48BB-805B-1C4E956AE090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C1D21A-7F99-48BB-805B-1C4E956AE090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8C1D21A-7F99-48BB-805B-1C4E956AE090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

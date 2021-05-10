@@ -1,0 +1,9 @@
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI.Library\bin\Debug\netcoreapp3.1\JobPortal.WebUI.Library.deps.json
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI.Library\bin\Debug\netcoreapp3.1\JobPortal.WebUI.Library.dll
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI.Library\bin\Debug\netcoreapp3.1\JobPortal.WebUI.Library.pdb
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI.Library\obj\Debug\netcoreapp3.1\JobPortal.WebUI.Library.csprojAssemblyReference.cache
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI.Library\obj\Debug\netcoreapp3.1\JobPortal.WebUI.Library.AssemblyInfoInputs.cache
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI.Library\obj\Debug\netcoreapp3.1\JobPortal.WebUI.Library.AssemblyInfo.cs
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI.Library\obj\Debug\netcoreapp3.1\JobPortal.WebUI.Library.csproj.CoreCompileInputs.cache
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI.Library\obj\Debug\netcoreapp3.1\JobPortal.WebUI.Library.dll
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.WebUI.Library\obj\Debug\netcoreapp3.1\JobPortal.WebUI.Library.pdb

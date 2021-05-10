@@ -4,14 +4,14 @@
     "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj": {}
   },
   "projects": {
-    "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj": {
+    "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj",
-        "projectName": "JobPortal.WebUI",
-        "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj",
+        "projectUniqueName": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
+        "projectName": "JobPortal.DataManager",
+        "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
         "packagesPath": "C:\\Users\\ST\\.nuget\\packages\\",
-        "outputPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\obj\\",
+        "outputPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ST\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,145 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.90, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj",
+        "projectName": "JobPortal.WebUI.Library",
+        "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj",
+        "packagesPath": "C:\\Users\\ST\\.nuget\\packages\\",
+        "outputPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ST\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj",
+        "projectName": "JobPortal.WebUI",
+        "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\JobPortal.WebUI.csproj",
+        "packagesPath": "C:\\Users\\ST\\.nuget\\packages\\",
+        "outputPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ST\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj": {
+                "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj"
+              },
+              "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj": {
+                "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.13, )"

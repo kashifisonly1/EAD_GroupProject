@@ -4,7 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
+using JobPortal.WebUI.Library.Api.EndPoints;
+using JobPortal.WebUI.Library.Api.Models;
 using JobPortal.WebUI.Models;
+using JobPortal.WebUI.Temp;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +15,9 @@ using Microsoft.Extensions.Logging;
 
 namespace JobPortal.WebUI.Controllers
 {
-	//[Authorize]
+	[Authorize]
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
-
-		public HomeController(ILogger<HomeController> logger)
-		{
-			_logger = logger;
-		}
-
 		public IActionResult Index()
 		{
 			return View();
@@ -45,8 +41,26 @@ namespace JobPortal.WebUI.Controllers
 			return View();
 		}
 		[HttpPost]
-		public IActionResult Contact(ContactForm form)
+		public async Task<IActionResult> Contact(ContactForm form)
 		{
+			// UNDONE -- Error on ContactSubmit (needs resolution by front-end)
+
+			if (ModelState.IsValid)
+			{
+				AdminEndPoints points = new AdminEndPoints();
+				ContactUsModel model = new ContactUsModel()
+				{
+					Email = form.Email,
+					Name = form.Name,
+					Subject = form.Subject,
+					Message = form.Message
+				};
+
+				// TODO -- send token
+				//await points.PostContactUsMessage(TokenStore.Token, model);
+
+
+			}
 			return View();
 		}
 

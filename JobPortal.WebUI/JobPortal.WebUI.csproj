@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.13" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.13" />
@@ -29,6 +30,11 @@
 
   <ItemGroup>
     <None Include="Areas\Identity\Pages\Account\UpdateProfile.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JobPortal.DataManager\JobPortal.DataManager.csproj" />
+    <ProjectReference Include="..\JobPortal.WebUI.Library\JobPortal.WebUI.Library.csproj" />
   </ItemGroup>
 
 </Project>

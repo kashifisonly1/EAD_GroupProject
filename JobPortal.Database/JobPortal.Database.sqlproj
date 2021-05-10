@@ -77,5 +77,10 @@
     <Build Include="dbo\Tables\AspNetUserLogins.sql" />
     <Build Include="dbo\Tables\AspNetUserRoles.sql" />
     <Build Include="dbo\Tables\AspNetUserTokens.sql" />
+    <Build Include="dbo\Tables\ContactUs.sql" />
+    <Build Include="dbo\StoredProcedures\AddMessageToContactUs.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="JobPortal.Database.refactorlog" />
   </ItemGroup>
 </Project>
