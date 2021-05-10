@@ -12,7 +12,6 @@ using Microsoft.Extensions.Logging;
 
 namespace JobPortal.WebUI.Controllers
 {
-	//[Authorize]
 	public class AdminController : Controller
 	{
 		private readonly ILogger<AdminController> _logger;
@@ -37,9 +36,12 @@ namespace JobPortal.WebUI.Controllers
 		
 		public IActionResult ContactUs(ContactForm form)
 		{
-			form = new ContactForm { Email = "xamimran8991@gmail.com", Subject = "Client Mis behaviour", Name = "Usama", Message = "I want to report kashif"};
+			List<ContactForm> list = new List<ContactForm>();
+			form = new ContactForm {ID=1, Email = "xamimran8991@gmail.com", Subject = "Client Mis behaviour", Name = "Usama", Message = "I want to report kashif"};
+			list.Add(form);
 			
-			return View("ContactUs",form);
+			ViewData["contact-us"]=list;
+			return View("ContactUs");
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

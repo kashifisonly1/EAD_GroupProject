@@ -1,4 +1,3 @@
-@model JobPortal.WebUI.Models.ContactForm
 @{
     ViewData["Title"] = "Contact management Page";
 }
@@ -9,18 +8,19 @@
             <th scope="col">#</th>
             <th scope="col">User Email</th>
             <th scope="col">Subject</th>
-            <th>&nbsp;&nbsp;  <b>Actions</b></th>
+            <th>Message</th>
+            <th colspan="2">&nbsp;&nbsp;  <b>Actions</b></th>
         </tr>
     </thead>
     <tbody>
-        @for (int i = 1; i < 7; i++)
+        @foreach (ContactForm contact in  (List<ContactForm>)ViewData["contact-us"])
         {
 
             <tr>
-                <th scope="row">@i</th>
-                <td>@Model.Email</td>
-                <td>@Model.Subject</td>
-               
+                <th scope="row">@contact.ID</th>
+                <td>@contact.Email</td>
+                <td>@contact.Subject</td>
+                <td>@contact.Message</td>
                 <td>
 
 
@@ -37,14 +37,14 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Replay To <span>@Model.Name <br />@Model.Email</span></h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Replay To <span>@contact.Name <br />@contact.Email</span></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
                                     <h5>Complain: </h5>
-                                    <textarea class="form-control" rows="3" readonly>@Model.Message</textarea>
+                                    <textarea class="form-control" rows="3" readonly>@contact.Message</textarea>
                                     <h5>Your Comment Here: </h5>
                                     <textarea class="form-control" rows="5" id="comment"></textarea>
                                 </div>
@@ -62,7 +62,7 @@
 
                 </td>
                 <td>
-                    <a type="button" class="btn btn-danger" asp-action="RemoveMessage" asp-route-id="@Html.DisplayNameFor(model => model.Email)">
+                    <a type="button" class="btn btn-danger" asp-action="RemoveMessage" asp-route-id="@Html.DisplayNameFor(model => contact.Email)">
                         Remove
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
