@@ -573,3 +573,4 @@ E:\kashif\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\I
 E:\kashif\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Category.cshtml.g.cs
 E:\kashif\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ContactUs.cshtml.g.cs
 E:\kashif\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Admin\User.cshtml.g.cs
+E:\kashif\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Admin\_Layout_Admin.cshtml.g.cs

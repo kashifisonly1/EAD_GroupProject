@@ -29,7 +29,7 @@ namespace JobPortal.WebUI.Controllers
 		{
 			return View();
 		}
-		public IActionResult User()
+		public IActionResult User_()
 		{
 			return View();
 		}
