@@ -9,5 +9,10 @@
        None
 
 ** User actions
+     Create
+       [dbo].[DeleteContactUsMessageById] (Procedure)
+       [dbo].[GetAllUnResolvedMessages] (Procedure)
+       [dbo].[GetContactUsMessagesByEmail] (Procedure)
+       [dbo].[ResolveContactUsMessageById] (Procedure)
 
 ** Supporting actions

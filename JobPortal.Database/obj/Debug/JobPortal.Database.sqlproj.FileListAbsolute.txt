@@ -1,29 +1,5 @@
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dacpac
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dll
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.pdb
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.sqlprojAssemblyReference.cache
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.dll
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb
-E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dacpac
-E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dll
-E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.pdb
-E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.sqlprojAssemblyReference.cache
-E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.dll
-E:\EAD\EAD Project\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb
-E:\kashif\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dacpac
-E:\kashif\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dll
-E:\kashif\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.pdb
-E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.sqlprojAssemblyReference.cache
-E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.dll
-E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb
-<<<<<<< HEAD
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\Model.xml
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\refactor.xml
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\postdeploy.sql
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.Database\obj\Debug\predeploy.sql
-=======
-E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\Model.xml
-E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\refactor.xml
-E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\postdeploy.sql
-E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\predeploy.sql
->>>>>>> master

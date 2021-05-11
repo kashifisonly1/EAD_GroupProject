@@ -6,7 +6,6 @@ using System.Text;
 
 using JobPortal.WebUI.Library.Api.Models;
 
-using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using JobPortal.BusinessModels;
 

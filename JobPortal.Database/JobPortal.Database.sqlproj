@@ -80,6 +80,9 @@
     <Build Include="dbo\Tables\ContactUs.sql" />
     <Build Include="dbo\StoredProcedures\AddMessageToContactUs.sql" />
     <Build Include="dbo\StoredProcedures\GetContactUsMessageByEmail.sql" />
+    <Build Include="dbo\StoredProcedures\GetAllUnResolvedMessages.sql" />
+    <Build Include="dbo\StoredProcedures\ResolveContactUsMessageById.sql" />
+    <Build Include="dbo\StoredProcedures\DeleteContactUsMessageById.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="JobPortal.Database.refactorlog" />

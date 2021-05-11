@@ -52,9 +52,10 @@ namespace JobPortal.Api.Controllers
 		[HttpGet]
 		public ContactUsModel GetContactUsModel()
 		{
-			ContactUsData data = new ContactUsData();
-			ContactUsModel result = data.GetContactUsModel("");
-			return result;
+			//ContactUsData data = new ContactUsData();
+			//ContactUsModel result = data.GetContactUsModel("");
+			//return result;
+			throw new NotImplementedException();
 		}
 	}
 }

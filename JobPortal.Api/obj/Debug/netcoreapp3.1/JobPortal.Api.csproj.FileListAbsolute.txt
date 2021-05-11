@@ -195,3 +195,5 @@ E:\Semester6\EAD\EAD_GroupProject\JobPortal.Api\bin\Debug\netcoreapp3.1\System.N
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Api\bin\Debug\netcoreapp3.1\JobPortal.WebUI.Library.dll
 E:\Semester6\EAD\EAD_GroupProject\JobPortal.Api\bin\Debug\netcoreapp3.1\JobPortal.WebUI.Library.pdb
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.Api\bin\Debug\netcoreapp3.1\JobPortal.BusinessModels.dll
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.Api\bin\Debug\netcoreapp3.1\JobPortal.BusinessModels.pdb

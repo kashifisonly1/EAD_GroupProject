@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "JobPortal.WebUI/1.0.0": {
         "dependencies": {
+          "JobPortal.BusinessModels": "1.0.0",
           "JobPortal.DataManager": "1.0.0",
           "JobPortal.WebUI.Library": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
@@ -2512,9 +2513,18 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "JobPortal.BusinessModels/1.0.0": {
+        "runtime": {
+          "JobPortal.BusinessModels.dll": {}
+        },
+        "compile": {
+          "JobPortal.BusinessModels.dll": {}
+        }
+      },
       "JobPortal.DataManager/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.90",
+          "JobPortal.BusinessModels": "1.0.0",
           "System.Configuration.ConfigurationManager": "5.0.0",
           "System.Data.SqlClient": "4.8.2"
         },
@@ -2527,6 +2537,7 @@
       },
       "JobPortal.WebUI.Library/1.0.0": {
         "dependencies": {
+          "JobPortal.BusinessModels": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.7"
         },
         "runtime": {
@@ -5315,6 +5326,11 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "JobPortal.BusinessModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "JobPortal.DataManager/1.0.0": {
       "type": "project",

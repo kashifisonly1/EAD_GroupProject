@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[GetContactUsMessageByEmail]
+﻿CREATE PROCEDURE [dbo].[GetContactUsMessagesByEmail]
 	@Email nvarchar(250)
 AS
-	SELECT TOP 1 * FROM [ContactUs]
+	SELECT * FROM [ContactUs]
 	WHERE [Email] = @Email;

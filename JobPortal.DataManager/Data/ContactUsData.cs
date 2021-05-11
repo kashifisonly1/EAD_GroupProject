@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,19 @@ namespace JobPortal.DataManager.Data
 			access.SaveData<dynamic>("dbo.AddMessageToContactUs", new { Email = model.Email, Subject = model.Subject, Message = model.Message, Name = model.Name });
 		}
 
-		public ContactUsModel GetContactUsModel(string email)
+		public void DeleteMessage(int id)
+		{
+			DataAccess access = new DataAccess();
+			access.SaveData<dynamic>("dbo.DeleteContactUsMessageById", new { IdentifierCase = id });
+		}
+
+		public void MarkMessageAsResolved(int id)
+		{
+			DataAccess access = new DataAccess();
+			access.SaveData<dynamic>("dbo.ResolveContactUsMessageById", new { IdentifierCase = id });
+		}
+
+		public ContactUsModel GetContactUsByEmail(string email)
 		{
 			DataAccess access = new DataAccess();
 			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetContactUsMessageByEmail]", new { Email = email }).FirstOrDefault();
@@ -25,18 +38,17 @@ namespace JobPortal.DataManager.Data
 			return result;
 		}
 
-		public List<ContactUsModel> GetAllContactUsModel()
+		public List<ContactUsModel> GetAllUnResolvedMessages()
 		{
 			DataAccess access = new DataAccess();
-			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetAllContactUsMessage]", new { });
-
+			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetAllUnResolvedMessages]", new { });
 			return result;
 		}
 
-		public List<ContactUsModel> GetAllContactUsModelByEmail(string email)
+		public List<ContactUsModel> GetAllContactUsMessagesByEmail(string email)
 		{
 			DataAccess access = new DataAccess();
-			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetAllContactUsMessage]", new { Email = email });
+			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetContactUsMessageByEmail]", new { Email = email });
 
 			return result;
 		}

@@ -16,3 +16,6 @@ E:\kashif\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPort
 E:\kashif\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.csproj.CoreCompileInputs.cache
 E:\kashif\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.dll
 E:\kashif\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.pdb
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.DataManager\bin\Debug\netcoreapp3.1\JobPortal.BusinessModels.dll
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.DataManager\bin\Debug\netcoreapp3.1\JobPortal.BusinessModels.pdb
+E:\Semester6\EAD\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.csproj.CopyComplete

@@ -43,8 +43,6 @@ namespace JobPortal.WebUI.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Contact(ContactForm form)
 		{
-			// UNDONE -- Error on ContactSubmit (needs resolution by front-end)
-
 			if (ModelState.IsValid)
 			{
 				ContactUsModel model = new ContactUsModel()
@@ -55,15 +53,17 @@ namespace JobPortal.WebUI.Controllers
 					Message = form.Message
 				};
 
-				AdminEndPoints points = new AdminEndPoints();
-
-				var recieved = await points.GetSomethingFromAPi(TokenStore.Token);
-
-				var contactModel = await points.GetSomeObjectFromAPi(TokenStore.Token);
-				// TODO -- send token
-				//await points.PostContactUsMessage(TokenStore.Token, model);
-
-
+				try
+				{
+					ContactUsEndPoint endPoint = new ContactUsEndPoint();
+					await endPoint.SendContactUsMessage(TokenStore.Token, model);
+				}
+				catch (Exception /* ex */)
+				{
+					// UNDONE -- FrontEnd, display exception to user.
+					// ex.Message contains the message
+					// ex.GetType() contains type of exception
+				}
 			}
 			return View();
 		}
