@@ -16,3 +16,12 @@ E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.A
 E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.csproj.CoreCompileInputs.cache
 E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.dll
 E:\kashif\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.pdb
+D:\GitHub\EAD_GroupProject\PlanningPhase\bin\Debug\netcoreapp3.1\PlanningPhase.deps.json
+D:\GitHub\EAD_GroupProject\PlanningPhase\bin\Debug\netcoreapp3.1\PlanningPhase.dll
+D:\GitHub\EAD_GroupProject\PlanningPhase\bin\Debug\netcoreapp3.1\PlanningPhase.pdb
+D:\GitHub\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.csprojAssemblyReference.cache
+D:\GitHub\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.AssemblyInfoInputs.cache
+D:\GitHub\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.AssemblyInfo.cs
+D:\GitHub\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.csproj.CoreCompileInputs.cache
+D:\GitHub\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.dll
+D:\GitHub\EAD_GroupProject\PlanningPhase\obj\Debug\netcoreapp3.1\PlanningPhase.pdb

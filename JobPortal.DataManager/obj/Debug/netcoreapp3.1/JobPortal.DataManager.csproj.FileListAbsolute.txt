@@ -16,3 +16,12 @@ E:\kashif\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPort
 E:\kashif\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.csproj.CoreCompileInputs.cache
 E:\kashif\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.dll
 E:\kashif\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.pdb
+D:\GitHub\EAD_GroupProject\JobPortal.DataManager\bin\Debug\netcoreapp3.1\JobPortal.DataManager.deps.json
+D:\GitHub\EAD_GroupProject\JobPortal.DataManager\bin\Debug\netcoreapp3.1\JobPortal.DataManager.dll
+D:\GitHub\EAD_GroupProject\JobPortal.DataManager\bin\Debug\netcoreapp3.1\JobPortal.DataManager.pdb
+D:\GitHub\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.csprojAssemblyReference.cache
+D:\GitHub\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.AssemblyInfoInputs.cache
+D:\GitHub\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.AssemblyInfo.cs
+D:\GitHub\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.csproj.CoreCompileInputs.cache
+D:\GitHub\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.dll
+D:\GitHub\EAD_GroupProject\JobPortal.DataManager\obj\Debug\netcoreapp3.1\JobPortal.DataManager.pdb

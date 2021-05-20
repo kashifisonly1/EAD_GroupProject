@@ -20,3 +20,13 @@ E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\Model.xml
 E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\refactor.xml
 E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\postdeploy.sql
 E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\predeploy.sql
+D:\GitHub\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dacpac
+D:\GitHub\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.dll
+D:\GitHub\EAD_GroupProject\JobPortal.Database\bin\Debug\JobPortal.Database.pdb
+D:\GitHub\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.sqlprojAssemblyReference.cache
+D:\GitHub\EAD_GroupProject\JobPortal.Database\obj\Debug\Model.xml
+D:\GitHub\EAD_GroupProject\JobPortal.Database\obj\Debug\refactor.xml
+D:\GitHub\EAD_GroupProject\JobPortal.Database\obj\Debug\postdeploy.sql
+D:\GitHub\EAD_GroupProject\JobPortal.Database\obj\Debug\predeploy.sql
+D:\GitHub\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.dll
+D:\GitHub\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb
