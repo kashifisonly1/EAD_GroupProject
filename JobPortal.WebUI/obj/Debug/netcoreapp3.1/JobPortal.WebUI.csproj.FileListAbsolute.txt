@@ -782,3 +782,4 @@ D:\GitHub\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\JobPortal.Web
 D:\GitHub\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\JobPortal.WebUI.genruntimeconfig.cache
 D:\GitHub\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Client\_Layout_Client_DashBoard.cshtml.g.cs
 D:\GitHub\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ClientPartial.cshtml.g.cs
+D:\GitHub\EAD_GroupProject\JobPortal.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Client\PurchaseRequestCard.cshtml.g.cs

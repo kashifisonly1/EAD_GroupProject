@@ -32,7 +32,7 @@ namespace JobPortal.WebUI.Models
         public DateTime RequestDate { get; set; }  // currently giving though form but you can add date and time when submit is done(for more simplicity)
 
         // need to add category after confirming as either string or category class object
-        public  Category RequestCategory { get; set; } // should be single category for simplicity. Purpose is for Search 
+        public string RequestCategory { get; set; } // should be single category for simplicity. Purpose is for Search 
 
         
     }
