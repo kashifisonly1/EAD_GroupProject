@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="JobPortal.Database.dll" />
-			<Metadata Name="FileName" Value="E:\KASHIF\EAD_GROUPPROJECT\JOBPORTAL.DATABASE\OBJ\DEBUG\JOBPORTAL.DATABASE.DLL" />
+			<Metadata Name="FileName" Value="D:\GITHUB\EAD_GROUPPROJECT\JOBPORTAL.DATABASE\OBJ\DEBUG\JOBPORTAL.DATABASE.DLL" />
 			<Metadata Name="AssemblyName" Value="JobPortal.Database" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="E:\kashif\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="D:\GitHub\EAD_GroupProject\JobPortal.Database\obj\Debug\JobPortal.Database.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>

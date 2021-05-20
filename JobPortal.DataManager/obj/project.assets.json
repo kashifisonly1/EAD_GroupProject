@@ -849,19 +849,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\junaid tariq\\.nuget\\packages\\": {}
+    "C:\\Users\\osama\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\kashif\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
+      "projectUniqueName": "D:\\GitHub\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
       "projectName": "JobPortal.DataManager",
-      "projectPath": "E:\\kashif\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
-      "packagesPath": "C:\\Users\\junaid tariq\\.nuget\\packages\\",
-      "outputPath": "E:\\kashif\\EAD_GroupProject\\JobPortal.DataManager\\obj\\",
+      "projectPath": "D:\\GitHub\\EAD_GroupProject\\JobPortal.DataManager\\JobPortal.DataManager.csproj",
+      "packagesPath": "C:\\Users\\osama\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\EAD_GroupProject\\JobPortal.DataManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\junaid tariq\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\osama\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -915,7 +915,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
