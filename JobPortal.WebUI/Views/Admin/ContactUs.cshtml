@@ -1,3 +1,4 @@
+﻿
 @{
     Layout = "_Layout_Admin";
     ViewData["Title"] = "Contact management Page";
@@ -9,23 +10,22 @@
             <th scope="col">#</th>
             <th scope="col">User Email</th>
             <th scope="col">Subject</th>
-            <th>Message</th>
-            <th colspan="2">&nbsp;&nbsp;  <b>Actions</b></th>
+            <th>&nbsp;&nbsp;  <b>Actions</b></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (ContactForm contact in  (List<ContactForm>)ViewData["contact-us"])
+        @foreach (ContactForm contact in (List<ContactForm>)ViewData["Contact-us"])
         {
 
             <tr>
                 <th scope="row">@contact.ID</th>
                 <td>@contact.Email</td>
                 <td>@contact.Subject</td>
-                <td>@contact.Message</td>
+               
                 <td>
 
 
-                    <!-- Button trigger modal -->
+                    <!-- Button trigger modal -->   
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#displayMessage">
                         Reply
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-reply-fill" viewBox="0 0 16 16">

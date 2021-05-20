@@ -54,20 +54,20 @@ namespace JobPortal.WebUI.Areas.Identity.Pages.Account
 			[Display(Name = "Full Name")]
 			public string FullName { get; set; }
 
-			//[Required]
+			[Required]
 			[Display(Name = "Last Name")]
 			public string LastName { get; set; }
 
-			//[Required]
+			[Required]
 			[Display(Name = "Birthday")]
 			public DateTime Birthday { get; set; }
 
 
-			//[Required]
+			[Required]
 			[Display(Name = "Gender")]
 			public string Gender { get; set; }
 
-			//[Required]
+			[Required]
 			[Display(Name = "Phone Number")]
 			public Decimal Phone { get; set; }
 

@@ -25,7 +25,7 @@ namespace JobPortal.WebUI.Areas.Identity.Data
 		[Column(TypeName = "datetime2(7)")]
 		public DateTime DateCreated { get; set; } = DateTime.Now;
 
-		//[Required]
+		[Required]
 		[PersonalData]
 		[Column(TypeName = "varbinary(max)")]
 		public byte[] ProfileImage { get; set; }

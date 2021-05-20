@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace JobPortal.WebUI.Models
 {
-    public class ContactForm
+    public class ContactForm : PageModel
     {
-        public int ID {get;set;}
+        public int ID { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
