@@ -1,9 +1,0 @@
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.BusinessModels\bin\Debug\netcoreapp3.1\JobPortal.BusinessModels.deps.json
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.BusinessModels\bin\Debug\netcoreapp3.1\JobPortal.BusinessModels.dll
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.BusinessModels\bin\Debug\netcoreapp3.1\JobPortal.BusinessModels.pdb
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.BusinessModels\obj\Debug\netcoreapp3.1\JobPortal.BusinessModels.csprojAssemblyReference.cache
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.BusinessModels\obj\Debug\netcoreapp3.1\JobPortal.BusinessModels.AssemblyInfoInputs.cache
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.BusinessModels\obj\Debug\netcoreapp3.1\JobPortal.BusinessModels.AssemblyInfo.cs
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.BusinessModels\obj\Debug\netcoreapp3.1\JobPortal.BusinessModels.csproj.CoreCompileInputs.cache
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.BusinessModels\obj\Debug\netcoreapp3.1\JobPortal.BusinessModels.dll
-E:\Semester6\EAD\EAD_GroupProject\JobPortal.BusinessModels\obj\Debug\netcoreapp3.1\JobPortal.BusinessModels.pdb
