@@ -46,10 +46,8 @@ namespace JobPortal.WebUI
 
 			app.UseRouting();
 
-			app.UseAuthentication();
 			app.UseAuthorization();
-
-			//app.UseMvc();
+			app.UseAuthentication();
 
 			app.UseEndpoints(endpoints =>
 			{

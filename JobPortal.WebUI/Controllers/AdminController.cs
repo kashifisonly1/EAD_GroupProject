@@ -3,79 +3,68 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
-using JobPortal.WebUI.Library.Api.EndPoints;
+using JobPortal.WebUI.Areas.Identity.Data;
 using JobPortal.WebUI.Models;
-using JobPortal.WebUI.Temp;
 
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace JobPortal.WebUI.Controllers
 {
+	//[Authorize]
 	public class AdminController : Controller
 	{
 		private readonly ILogger<AdminController> _logger;
-
-		// TODO -- Kashif/Usama, read following comments and implement accordingly.
-		// After following methods are implemented, I'll add code for sending emails.
-
-		/*
-		 * To delete a message, create an action method. Method should receive Message:Id as parameter
-		 * example:
-		 * public Task<IActionResult> DeleteMessage(int id)
-		 * {
-		 *		ContactUsEndPoint endPoint = new ContactUsEndPoint(); // enclose in try catch block and display toasts accordingly
-		 *		endPoint.DeleteMessage(TokenStore.Token, id);
-		 *	}
-		 */
-
-		/*
-		 * To mark a message as, create an action method. Method should receive Message:Id as parameter
-		 * example:
-		 * public Task<IActionResult> ResolveMessage(int id, string recepientEmail, string adminReply)
-		 * {
-		 *		ContactUsEndPoint endPoint = new ContactUsEndPoint(); // enclose in try catch block and display toasts accordingly
-		 *		
-		 *		// Here, I'll add code for sending email and will use parameters (recepientEmail,adminReply)
-		 *		
-		 *		await endPoint.ResolveMessage(TokenStore.Token, id);
-		 *	}
-		 */
-
-		public AdminController(ILogger<AdminController> logger)
+		private readonly UserManager<ApplicationUser> _userManager;
+		public AdminController(ILogger<AdminController> logger, UserManager<ApplicationUser> userManager)
 		{
 			_logger = logger;
+			_userManager = userManager;
+
 		}
 		public IActionResult Index()
-		{
+        {
+			return View();	
+		}
+        public async Task<IActionResult> Index(UserManager<ApplicationUser> userManager)
+        {
 
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            //User dummy = new User { UserID = 1, UserEmail = "xamimran8991@gmail.com", UserName = "Usama Imran", isAdmin = false, RoleName = "Moderator" };
+
+
+            return View("User", currentUser);
+        }
+        public IActionResult Category()
+		{
+			List<Category> categories = new List<Category>();
+
+			categories.Add(new Category { ID = 1, PID = 001, Name = "Graphics", Description = "Here You can show your cretivity" });
+			categories.Add(new Category { ID = 2, PID = 010, Name = "Data BAse", Description = "Save Data is much easier then ever before" });
+			ViewData["category"] = categories;
 			return View();
 		}
-		public IActionResult Category()
-		{
-			return View();
-		}
-		public IActionResult User_()
+		public IActionResult Users()
 		{
 			return View();
 		}
 
-		public async Task<IActionResult> ContactUs(ContactForm form)
+		public IActionResult ContactUs(ContactForm form)
 		{
-			ContactUsEndPoint endPoint = new ContactUsEndPoint();
-
-			var list = await endPoint.GetUnResolvedMessages(TokenStore.Token);
-			List<ContactForm> displayList = new List<ContactForm>();
-			foreach (var item in list)
-			{
-				displayList.Add(new ContactForm() { Email = item.Email, ID = item.Id, Message = item.Message, Name = item.Name, Subject = item.Subject });
-			}
-			ViewData["contact-us"] = displayList;
+			List<ContactForm> list = new List<ContactForm>();
+			
+			form = new ContactForm { Email = "xamimran8991@gmail.com", Subject = "Client Mis behaviour", Name = "Usama", Message = "I want to report kashif" };
+			list.Add(form);
+			ViewData["Contact-us"] = list;
 			return View("ContactUs");
 		}
+		public IActionResult AddCategory(Category category)
+        {
 
+			return View ();
+        }
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
