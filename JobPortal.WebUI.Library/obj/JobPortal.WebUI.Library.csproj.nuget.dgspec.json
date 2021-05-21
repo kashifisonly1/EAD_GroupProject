@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj": {}
+    "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj": {}
   },
   "projects": {
-    "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj": {
+    "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj",
+        "projectUniqueName": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj",
         "projectName": "JobPortal.BusinessModels",
-        "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj",
-        "packagesPath": "C:\\Users\\ST\\.nuget\\packages\\",
-        "outputPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\obj\\",
+        "projectPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj",
+        "packagesPath": "C:\\Users\\junaid tariq\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.BusinessModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ST\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\junaid tariq\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,21 +54,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj": {
+    "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj",
+        "projectUniqueName": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj",
         "projectName": "JobPortal.WebUI.Library",
-        "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj",
-        "packagesPath": "C:\\Users\\ST\\.nuget\\packages\\",
-        "outputPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.WebUI.Library\\obj\\",
+        "projectPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI.Library\\JobPortal.WebUI.Library.csproj",
+        "packagesPath": "C:\\Users\\junaid tariq\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.WebUI.Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ST\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\junaid tariq\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,8 +82,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj": {
-                "projectPath": "E:\\Semester6\\EAD\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj"
+              "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj": {
+                "projectPath": "C:\\Users\\junaid tariq\\Desktop\\EAD_GroupProject\\JobPortal.BusinessModels\\JobPortal.BusinessModels.csproj"
               }
             }
           }
@@ -118,7 +118,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
