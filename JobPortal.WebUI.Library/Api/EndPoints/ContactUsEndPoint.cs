@@ -3,31 +3,29 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Text;
-
-using JobPortal.WebUI.Library.Api.Models;
-
 using System.Threading.Tasks;
+
 using JobPortal.BusinessModels;
 
 namespace JobPortal.WebUI.Library.Api.EndPoints
 {
-	public class AdminEndPoints
+	public class ContactUsEndPoint
 	{
 		ApiHelper ApiHelper;
 
-		public AdminEndPoints()
+		public ContactUsEndPoint()
 		{
 			ApiHelper = new ApiHelper();
 		}
 
-		public async Task PostContactUsMessage(string token, ContactUsModel form)
+		public async Task SendContactUsMessage(string token, ContactUsModel model)
 		{
 			ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
 			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
 			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			ApiHelper.ApiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-			using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/admin/postmessage", form))
+			using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/ContactUs/SendMessage", model))
 			{
 				if (response.IsSuccessStatusCode)
 				{
@@ -40,18 +38,18 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
 			}
 		}
 
-		public async Task DoSomethingWithAPi(string token, string data)
+		public async Task DeleteMessage(string token, int id)
 		{
 			ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
 			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
 			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			ApiHelper.ApiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-			using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/admin/doSomething", data))
+			using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/ContactUs/Delete", id))
 			{
 				if (response.IsSuccessStatusCode)
 				{
-					// log
+
 				}
 				else
 				{
@@ -60,19 +58,18 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
 			}
 		}
 
-		public async Task<string> GetSomethingFromAPi(string token)
+		public async Task ResolveMessage(string token, int id)
 		{
 			ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
 			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
 			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			ApiHelper.ApiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-			using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("/api/admin/getSomething"))
+			using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/ContactUs/Resolve", id))
 			{
 				if (response.IsSuccessStatusCode)
 				{
-					string result = await response.Content.ReadAsAsync<string>();
-					return result;
+
 				}
 				else
 				{
@@ -81,39 +78,18 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
 			}
 		}
 
-		public async Task<string> GetSomethingByIdFromAPi(string token, string id)
+		public async Task<List<ContactUsModel>> GetUnResolvedMessages(string token)
 		{
 			ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
 			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
 			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			ApiHelper.ApiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-			using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/admin/getSomething", id))
+			using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("/api/ContactUs/Unresolved"))
 			{
 				if (response.IsSuccessStatusCode)
 				{
-					string result = await response.Content.ReadAsAsync<string>();
-					return result;
-				}
-				else
-				{
-					throw new Exception(response.ReasonPhrase);
-				}
-			}
-		}
-
-		public async Task<ContactUsModel> GetSomeObjectFromAPi(string token)
-		{
-			ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
-			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
-			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			ApiHelper.ApiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
-
-			using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("/api/admin/getContactUsModel"))
-			{
-				if (response.IsSuccessStatusCode)
-				{
-					ContactUsModel result = await response.Content.ReadAsAsync<ContactUsModel>();
+					var result = await response.Content.ReadAsAsync<List<ContactUsModel>>();
 					return result;
 				}
 				else

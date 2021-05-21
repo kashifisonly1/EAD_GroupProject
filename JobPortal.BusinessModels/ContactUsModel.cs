@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace JobPortal.DataManager.Models
+namespace JobPortal.BusinessModels
 {
 	public class ContactUsModel
 	{
@@ -20,6 +19,5 @@ namespace JobPortal.DataManager.Models
 		public string Name { get; set; }
 
 		public bool IsResponded { get; set; }
-
 	}
 }

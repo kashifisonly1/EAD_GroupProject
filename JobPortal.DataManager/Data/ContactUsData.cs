@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 
+using JobPortal.BusinessModels;
 using JobPortal.DataManager.Internal.Data;
-using JobPortal.DataManager.Models;
 
 namespace JobPortal.DataManager.Data
 {
@@ -13,14 +15,43 @@ namespace JobPortal.DataManager.Data
 		public void SaveMessage(ContactUsModel model)
 		{
 			DataAccess access = new DataAccess();
-			List<SqlParameter> parameters = new List<SqlParameter>
-			{
-				new SqlParameter("@email", model.Email),
-				new SqlParameter("@subject", model.Subject),
-				new SqlParameter("@message", model.Message),
-				new SqlParameter("@name", model.Name)
-			};
-			access.SaveData("dbo.AddMessageToContactUs", parameters.ToArray());
+			access.SaveData<dynamic>("dbo.AddMessageToContactUs", new { Email = model.Email, Subject = model.Subject, Message = model.Message, Name = model.Name });
 		}
+
+		public void DeleteMessage(int id)
+		{
+			DataAccess access = new DataAccess();
+			access.SaveData<dynamic>("dbo.DeleteContactUsMessageById", new { IdentifierCase = id });
+		}
+
+		public void MarkMessageAsResolved(int id)
+		{
+			DataAccess access = new DataAccess();
+			access.SaveData<dynamic>("dbo.ResolveContactUsMessageById", new { IdentifierCase = id });
+		}
+
+		public ContactUsModel GetContactUsByEmail(string email)
+		{
+			DataAccess access = new DataAccess();
+			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetContactUsMessageByEmail]", new { Email = email }).FirstOrDefault();
+
+			return result;
+		}
+
+		public List<ContactUsModel> GetAllUnResolvedMessages()
+		{
+			DataAccess access = new DataAccess();
+			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetAllUnResolvedMessages]", new { });
+			return result;
+		}
+
+		public List<ContactUsModel> GetAllContactUsMessagesByEmail(string email)
+		{
+			DataAccess access = new DataAccess();
+			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetContactUsMessageByEmail]", new { Email = email });
+
+			return result;
+		}
+
 	}
 }

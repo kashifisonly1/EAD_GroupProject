@@ -74,6 +74,14 @@ namespace JobPortal.Api.Controllers
 				new Claim(JwtRegisteredClaimNames.Exp, new DateTimeOffset(DateTime.Now.AddMinutes(10)).ToUnixTimeSeconds().ToString()) // HACK -- Update Token properties (expiration time)
 			};
 
+			var roled = await _userManager.GetRolesAsync(user);
+			foreach (var role in roled)
+			{
+				var roleClaim = new Claim(ClaimTypes.Role, role);
+				claims.Add(roleClaim);
+			}
+
+
 			foreach (var role in roles)
 			{
 				claims.Add(new Claim(ClaimTypes.Role, username));

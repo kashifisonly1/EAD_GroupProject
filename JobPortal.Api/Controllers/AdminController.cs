@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using JobPortal.BusinessModels;
 using JobPortal.DataManager.Data;
 using JobPortal.WebUI.Library.Api.Models;
 
@@ -13,7 +14,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JobPortal.Api.Controllers
 {
-	//[Authorize]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class AdminController : ControllerBase
@@ -25,20 +25,37 @@ namespace JobPortal.Api.Controllers
 			return new string[] { "value1", "value2" };
 		}
 
-		//[Authorize(Roles = ("Admin, Client"))]
-		[Route("/postmessage")]
+
+		[Route("postmessage")]
 		[HttpPost]
 		public void PostContactUsMessage(ContactUsModel model)
 		{
-			JobPortal.DataManager.Models.ContactUsModel contact = new DataManager.Models.ContactUsModel()
-			{
-				Email = model.Email,
-				Subject = model.Subject,
-				Message = model.Message,
-				Name = model.Name
-			};
 			ContactUsData data = new ContactUsData();
-			data.SaveMessage(contact);
+			data.SaveMessage(model);
+		}
+
+		[Route("doSomething")]
+		[HttpPost]
+		public void DoSomething(string takeData)
+		{
+
+		}
+
+		[Route("getSomething")]
+		[HttpGet]
+		public string GetSomething()
+		{
+			return "this is something";
+		}
+
+		[Route("getContactUsModel")]
+		[HttpGet]
+		public ContactUsModel GetContactUsModel()
+		{
+			//ContactUsData data = new ContactUsData();
+			//ContactUsModel result = data.GetContactUsModel("");
+			//return result;
+			throw new NotImplementedException();
 		}
 	}
 }
