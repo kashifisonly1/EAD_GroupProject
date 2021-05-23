@@ -2,4 +2,42 @@
     
     ViewData["Title"] = "Be A Freelancer Page";
 }
-<
+
+<div>
+    <form action="BecomeFreelancer" method="post">
+
+        <div class="form-group row mb-5 mt-5">
+            <label  class="col-sm-4 col-form-label">Description</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" id="textAreaExample1" rows="6"></textarea>
+            </div>
+                
+
+        </div>
+
+            <div class="form-group row mb-5 mt-5">
+                <label class="col-sm-4 col-form-label">Skill</label>
+                <div class="col-sm-6">
+                    <select class="form-control">
+                        <option selected>Add Skill (E.G. Web Programming)</option>
+                        <option value="1">Web Engginnering</option>
+                        <option value="2">Desktop Application</option>
+                        <option value="3">Reactive Native</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-group row mt-5 ">
+                <label class="col-sm-4 col-form-label">Experience Level</label>
+                <div class="col-sm-6">
+                    <select class="form-control">
+                        <option selected>Experience Level</option>
+                        <option value="1">Beginner</option>
+                        <option value="2">Intermediate</option>
+                        <option value="3">Expert</option>
+                    </select>
+                </div>
+
+            </div>
+</form>
+</div>

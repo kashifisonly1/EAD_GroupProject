@@ -1,0 +1,34 @@
+﻿@using JobPortal.WebUI.Models
+@model Category
+@{
+    Layout = "_Layout_Admin";
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+
+        <h3>User Reviews</h3>
+        <hr />
+
+        @foreach (User user in (List<User>)ViewData["reviews"])
+        {
+
+
+            <div class="col-md-12 col-lg-3 col-sm-12 mr-4 ml-4 mt-4 mb-4">
+                <a style="pointer-events:none;" href=" # ">
+                    <div class="card" style="width: 18rem;">
+
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@user.UserName</h5>
+                            <p class="card-text">Great Experience</p>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        }
+    
+
+</div>

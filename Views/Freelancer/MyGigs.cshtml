@@ -1,0 +1,31 @@
+﻿@{
+
+    ViewData["Title"] = "Your GIGS";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        @foreach (GIG gig in (List<GIG>)ViewData["Gig-List"])
+         {
+
+
+            <div class="col-md-12 col-lg-3 col-sm-12 mr-4 ml-4 mt-4 mb-4" >
+                <a  style="pointer-events:none;" href=" # ">
+                    <div class="card" style="width: 18rem;">
+
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@gig.Title</h5>
+                            <p class="card-text">@gig.Description</p>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+         }
+    </div>
+
+</div>
