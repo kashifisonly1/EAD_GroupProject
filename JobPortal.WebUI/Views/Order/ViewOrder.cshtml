@@ -1,0 +1,30 @@
+﻿@{
+
+    ViewData["Title"] = "Order";
+    Order order = (Order)ViewData["Order"];
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 mx-auto">
+            <div class="text-right">
+                <button class="btn btn-success">Send File</button>
+                <button class="btn btn-danger">Cancel Order</button>
+            </div>
+            <div>
+                <h3>@order.gig.Title</h3>
+                <p><small>@order.StartDate.ToString("D") | Freelancer: @order.freelancer.UserName | Client: @order.client.UserName</small></p>
+                <p class="my-3">@order.Details</p>
+            </div>
+            @foreach (OrderData orderFile in (List<OrderData>)ViewData["OrderFiles"])
+            {
+            <div class="bg-white my-3 border p-3">
+                <p><small>@orderFile.Date.ToString("D")</small></p>
+                <p>@orderFile.Details</p>
+                <a href="@orderFile.FileURL">View File</a>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JobPortal.WebUI.Models
 {
-    public class ContactForm : PageModel
+    public class ContactForm 
     {
         public int ID { get; set; }
         [Required]

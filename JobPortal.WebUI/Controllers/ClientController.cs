@@ -18,6 +18,23 @@ namespace JobPortal.WebUI.Controllers
         {
             return View("PurchaseRequest");
         }
+        public IActionResult MyOrders()
+        {
+            List<Order> orders = new List<Order>();
+            Order dummyOrder = new Order();
+            dummyOrder.ID = 1;
+            dummyOrder.StartDate = DateTime.Now;
+            dummyOrder.Status = "Running";
+            dummyOrder.ClientID = 1;
+            dummyOrder.FreelancerID = 2;
+            dummyOrder.GigID = 2;
+            dummyOrder.freelancer = new User { UserName = "kashif" };
+            dummyOrder.client = new User { UserName = "atif" };
+            dummyOrder.gig = new GIG { Title = "This is Gig Title" };
+            orders.Add(dummyOrder);
+            ViewData["Order-List"] = orders;
+            return View();
+        }
 
         public IActionResult PurchaseRequestCard() 
         {

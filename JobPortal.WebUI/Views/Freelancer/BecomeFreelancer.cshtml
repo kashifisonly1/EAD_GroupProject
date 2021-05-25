@@ -1,43 +1,118 @@
-﻿@{
-    
-    ViewData["Title"] = "Be A Freelancer Page";
+﻿@model Freelancer
+
+@{
+
+    ViewData["Title"] = "Become A Freelancer Page";
+    List<String> Levels = new List<String>();
+    Levels.Add("Beginner");
+    Levels.Add("Intermediate");
+    Levels.Add("Expert");
 }
 
 <div>
-    <form action="BecomeFreelancer" method="post">
-
+    <form method="post">
+        <h1>Become a Seller</h1>
         <div class="form-group row mb-5 mt-5">
-            <label  class="col-sm-4 col-form-label">Description</label>
-            <div class="col-sm-6">
-                <textarea class="form-control" id="textAreaExample1" rows="6"></textarea>
+            <div class="col-12 col-md-8 col-lg-6 m-auto">
+                <label class="col-form-label font-weight-bold">About yourself</label>
+                <textarea class="form-control" asp-for="Detail" id="textAreaExample1" rows="6"></textarea>
             </div>
-                
-
         </div>
+        <div class="form-group row mb-5 mt-5">
+            <div class="col-12 col-md-8 col-lg-6 m-auto">
+                <table id="skills-table" class="table w-100 table-info">
+                    <thead>
+                        <tr>
+                            <th>Skill</th>
+                            <th>Level</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-            <div class="form-group row mb-5 mt-5">
-                <label class="col-sm-4 col-form-label">Skill</label>
-                <div class="col-sm-6">
-                    <select class="form-control">
-                        <option selected>Add Skill (E.G. Web Programming)</option>
-                        <option value="1">Web Engginnering</option>
-                        <option value="2">Desktop Application</option>
-                        <option value="3">Reactive Native</option>
-                    </select>
-                </div>
+                        @for (var j = 0; j < Model.UserSkill.Count; j++)
+                        {
+                            <tr valign="top">
+                                <td>
+                                    @Html.DropDownListFor(
+                               model => model.UserSkill[j].Name,
+                               new SelectList((List<Freelancer.Skill>)ViewData["Skill-List"],
+                                              "Name", "Name"),
+                               "-- Select --",
+                               new { @class = "form-control" }
+                               )
+                                    @Html.ValidationMessageFor(model => model.UserSkill[j].Name)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(
+                               model => model.UserSkill[j].ExpertLevel,
+                               new SelectList(Levels),
+                               "-- Select --",
+                               new { @class = "form-control" }
+                               )
+                                    @Html.ValidationMessageFor(model => model.UserSkill[j].ExpertLevel)
+                                </td>
+                                <td>
+                                    @if (j < Model.UserSkill.Count - 1)
+                                    {
+                                        <button type="button" class="btn btn-danger" title="Delete row">
+                                            Delete
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="new-row btn btn-info" title="New row">
+                                            Add
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
 
+                    </tbody>
+                </table>
+                <input class="btn btn-primary" type="submit" />
             </div>
-            <div class="form-group row mt-5 ">
-                <label class="col-sm-4 col-form-label">Experience Level</label>
-                <div class="col-sm-6">
-                    <select class="form-control">
-                        <option selected>Experience Level</option>
-                        <option value="1">Beginner</option>
-                        <option value="2">Intermediate</option>
-                        <option value="3">Expert</option>
-                    </select>
-                </div>
-
-            </div>
-</form>
+        </div>
+    </form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $(".new-row").click(addTableRow);
+    });
+    function addTableRow() {
+
+        table = $(this).parent().parent().parent().parent();
+        var $ttc = $(table).find("tbody tr:last");
+        if ($ttc.find("select")[0].value == "" || $ttc.find("select")[1].value == "") {
+            alert("Please Select All Fields");
+            return;
+        }
+        var $tr = $ttc.clone();
+        $tr.find("input,select").attr("name", function () {
+            var parts = this.id.match(/(\D+)_(\d+)__(\D+)$/);
+            // including index
+            return parts[1] + "[" + ++parts[2] + "]." + parts[3];
+        }).attr("id", function () {
+            var parts = this.id.match(/(\D+)_(\d+)__(\D+)$/);
+            return parts[1] + "_" + ++parts[2] + "__" + parts[3];
+        });
+        $tr.find("span[data-valmsg-for]").attr
+            ("data-valmsg-for", function () {
+                var parts = $(this).attr("data-valmsg-for").match
+                    (/(\D+)\[(\d+)]\.(\D+)$/);
+                return parts[1] + "[" + ++parts[2] + "]." + parts[3];
+            })
+        $ttc.find(".new-row").attr("class", "btn btn-danger").attr
+            ("title", "Delete row").unbind("click").click(deleteRow).text("Delete");
+        $tr.find(".new-row").click(addTableRow);
+
+        $tr.find("select").val("");
+        $tr.find("input[type=text]").val("");
+        $(table).find("tbody tr:last").after($tr);
+    };
+    function deleteRow() {
+        $(this).parent().parent().remove();
+    }
+</script>

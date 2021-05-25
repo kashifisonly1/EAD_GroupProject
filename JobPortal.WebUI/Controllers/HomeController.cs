@@ -27,6 +27,15 @@ namespace JobPortal.WebUI.Controllers
 		{
 			return View();
 		}
+		public IActionResult Chat()
+        {
+			List<User> users = new List<User>();
+			users.Add(new Models.User { UserName = "Kashif" });
+			users.Add(new Models.User { UserName = "Kashif" });
+			users.Add(new Models.User { UserName = "Kashif" });
+			ViewData["user-list"] = users;
+			return View();
+        }
 		public IActionResult Action()
 		{
 			return View();

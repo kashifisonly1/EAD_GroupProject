@@ -1,48 +1,3 @@
-<<<<<<< HEAD
-﻿@model ContactForm
-@{
-    ViewData["Title"] = "Contact Us";
-}
-
-<h1>@ViewData["Title"]</h1>
-<hr />
-<div class="row">
-    <div class="col-12 col-md-6 col-lg-4 mx-auto">
-        <section>
-            <form asp-controller="Home" asp-action="Contact" method="post">
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="@Model.Name"></label>
-                    <input asp-for="@Model.Name" class="form-control" />
-                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Email"></label>
-                    <input asp-for="@Model.Email" class="form-control" />
-                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="@Model.Subject"></label>
-                    <input asp-for="@Model.Subject" class="form-control" />
-                    <span asp-validation-for="@Model.Subject" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="@Model.Message"></label>
-                    <textarea asp-for="@Model.Message" class="form-control"></textarea>
-                    <span asp-validation-for="@Model.Message" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </section>
-    </div>
-</div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
-=======
 @model ContactForm
 @{
     ViewData["Title"] = "Contact Us";
@@ -86,4 +41,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
->>>>>>> master
