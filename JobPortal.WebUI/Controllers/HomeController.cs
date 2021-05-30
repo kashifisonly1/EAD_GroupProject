@@ -20,6 +20,18 @@ namespace JobPortal.WebUI.Controllers
 	{
 		public IActionResult Index()
 		{
+			List<Category> categories = new List<Category>();
+			Category category = new Category();
+			category.ImageUrl = "banner.jpg";
+			category.Name = "Name";
+			category.ID = 1;
+			categories.Add(category);
+			categories.Add(category);
+			categories.Add(category);
+			categories.Add(category);
+			categories.Add(category);
+			categories.Add(category);
+			ViewData["category-list"] = categories;
 			return View();
 		}
 

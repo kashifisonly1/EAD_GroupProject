@@ -11,17 +11,12 @@ namespace JobPortal.WebUI.Models
     public class Freelancer
 
     {
-        public class Skill
-        {
-            [Required]
-            public string Name { get; set; }
-            [Required]
-            public string ExpertLevel { get; set; }
-        }
         public List<Skill> UserSkill = new List<Skill>();
         [Required]
         [DataType(DataType.MultilineText)]
         public String Detail { get; set; }
+        [Required]
+        public String SkillList;
         public void AddSkills(Skill s)
         {
             UserSkill.Add(s);

@@ -37,18 +37,32 @@ namespace JobPortal.WebUI.Controllers
 
             return View("User", currentUser);
         }
-        public IActionResult Category()
+		public IActionResult Category()
 		{
 			List<Category> categories = new List<Category>();
 
-			categories.Add(new Category { ID = 1, PID = 001, Name = "Graphics", Description = "Here You can show your cretivity" });
-			categories.Add(new Category { ID = 2, PID = 010, Name = "Data BAse", Description = "Save Data is much easier then ever before" });
+			categories.Add(new Category { ID = 1, Name = "Graphics" });
+			categories.Add(new Category { ID = 2, Name = "Data BAse" });
 			ViewData["category"] = categories;
 			return View();
 		}
-		public IActionResult Users()
+		public IActionResult Skill()
 		{
+			List<Skill> categories = new List<Skill>();
+
+			categories.Add(new Skill { ID = 1, Name = "Graphics" });
+			categories.Add(new Skill { ID = 2, Name = "Data BAse" });
+			ViewData["skill"] = categories;
 			return View();
+		}
+		public IActionResult User_()
+		{
+			List<User> users = new List<User>();
+			User user = new User { UserID = 1, UserName = "kashif", UserEmail = "email" };
+			users.Add(user);
+			users.Add(user); users.Add(user); users.Add(user);
+			ViewData["user-list"]=users;
+			return View("User");
 		}
 
 		public IActionResult ContactUs(ContactForm form)

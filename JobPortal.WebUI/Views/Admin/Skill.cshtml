@@ -1,8 +1,8 @@
-@using JobPortal.WebUI.Models
-@model Category
+﻿@using JobPortal.WebUI.Models
+@model Skill
 @{
     Layout = "_Layout_Admin";
-    ViewData["Title"] = "Category management Page";
+    ViewData["Title"] = "Skill management Page";
 }
 
 <div class="container">
@@ -15,7 +15,7 @@
     </button>
     <br />
     <br />
-    <div >
+    <div>
         <!-- Modal -->
         <div class="modal fade" id="displayMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -26,7 +26,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form id="AddCategory" method="post">
+                    <form id="AddSkill" method="post">
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="modal-body ">
 
@@ -34,11 +34,6 @@
                                 <label asp-for="Name"></label>
                                 <input asp-for="Name" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            <div class="form-group ">
-                                <label asp-for="Image"></label>
-                                <input asp-for="Image" class="form-control" />
-                                <span asp-validation-for="Image" class="text-danger"></span>
                             </div>
 
                         </div>
@@ -50,36 +45,36 @@
                         </div>
                     </form>
                 </div>
+            </div>
         </div>
-    </div>
-    
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Category ID</th>
-                <th scope="col">Category Name</th>
-                <th>&nbsp;&nbsp;  <b>Actions</b></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Category category in (List<Category>)ViewData["category"])
-            {
 
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <td>@category.ID</td>
-                    <td>@category.Name</td>
-                    <td>
-                        <a type="button" class="btn btn-danger" asp-action="RemoveCategory" asp-route-id="@Html.DisplayNameFor(model =>category.ID)">
-                            Remove
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                            </svg>
-                        </a>
-                    </td>
+                    <th scope="col">Skill ID</th>
+                    <th scope="col">Skill Name</th>
+                    <th>&nbsp;&nbsp;  <b>Actions</b></th>
                 </tr>
+            </thead>
+            <tbody>
+                @foreach (Skill category in (List<Skill>)ViewData["skill"])
+                {
 
-            }
-        </tbody>
-    </table>
-</div>
+                    <tr>
+                        <td>@category.ID</td>
+                        <td>@category.Name</td>
+                        <td>
+                            <a type="button" class="btn btn-danger" asp-action="RemoveCategory" asp-route-id="@Html.DisplayNameFor(model =>category.ID)">
+                                Remove
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

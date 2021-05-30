@@ -40,6 +40,10 @@ namespace JobPortal.WebUI.Controllers
         [HttpPost]
         public IActionResult BecomeFreelancer(Models.Freelancer f)
         {
+            String[] skills = f.SkillList.Split(',');
+            foreach (String s in skills)
+                f.UserSkill.Add(new Skill { Name = s });
+
             List<Skill> skillList = new List<Skill>();
             skillList.Add(new Skill { Name = "Web Programming" });
             skillList.Add(new Skill { Name = "Data Entry" });

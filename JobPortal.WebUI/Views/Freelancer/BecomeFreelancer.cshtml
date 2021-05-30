@@ -24,7 +24,6 @@
                     <thead>
                         <tr>
                             <th>Skill</th>
-                            <th>Level</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -36,21 +35,11 @@
                                 <td>
                                     @Html.DropDownListFor(
                                model => model.UserSkill[j].Name,
-                               new SelectList((List<Freelancer.Skill>)ViewData["Skill-List"],
+                               new SelectList((List<Skill>)ViewData["Skill-List"],
                                               "Name", "Name"),
                                "-- Select --",
                                new { @class = "form-control" }
                                )
-                                    @Html.ValidationMessageFor(model => model.UserSkill[j].Name)
-                                </td>
-                                <td>
-                                    @Html.DropDownListFor(
-                               model => model.UserSkill[j].ExpertLevel,
-                               new SelectList(Levels),
-                               "-- Select --",
-                               new { @class = "form-control" }
-                               )
-                                    @Html.ValidationMessageFor(model => model.UserSkill[j].ExpertLevel)
                                 </td>
                                 <td>
                                     @if (j < Model.UserSkill.Count - 1)
@@ -85,7 +74,7 @@
 
         table = $(this).parent().parent().parent().parent();
         var $ttc = $(table).find("tbody tr:last");
-        if ($ttc.find("select")[0].value == "" || $ttc.find("select")[1].value == "") {
+        if ($ttc.find("select")[0].value == "") {
             alert("Please Select All Fields");
             return;
         }
