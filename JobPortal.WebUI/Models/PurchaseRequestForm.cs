@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,30 +11,24 @@ namespace JobPortal.WebUI.Models
     public class PurchaseRequestForm : PageModel
     {
         public int RequestID { get; set; }
-        
-        [Required]
-        public string RequestNamer { get; set; } // can fetch from login info
+        public String UserID{get;set;}
+        public User user { get; set; }
 
+        [Required]
         public string RequestSubject { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
         public string RequestDescription { get; set; }
-        
-        public int RequestOfferCount { get; set; }
-        
         [Required]
         public int RequestDuration { get; set; } // will be in days 
-        
         [Required]
-        public double RequestBudget { get; set; }
-        
+        public IFormFile Image { get; set; }
+        public String ImageUrl { get; set; }
         [Required]
-        [DataType(DataType.Date)]
-        public DateTime RequestDate { get; set; }  // currently giving though form but you can add date and time when submit is done(for more simplicity)
-
+        public decimal RequestBudget { get; set; }
+        
         // need to add category after confirming as either string or category class object
-        public string RequestCategory { get; set; } // should be single category for simplicity. Purpose is for Search 
-
-        
+        public int RequestCategoryID { get; set; } // should be single category for simplicity. Purpose is for Search 
+        public Category category { get; set; }
     }
 }

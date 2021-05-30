@@ -8,19 +8,18 @@ using System.Threading.Tasks;
 
 namespace JobPortal.WebUI.Models
 {
-    public class Freelancer
-
+    public class Freelancer:User
     {
         public List<Skill> UserSkill = new List<Skill>();
         [Required]
         [DataType(DataType.MultilineText)]
         public String Detail { get; set; }
+        //front require this 
         [Required]
         public String SkillList;
         public void AddSkills(Skill s)
         {
             UserSkill.Add(s);
-       
         }
     }
 }

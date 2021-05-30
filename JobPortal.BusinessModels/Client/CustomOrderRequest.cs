@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JobPortal.BusinessModels.General;
+using JobPortal.BusinessModels.Gigs;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,13 +10,11 @@ namespace JobPortal.BusinessModels.Client
 	{
 		public int Id { get; set; } // PK
 
-		public string ClientId { get; set; } // FK-User
+		public ApplicationUser ClientID { get; set; } // FK-User
 
 		public string Title { get; set; }
 
 		public string Description { get; set; }
-
-		public int Offers { get; set; }
 
 		public int Duration { get; set; }
 
@@ -22,7 +22,7 @@ namespace JobPortal.BusinessModels.Client
 
 		public DateTime RequestDate { get; set; }
 
-		public int CategoryId { get; set; } // FK-Category
-
+		public Category CategoryId { get; set; } // FK-Category
+		public string ImageUrl { get; set; }
 	}
 }

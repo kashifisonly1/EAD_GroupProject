@@ -8,8 +8,8 @@ namespace JobPortal.WebUI.Models
     public class Order
     {
         public int ID;
-        public int FreelancerID;
-        public int ClientID;
+        public String FreelancerID;
+        public String ClientID;
         public String Details;
         public String Status;
         public int GigID;

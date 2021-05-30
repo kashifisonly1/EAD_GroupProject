@@ -18,7 +18,7 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
 			ApiHelper = new ApiHelper();
 		}
 
-		public async Task SendContactUsMessage(string token, ContactUsModel model)
+		public async Task<HttpResponseMessage> SendContactUsMessage(string token, ContactUsModel model)
 		{
 			ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
 			ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
@@ -27,14 +27,7 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
 
 			using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/ContactUs/SendMessage", model))
 			{
-				if (response.IsSuccessStatusCode)
-				{
-
-				}
-				else
-				{
-					throw new Exception(response.ReasonPhrase);
-				}
+				return response;
 			}
 		}
 

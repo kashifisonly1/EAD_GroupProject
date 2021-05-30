@@ -10,7 +10,7 @@ namespace JobPortal.WebUI.Models
 {
     public class GIG:PageModel
     {
-        public String ID { get; set; }
+        public int ID { get; set; }
         public String UserID { get; set; }
         public User user { get; set; }
         [Required]

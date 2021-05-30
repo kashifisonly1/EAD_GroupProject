@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 using JobPortal.BusinessModels;
@@ -77,7 +78,8 @@ namespace JobPortal.WebUI.Controllers
 				try
 				{
 					ContactUsEndPoint endPoint = new ContactUsEndPoint();
-					await endPoint.SendContactUsMessage(TokenStore.Token, model);
+
+					HttpResponseMessage httpResponseMessage = await endPoint.SendContactUsMessage(TokenStore.Token, model);
 				}
 				catch (Exception /* ex */)
 				{
