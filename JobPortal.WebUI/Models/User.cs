@@ -10,7 +10,7 @@ namespace JobPortal.WebUI.Models
     {
         public int UserID { get; set; }
         public string UserName { get; set; }
-
+        public String ImageUrl { get; set; }
         public string UserEmail { get; set; }
         public string RoleName { get; set; }
         public IFormFile Image { get; set; }

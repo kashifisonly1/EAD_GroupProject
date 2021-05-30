@@ -2,23 +2,10 @@
 
     ViewData["Title"] = "Your GIGS";
 }
-
-<div>
-
+<div class="row">
     @foreach (GIG gig in (List<GIG>)ViewData["Gig-List"])
     {
 
-        <a href="">
-            <div class="card" style="width: 18rem;">
-
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@gig.Title</h5>
-                    <p class="card-text">@gig.Description</p>
-
-                </div>
-            </div>
-        </a>
-   
-     }
+        @Html.Partial("GigCard", gig)
+    }
 </div>

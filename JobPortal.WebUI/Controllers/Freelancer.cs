@@ -73,9 +73,10 @@ namespace JobPortal.WebUI.Controllers
         public IActionResult Gigs()
         {
             List<GIG> giglist = new List<GIG>();
-            giglist.Add(new GIG {Title="Web Programming", Description = "Lorem ipsum dolor sit amet, consectetuer ad", Pricing=5});
-            giglist.Add(new GIG{Title="Desktop Application",  Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit", Pricing=10});
-            giglist.Add(new GIG {Title="Mobile Computing", Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",Pricing=20});
+            giglist.Add(new GIG { Title = "Web Programming", Description = "Lorem ipsum dolor sit amet, consectetuer ad", Pricing = 5, PriceUnit = "Daily", ImageUrl = "banner.jpg", user = new Models.User { UserName = "kashif tariq", ImageUrl = "banner.jpg" } });
+            giglist.Add(new GIG { Title = "Web Programming", Description = "Lorem ipsum dolor sit amet, consectetuer ad", Pricing = 5, PriceUnit = "Daily", ImageUrl = "banner.jpg", user = new Models.User { UserName = "kashif tariq", ImageUrl = "banner.jpg" } });
+            giglist.Add(new GIG { Title = "Web Programming", Description = "Lorem ipsum dolor sit amet, consectetuer ad", Pricing = 5, PriceUnit = "Daily", ImageUrl = "banner.jpg", user = new Models.User { UserName = "kashif tariq", ImageUrl = "banner.jpg" } });
+            giglist.Add(new GIG { Title = "Web Programming", Description = "Lorem ipsum dolor sit amet, consectetuer ad", Pricing = 5, PriceUnit = "Daily", ImageUrl = "banner.jpg", user = new Models.User { UserName = "kashif tariq", ImageUrl = "banner.jpg" } });
             ViewData["Gig-List"] = giglist;
             return View("MyGigs");
         }
