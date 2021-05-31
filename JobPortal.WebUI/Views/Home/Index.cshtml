@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "_LayoutBanner";
 }
 <div class="row">
     @foreach (Category cat in (List<Category>)ViewData["category-list"])

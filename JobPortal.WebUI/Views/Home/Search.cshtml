@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Search Result for: "+ViewData["category"];
+    Layout = "_LayoutBanner";
+
+}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Search Result: @ViewData["category"]</h3>
+            <hr />
+        </div>
+    </div>
+    @if (ViewData["current-user"] == "Client")
+    {
+        <div class="row">
+            @foreach (GIG gig in (List<GIG>)ViewData["Gig-List"])
+            {
+                @Html.Partial("GigCard", gig)
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (PurchaseRequestForm req in (List<PurchaseRequestForm>)ViewData["Offer-List"])
+            {
+                @Html.Partial("OfferCard", req)
+            }
+        </div>
+    }
+</div>
