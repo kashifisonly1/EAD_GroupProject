@@ -76,6 +76,25 @@ namespace JobPortal.WebUI.Controllers
 			ViewData["category"] = id;
 			return View();
 		}
+		public IActionResult Search(String id)
+        {
+			List<PurchaseRequestForm> list = new List<PurchaseRequestForm>();
+			for (int i = 0; i < 4; i++)
+			{
+				PurchaseRequestForm req = new PurchaseRequestForm { RequestID = 1, RequestDescription = "I need a Logo designed by a Vue!", RequestDuration = 2, RequestBudget = 5, RequestSubject = "Title", RequestCategoryID = 1, category = new Category { Name = "category" }, UserID = "123", user = new User { UserName = "kashif tariq", ImageUrl = "banner.jpg" }, ImageUrl = "banner.jpg" };
+				list.Add(req);
+
+			}
+			List<GIG> giglist = new List<GIG>();
+			giglist.Add(new GIG { Title = "Web Programming", Description = "Lorem ipsum dolor sit amet, consectetuer ad", Pricing = 5, PriceUnit = "Daily", ImageUrl = "banner.jpg", user = new Models.User { UserName = "kashif tariq", ImageUrl = "banner.jpg" } });
+			giglist.Add(new GIG { Title = "Web Programming", Description = "Lorem ipsum dolor sit amet, consectetuer ad", Pricing = 5, PriceUnit = "Daily", ImageUrl = "banner.jpg", user = new Models.User { UserName = "kashif tariq", ImageUrl = "banner.jpg" } });
+			giglist.Add(new GIG { Title = "Web Programming", Description = "Lorem ipsum dolor sit amet, consectetuer ad", Pricing = 5, PriceUnit = "Daily", ImageUrl = "banner.jpg", user = new Models.User { UserName = "kashif tariq", ImageUrl = "banner.jpg" } });
+			giglist.Add(new GIG { Title = "Web Programming", Description = "Lorem ipsum dolor sit amet, consectetuer ad", Pricing = 5, PriceUnit = "Daily", ImageUrl = "banner.jpg", user = new Models.User { UserName = "kashif tariq", ImageUrl = "banner.jpg" } });
+			ViewData["Gig-List"] = giglist;
+			ViewData["Offer-List"] = list;
+			ViewData["category"] = id;
+			return View();
+		}
 		[HttpGet]
 		public IActionResult Contact()
 		{
