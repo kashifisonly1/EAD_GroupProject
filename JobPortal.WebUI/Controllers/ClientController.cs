@@ -25,8 +25,8 @@ namespace JobPortal.WebUI.Controllers
             dummyOrder.ID = 1;
             dummyOrder.StartDate = DateTime.Now;
             dummyOrder.Status = "Running";
-            dummyOrder.ClientID = 1;
-            dummyOrder.FreelancerID = 2;
+            dummyOrder.ClientID = "1";
+            dummyOrder.FreelancerID = "2";
             dummyOrder.GigID = 2;
             dummyOrder.freelancer = new User { UserName = "kashif" };
             dummyOrder.client = new User { UserName = "atif" };
@@ -43,7 +43,7 @@ namespace JobPortal.WebUI.Controllers
             List<PurchaseRequestForm> list = new List<PurchaseRequestForm>();
             for(int i=0; i<4;i++)
             {
-                PurchaseRequestForm req = new PurchaseRequestForm { RequestID = 1, RequestNamer = "Alpha", RequestDescription = "I need a Logo designed by a Vue!", RequestOfferCount = 1, RequestDuration = 2, RequestBudget = 5.0, RequestDate = System.DateTime.Now.Date };
+                PurchaseRequestForm req = new PurchaseRequestForm { RequestID = 1, RequestDescription = "I need a Logo designed by a Vue!", RequestDuration = 2, RequestBudget = 5 };
                 list.Add(req);
 
             }
@@ -65,7 +65,7 @@ namespace JobPortal.WebUI.Controllers
         {
             //TODO:  handle PurchaseRequestForm data to store in database
             List<PurchaseRequestForm> list = new List<PurchaseRequestForm>();
-           PurchaseRequestForm  req = new PurchaseRequestForm { RequestID = 1, RequestNamer = "Alpha", RequestDescription = "I need a Logo designed by a Vue!", RequestOfferCount = 1, RequestDuration = 2, RequestBudget = 5.0, RequestDate = System.DateTime.Now.Date , RequestCategory ="Design" };
+           PurchaseRequestForm  req = new PurchaseRequestForm { RequestID = 1, RequestDescription = "I need a Logo designed by a Vue!", RequestDuration = 2, RequestBudget = 5};
             list.Add(req);
 
             ViewData["purchase-request"] = list;

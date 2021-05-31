@@ -19,17 +19,6 @@
                     <textarea asp-for="@Model.RequestDescription" class="form-control"></textarea>
                     <span asp-validation-for="@Model.RequestDescription" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.RequestCategory"></label>
-                    <input asp-for="@Model.RequestCategory" class="form-control" />
-                    <span asp-validation-for="@Model.RequestCategory" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="@Model.RequestOfferCount"></label>
-                    <input asp-for="@Model.RequestOfferCount" class="form-control">
-                    <span asp-validation-for="@Model.RequestOfferCount" class="text-danger"></span>
-                </div>
-
 
                 <div class="form-group">
                     <label asp-for="@Model.RequestDuration"></label>
@@ -43,12 +32,6 @@
                     <span asp-validation-for="@Model.RequestBudget" class="text-danger"></span>
                 </div>
 
-
-                <div class="form-group">
-                    <label asp-for="@Model.RequestDate"></label>
-                    <input type="date" asp-for="@Model.RequestDate" class="form-control" />
-                    <span asp-validation-for="@Model.RequestDate" class="text-danger"></span>
-                </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

@@ -58,7 +58,7 @@ namespace JobPortal.WebUI.Controllers
 		public IActionResult User_()
 		{
 			List<User> users = new List<User>();
-			User user = new User { UserID = 1, UserName = "kashif", UserEmail = "email" };
+			User user = new User { UserID = "1", UserName = "kashif", UserEmail = "email" };
 			users.Add(user);
 			users.Add(user); users.Add(user); users.Add(user);
 			ViewData["user-list"]=users;
