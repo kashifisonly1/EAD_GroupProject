@@ -39,6 +39,7 @@ namespace JobPortal.BusinessModels.General
 		public string Username { get; set; }
 
 		public string ProfileImage { get; set; }
+		public List<ApplicationRole> Roles { get; set; }
 
 	}
 }

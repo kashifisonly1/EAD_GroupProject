@@ -15,9 +15,9 @@ namespace JobPortal.BusinessModels.Gigs
 		public String PriceUnit { get; set; }
 		public string ImageUrl { get; set; }
 
-		public Category CategoryID { get; set; } // FK-Category
+		public Category Category { get; set; } // FK-Category
 
-		public Freelancer FreelancerID { get; set; } // FK-User
+		public Freelancer Freelancer { get; set; } // FK-User
 
 	}
 }

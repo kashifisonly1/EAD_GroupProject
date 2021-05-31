@@ -10,7 +10,7 @@ namespace JobPortal.BusinessModels.Client
 	{
 		public int Id { get; set; } // PK
 
-		public ApplicationUser ClientID { get; set; } // FK-User
+		public ApplicationUser Client { get; set; } // FK-User
 
 		public string Title { get; set; }
 
@@ -22,7 +22,7 @@ namespace JobPortal.BusinessModels.Client
 
 		public DateTime RequestDate { get; set; }
 
-		public Category CategoryId { get; set; } // FK-Category
+		public Category Category { get; set; } // FK-Category
 		public string ImageUrl { get; set; }
 	}
 }

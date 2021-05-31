@@ -31,7 +31,7 @@ namespace JobPortal.Api.Controllers
 		public void PostContactUsMessage(ContactUsModel model)
 		{
 			ContactUsData data = new ContactUsData();
-			data.SaveMessage(model);
+			data.SaveMessageAsync(model);
 		}
 
 		[Route("doSomething")]

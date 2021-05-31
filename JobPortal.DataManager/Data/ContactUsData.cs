@@ -4,7 +4,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using JobPortal.BusinessModels;
 using JobPortal.DataManager.Internal.Data;
 
@@ -12,10 +12,13 @@ namespace JobPortal.DataManager.Data
 {
 	public class ContactUsData
 	{
-		public void SaveMessage(ContactUsModel model)
+		public async Task SaveMessageAsync(ContactUsModel model)
 		{
-			DataAccess access = new DataAccess();
-			access.SaveData<dynamic>("dbo.AddMessageToContactUs", new { Email = model.Email, Subject = model.Subject, Message = model.Message, Name = model.Name });
+			//DataAccess access = new DataAccess();
+			//access.SaveData<dynamic>("dbo.AddMessageToContactUs", new { Email = model.Email, Subject = model.Subject, Message = model.Message, Name = model.Name });
+			var db = new JobPortalContext();
+			db.ContactMessages.Add(model);
+			await db.SaveChangesAsync();
 		}
 
 		public void DeleteMessage(int id)

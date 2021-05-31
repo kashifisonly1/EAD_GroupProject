@@ -7,7 +7,8 @@ namespace JobPortal.BusinessModels.Freelancers
 {
     public class Freelancer
     {
-        public ApplicationUser UserID { get; set; }
+        public int Id { get; set; }
+        public ApplicationUser User { get; set; }
         public String Detail { get; set; }
         public List<Skill> Skills { get; set; }
     }

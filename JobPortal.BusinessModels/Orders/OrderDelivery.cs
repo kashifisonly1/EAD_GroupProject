@@ -8,7 +8,7 @@ namespace JobPortal.BusinessModels.Orders
 	{
 		public int Id { get; set; } // PK
 
-		public Order OrderId { get; set; } // FK-Order
+		public Order Order { get; set; } // FK-Order
 
 		public string Details { get; set; }
 

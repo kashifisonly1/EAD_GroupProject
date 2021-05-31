@@ -23,7 +23,7 @@ namespace JobPortal.Api.Controllers
 		public void SendMessage(ContactUsModel model)
 		{
 			ContactUsData data = new ContactUsData();
-			data.SaveMessage(model);
+			data.SaveMessageAsync(model);
 		}
 
 		[Authorize(Roles = ("Admin"))]

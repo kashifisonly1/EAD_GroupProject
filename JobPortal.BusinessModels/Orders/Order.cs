@@ -19,11 +19,11 @@ namespace JobPortal.BusinessModels.Orders
 
 		public DateTime EndDate { get; set; }
 
-		public Freelancer FreelancerId { get; set; } // FK-User
+		public ApplicationUser Freelancer { get; set; } // FK-User
 
-		public ApplicationUser ClientId { get; set; } // FK-User
+		public ApplicationUser Client { get; set; } // FK-User
 
-		public Gig GigId { get; set; } // FK-Gig
+		public Gig Gig { get; set; } // FK-Gig
 
 	}
 }
