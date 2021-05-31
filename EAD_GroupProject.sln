@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.WebUI.Library", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.Api", "JobPortal.Api\JobPortal.Api.csproj", "{B8C1D21A-7F99-48BB-805B-1C4E956AE090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortal.BusinessModels", "JobPortal.BusinessModels\JobPortal.BusinessModels.csproj", "{693504D8-97D1-4D59-91D9-EAAC9BE7CEC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.BusinessModels", "JobPortal.BusinessModels\JobPortal.BusinessModels.csproj", "{693504D8-97D1-4D59-91D9-EAAC9BE7CEC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
