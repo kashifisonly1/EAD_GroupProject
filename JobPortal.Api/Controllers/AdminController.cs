@@ -26,36 +26,5 @@ namespace JobPortal.Api.Controllers
 		}
 
 
-		[Route("postmessage")]
-		[HttpPost]
-		public void PostContactUsMessage(ContactUsModel model)
-		{
-			ContactUsData data = new ContactUsData();
-			data.SaveMessageAsync(model);
-		}
-
-		[Route("doSomething")]
-		[HttpPost]
-		public void DoSomething(string takeData)
-		{
-
-		}
-
-		[Route("getSomething")]
-		[HttpGet]
-		public string GetSomething()
-		{
-			return "this is something";
-		}
-
-		[Route("getContactUsModel")]
-		[HttpGet]
-		public ContactUsModel GetContactUsModel()
-		{
-			//ContactUsData data = new ContactUsData();
-			//ContactUsModel result = data.GetContactUsModel("");
-			//return result;
-			throw new NotImplementedException();
-		}
 	}
 }

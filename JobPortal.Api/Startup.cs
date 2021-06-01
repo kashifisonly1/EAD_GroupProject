@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using JobPortal.Api.Data;
+using JobPortal.BusinessModels;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,6 +39,9 @@ namespace JobPortal.Api
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
+
+			services.AddDbContext<JobPortalContext>();
+
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddRoles<IdentityRole>()
 				.AddEntityFrameworkStores<ApplicationDbContext>();
