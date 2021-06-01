@@ -20,10 +20,10 @@ namespace JobPortal.Api.Controllers
 		[Authorize(Roles = ("Client, Freelancer"))]
 		[Route("SendMessage")]
 		[HttpPost]
-		public void SendMessage(ContactUsModel model)
+		public async Task SendMessageAsync(ContactUsModel model)
 		{
 			ContactUsData data = new ContactUsData();
-			data.SaveMessageAsync(model);
+			await data.SaveMessageAsync(model);
 		}
 
 		[Authorize(Roles = ("Admin"))]
