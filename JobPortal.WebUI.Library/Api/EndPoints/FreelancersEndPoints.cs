@@ -15,22 +15,15 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
         {
             ApiHelper = new ApiHelper();
         }
-        public async Task<List<Freelancer>> GetAllCategories()
+        public async Task<List<Freelancer>> GetAllFreelancers()
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("/api/Freelancers"))
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsAsync<List<Freelancer>>();
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                var result = await response.Content.ReadAsAsync<List<Freelancer>>();
+                return result;
             }
         }
         public async Task<Freelancer> GetFreelancer(int id)
@@ -40,66 +33,38 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync($"/api/Freelancers/{id}"))
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsAsync<Freelancer>();
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                var result = await response.Content.ReadAsAsync<Freelancer>();
+                return result;
             }
         }
-        public async Task AddFreelancer(Freelancer category)
+        public async Task<HttpResponseMessage> AddFreelancer(Freelancer freelancer)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/Freelancers", category))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/Freelancers", freelancer))
             {
-                if (response.IsSuccessStatusCode)
-                {
-
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return response;
             }
         }
-        public async Task UpdateFreelancer(int id)
+        public async Task<HttpResponseMessage> UpdateFreelancer(Freelancer freelancer)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/Freelancers", id))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync($"/api/Freelancers/{freelancer.Id}", freelancer))
             {
-                if (response.IsSuccessStatusCode)
-                {
-
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return response;
             }
         }
-        public async Task DeleteFreelancer(int id)
+        public async Task<HttpResponseMessage> DeleteFreelancer(int id)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/Freelancers", id))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync($"/api/Freelancers/{id}"))
             {
-                if (response.IsSuccessStatusCode)
-                {
-
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return response;
             }
         }
     }

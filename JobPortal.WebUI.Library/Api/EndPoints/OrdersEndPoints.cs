@@ -4,65 +4,64 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using JobPortal.BusinessModels.Client;
-
+using JobPortal.BusinessModels.Orders;
 namespace JobPortal.WebUI.Library.Api.EndPoints
 {
-    public class CustomOrderRequestsEndPoints
+    class OrdersEndPoints
     {
         ApiHelper ApiHelper;
-        public CustomOrderRequestsEndPoints()
+        public OrdersEndPoints()
         {
             ApiHelper = new ApiHelper();
         }
-        public async Task<List<CustomOrderRequest>> GetAllCustomOrderRequests()
+        public async Task<List<Order>> GetAllOrders()
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("/api/CustomOrderRequests"))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("/api/Orders"))
             {
-                var result = await response.Content.ReadAsAsync<List<CustomOrderRequest>>();
+                var result = await response.Content.ReadAsAsync<List<Order>>();
                 return result;
             }
         }
-        public async Task<CustomOrderRequest> GetCustomOrderRequest(int id)
+        public async Task<Order> GetOrder(int id)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync($"/api/CustomOrderRequests/{id}"))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync($"/api/Orders/{id}"))
             {
-                var result = await response.Content.ReadAsAsync<CustomOrderRequest>();
+                var result = await response.Content.ReadAsAsync<Order>();
                 return result;
             }
         }
-        public async Task<HttpResponseMessage> AddCustomOrderRequest(CustomOrderRequest customOrderRequest)
+        public async Task<HttpResponseMessage> AddOrder(Order order)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/CustomOrderRequests", customOrderRequest))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/Orders", order))
             {
                 return response;
             }
         }
-        public async Task<HttpResponseMessage> UpdateCustomOrderRequest(CustomOrderRequest customOrderRequest)
+        public async Task<HttpResponseMessage> UpdateOrder(Order order)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync($"/api/CustomOrderRequests/{customOrderRequest.Id}", customOrderRequest))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync($"/api/Orders/{order.Id}", order))
             {
                 return response;
             }
         }
-        public async Task<HttpResponseMessage> DeleteCustomOrderRequest(int id)
+        public async Task<HttpResponseMessage> DeleteOrder(int id)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync($"/api/CustomOrderRequests/{id}"))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync($"/api/Orders/{id}"))
             {
                 return response;
             }

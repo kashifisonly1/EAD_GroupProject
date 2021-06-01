@@ -47,12 +47,12 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
                 return response;
             }
         }
-        public async Task<HttpResponseMessage> UpdateCategory(int id, Category category)
+        public async Task<HttpResponseMessage> UpdateCategory(Category category)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync($"/api/Categories{id}",category))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsJsonAsync($"/api/Categories/{category.Id}",category))
             {
                 return response;
             }    
@@ -62,7 +62,7 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/Categories", id))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync($"/api/Categories/{id}"))
             {
                 return response;
             }
