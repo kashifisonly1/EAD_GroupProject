@@ -22,15 +22,8 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("/api/Categories"))
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsAsync<List<Category>>();
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                var result = await response.Content.ReadAsAsync<List<Category>>();
+                return result;
             }
         }
         public async Task<Category> GetCategory(int id)
@@ -40,66 +33,38 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync($"/api/Categories/{id}"))
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsAsync<Category>();
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                var result = await response.Content.ReadAsAsync<Category>();
+                return result;
             }
         }
-        public async Task AddCategory(Category category)
+        public async Task<HttpResponseMessage> AddCategory(Category category)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/Categories", category))
             {
-                if (response.IsSuccessStatusCode)
-                {
-
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return response;
             }
         }
-        public async Task UpdateCategory(int id)
+        public async Task<HttpResponseMessage> UpdateCategory(int id, Category category)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/Categories",id))
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync($"/api/Categories{id}",category))
             {
-                if (response.IsSuccessStatusCode)
-                {
-
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return response;
             }    
         }
-        public async Task DeleteCategory(int id)
+        public async Task<HttpResponseMessage> DeleteCategory(int id)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsJsonAsync("/api/Categories", id))
             {
-                if (response.IsSuccessStatusCode)
-                {
-
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return response;
             }
         }
     }
