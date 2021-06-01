@@ -16,6 +16,7 @@ namespace JobPortal.BusinessModels
 	public class JobPortalContext : IdentityDbContext<ApplicationUser>
 	{
 		public DbSet<Freelancer> Freelancers { get; set; }
+
 		public DbSet<Skill> Skills { get; set; }
 
 		public DbSet<Category> Catogories { get; set; }
@@ -32,7 +33,7 @@ namespace JobPortal.BusinessModels
 		public DbSet<CustomOrderRequest> CustomOrderRequests { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder options)
-		=> options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=JobPortalDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+		=> options.UseSqlServer(@"Data Source=DESKTOP-5MV0CGE;Initial Catalog=JobPortal-DB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
 		public static JobPortalContext Create()
 		{

@@ -17,18 +17,13 @@ namespace JobPortal.WebUI.Areas.Identity.Data
 		[Column(TypeName = "NVARCHAR(50)")]
 		public string FullName { get; set; }
 
-		[Required]
-		[PersonalData]
-		[Column(TypeName = "NVARCHAR(50)")]
-		public string Role { get; set; }
 
 		[Column(TypeName = "datetime2(7)")]
 		public DateTime DateCreated { get; set; } = DateTime.Now;
 
-		[Required]
 		[PersonalData]
-		[Column(TypeName = "varbinary(max)")]
-		public byte[] ProfileImage { get; set; }
+		[Column(TypeName = "nvarchar(max)")]
+		public string ProfileImage { get; set; }
 
 	}
 }

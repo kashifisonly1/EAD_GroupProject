@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using JobPortal.BusinessModels;
 using JobPortal.DataManager.Internal.Data;
 
@@ -23,29 +24,45 @@ namespace JobPortal.DataManager.Data
 
 		public void DeleteMessage(int id)
 		{
-			DataAccess access = new DataAccess();
-			access.SaveData<dynamic>("dbo.DeleteContactUsMessageById", new { IdentifierCase = id });
+			var db = new JobPortalContext();
+			var message = db.ContactMessages.Single(match => match.Id == id);
+			db.ContactMessages.Remove(message);
+			db.SaveChanges();
+
+			//DataAccess access = new DataAccess();
+			//access.SaveData<dynamic>("dbo.DeleteContactUsMessageById", new { IdentifierCase = id });
 		}
 
 		public void MarkMessageAsResolved(int id)
 		{
+			var db = new JobPortalContext();
+			var message = db.ContactMessages.Single(match => match.Id == id);
+			message.IsResponded = true;
+			db.SaveChanges();
+
 			DataAccess access = new DataAccess();
 			access.SaveData<dynamic>("dbo.ResolveContactUsMessageById", new { IdentifierCase = id });
 		}
 
 		public ContactUsModel GetContactUsByEmail(string email)
 		{
-			DataAccess access = new DataAccess();
-			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetContactUsMessageByEmail]", new { Email = email }).FirstOrDefault();
+			var db = new JobPortalContext();
+			var result = db.ContactMessages.Single(match => match.Email == email);
+
+			//DataAccess access = new DataAccess();
+			//var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetContactUsMessageByEmail]", new { Email = email }).FirstOrDefault();
 
 			return result;
 		}
 
 		public List<ContactUsModel> GetAllUnResolvedMessages()
 		{
-			DataAccess access = new DataAccess();
-			var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetAllUnResolvedMessages]", new { });
-			return result;
+			var db = new JobPortalContext();
+			var result = db.ContactMessages.Where(match => match.IsResponded == false);
+
+			//DataAccess access = new DataAccess();
+			//var result = access.LoadData<ContactUsModel, dynamic>("[dbo].[GetAllUnResolvedMessages]", new { });
+			return result.ToList();
 		}
 
 		public List<ContactUsModel> GetAllContactUsMessagesByEmail(string email)

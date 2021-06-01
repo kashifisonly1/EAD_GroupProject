@@ -25,21 +25,6 @@ namespace JobPortal.WebUI.Data
 			// Customize the ASP.NET Identity model and override the defaults if needed.
 			// For example, you can rename the ASP.NET Identity table names and more.
 			// Add your customizations after calling base.OnModelCreating(builder);
-			//AspNetUsers -> User
-			builder.Entity<ApplicationUser>()
-				.ToTable("User");
-			//AspNetRoles -> Role
-			builder.Entity<IdentityRole>()
-				.ToTable("Role");
-			//AspNetUserRoles -> UserRole
-			builder.Entity<IdentityUserRole>()
-				.ToTable("UserRole");
-			//AspNetUserClaims -> UserClaim
-			builder.Entity<IdentityUserClaim>()
-				.ToTable("UserClaim");
-			//AspNetUserLogins -> UserLogin
-			builder.Entity<IdentityUserLogin>()
-				.ToTable("UserLogin");
 		}
 	}
 }
