@@ -10,101 +10,99 @@ using JobPortal.BusinessModels.Orders;
 
 namespace JobPortal.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class OrderDeliveriesController : ControllerBase
-    {
-        private readonly JobPortalContext _context;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class OrderDeliveriesController : ControllerBase
+	{
+		private readonly JobPortalContext _context;
 
-        public OrderDeliveriesController(JobPortalContext context)
-        {
-            _context = context;
-        }
+		public OrderDeliveriesController(JobPortalContext context)
+		{
+			_context = context;
+		}
 
-        // GET: api/OrderDeliveries
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<OrderDelivery>>> GetOrdersDelivery()
-        {
-            return await _context.OrdersDelivery.ToListAsync();
-        }
+		// GET: api/OrderDeliveries
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<OrderDelivery>>> GetOrdersDelivery()
+		{
+			return await _context.OrdersDelivery.Include(o => o.Order).ToListAsync();
+		}
 
-        // GET: api/OrderDeliveries/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<OrderDelivery>> GetOrderDelivery(int id)
-        {
-            var orderDelivery = await _context.OrdersDelivery.FindAsync(id);
+		// GET: api/OrderDeliveries/5
+		[HttpGet("{id}")]
+		public async Task<ActionResult<OrderDelivery>> GetOrderDelivery(int id)
+		{
+			var orderDelivery = await _context.OrdersDelivery.FindAsync(id);
 
-            if (orderDelivery == null)
-            {
-                return NotFound();
-            }
+			await _context.Entry(orderDelivery).Reference(o => o.Order).LoadAsync();
 
-            return orderDelivery;
-        }
+			if (orderDelivery == null)
+			{
+				return NotFound();
+			}
 
-        // PUT: api/OrderDeliveries/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrderDelivery(int id, OrderDelivery orderDelivery)
-        {
-            if (id != orderDelivery.Id)
-            {
-                return BadRequest();
-            }
+			return orderDelivery;
+		}
 
-            _context.Entry(orderDelivery).State = EntityState.Modified;
+		// PUT: api/OrderDeliveries/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutOrderDelivery(int id, OrderDelivery orderDelivery)
+		{
+			if (id != orderDelivery.Id)
+			{
+				return BadRequest();
+			}
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderDeliveryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			_context.Entry(orderDelivery).State = EntityState.Modified;
 
-            return NoContent();
-        }
+			try
+			{
+				await _context.SaveChangesAsync();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!OrderDeliveryExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-        // POST: api/OrderDeliveries
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<OrderDelivery>> PostOrderDelivery(OrderDelivery orderDelivery)
-        {
-            _context.OrdersDelivery.Add(orderDelivery);
-            await _context.SaveChangesAsync();
+			return NoContent();
+		}
 
-            return CreatedAtAction("GetOrderDelivery", new { id = orderDelivery.Id }, orderDelivery);
-        }
+		// POST: api/OrderDeliveries
+		[HttpPost]
+		public async Task<ActionResult<OrderDelivery>> PostOrderDelivery(OrderDelivery orderDelivery)
+		{
+			_context.OrdersDelivery.Add(orderDelivery);
+			await _context.SaveChangesAsync();
 
-        // DELETE: api/OrderDeliveries/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<OrderDelivery>> DeleteOrderDelivery(int id)
-        {
-            var orderDelivery = await _context.OrdersDelivery.FindAsync(id);
-            if (orderDelivery == null)
-            {
-                return NotFound();
-            }
+			return CreatedAtAction("GetOrderDelivery", new { id = orderDelivery.Id }, orderDelivery);
+		}
 
-            _context.OrdersDelivery.Remove(orderDelivery);
-            await _context.SaveChangesAsync();
+		// DELETE: api/OrderDeliveries/5
+		[HttpDelete("{id}")]
+		public async Task<ActionResult<OrderDelivery>> DeleteOrderDelivery(int id)
+		{
+			var orderDelivery = await _context.OrdersDelivery.FindAsync(id);
+			if (orderDelivery == null)
+			{
+				return NotFound();
+			}
 
-            return orderDelivery;
-        }
+			_context.OrdersDelivery.Remove(orderDelivery);
+			await _context.SaveChangesAsync();
 
-        private bool OrderDeliveryExists(int id)
-        {
-            return _context.OrdersDelivery.Any(e => e.Id == id);
-        }
-    }
+			return orderDelivery;
+		}
+
+		private bool OrderDeliveryExists(int id)
+		{
+			return _context.OrdersDelivery.Any(e => e.Id == id);
+		}
+	}
 }

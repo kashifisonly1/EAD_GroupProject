@@ -1,4 +1,5 @@
 ﻿using JobPortal.BusinessModels.Freelancers;
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace JobPortal.BusinessModels.Gigs
 		public string Description { get; set; }
 
 		public decimal Pricing { get; set; }
-		public String PriceUnit { get; set; }
+		public string PriceUnit { get; set; }
 		public string ImageUrl { get; set; }
 
 		public Category Category { get; set; } // FK-Category

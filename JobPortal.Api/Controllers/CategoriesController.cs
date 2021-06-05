@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JobPortal.BusinessModels;
 using JobPortal.BusinessModels.Gigs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JobPortal.Api.Controllers
 {
+	//[Authorize]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class CategoriesController : ControllerBase
@@ -22,10 +24,11 @@ namespace JobPortal.Api.Controllers
 		}
 
 		// GET: api/Categories
+		//[Authorize(Roles = ("Admin"))]
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<Category>>> GetCatogories()
 		{
-			return await _context.Catogories.ToListAsync();
+			return await _context.Catogories.AsNoTracking().ToListAsync();
 		}
 
 		// GET: api/Categories/5

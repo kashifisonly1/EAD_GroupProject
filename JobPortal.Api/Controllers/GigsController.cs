@@ -25,7 +25,7 @@ namespace JobPortal.Api.Controllers
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<Gig>>> GetGigs()
 		{
-			return await _context.Gigs.ToListAsync();
+			return await _context.Gigs.Include(g => g.Category).Include(g => g.Freelancer).ToListAsync();
 		}
 
 		// GET: api/Gigs/5
@@ -38,6 +38,10 @@ namespace JobPortal.Api.Controllers
 			{
 				return NotFound();
 			}
+
+			await _context.Entry(gig).Reference(g => g.Category).LoadAsync();
+
+			await _context.Entry(gig).Reference(g => g.Freelancer).LoadAsync();
 
 			return gig;
 		}
