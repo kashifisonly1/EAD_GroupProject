@@ -1,29 +1,30 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-using JobPortal.Api.Data;
 using JobPortal.BusinessModels;
 using JobPortal.BusinessModels.General;
 
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.AzureAD.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Microsoft.VisualBasic.CompilerServices;
 
-namespace JobPortal.Api
+
+
+namespace JobPortal.WebApi
 {
 	public class Startup
 	{
@@ -37,18 +38,14 @@ namespace JobPortal.Api
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlServer(
-					Configuration.GetConnectionString("DefaultConnection")));
-
 			services.AddDbContext<JobPortalContext>();
 
-			services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddRoles<IdentityRole>()
-				.AddEntityFrameworkStores<ApplicationDbContext>();
+			services.AddIdentity<ApplicationUser, IdentityRole>()
+				.AddEntityFrameworkStores<JobPortalContext>();
 
-			services.AddControllersWithViews();
-			services.AddRazorPages();
+			services.AddMvcCore().AddApiExplorer();
+			services.AddHealthChecks();
+
 			services.AddAuthentication(options =>
 			{
 				options.DefaultAuthenticateScheme = "JwtBearer";
@@ -89,44 +86,20 @@ namespace JobPortal.Api
 					Scheme = "Bearer"
 				});
 
-				setup.AddSecurityRequirement(new OpenApiSecurityRequirement()
-				{
-					{
-						new OpenApiSecurityScheme
-						{
-							Reference = new OpenApiReference
-							{
-							Type = ReferenceType.SecurityScheme,
-							Id = "Bearer"
-							},
-							Scheme = "oauth2",
-							Name = "Bearer",
-							In = ParameterLocation.Header,
-						},
-						new List<string>()
-					}
-				});
+				//services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
+				//.AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+				services.AddControllers();
 			});
 		}
-
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-
-
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
-				app.UseDatabaseErrorPage();
 			}
-			else
-			{
-				app.UseExceptionHandler("/Home/Error");
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
-			}
+
 			app.UseHttpsRedirection();
-			app.UseStaticFiles();
 
 			app.UseRouting();
 
@@ -147,11 +120,9 @@ namespace JobPortal.Api
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
-				//endpoints.MapControllerRoute(
-				//	name: "default",
-				//	pattern: "{controller=Home}/{action=Index}/{id?}");
-				//endpoints.MapRazorPages();
 			});
 		}
 	}
 }
+
+

@@ -8,53 +8,52 @@ using Microsoft.EntityFrameworkCore;
 using JobPortal.BusinessModels;
 using JobPortal.BusinessModels.Gigs;
 
-namespace JobPortal.Api.Controllers
+namespace JobPortal.WebApi.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class GigsController : ControllerBase
+	public class CategoriesController : ControllerBase
 	{
 		private readonly JobPortalContext _context;
 
-		public GigsController(JobPortalContext context)
+		public CategoriesController(JobPortalContext context)
 		{
 			_context = context;
 		}
 
-		// GET: api/Gigs
+		// GET: api/Categories
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Gig>>> GetGigs()
+		public async Task<ActionResult<IEnumerable<Category>>> GetCatogories()
 		{
-			return await _context.Gigs.ToListAsync();
+			return await _context.Catogories.ToListAsync();
 		}
 
-		// GET: api/Gigs/5
+		// GET: api/Categories/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Gig>> GetGig(int id)
+		public async Task<ActionResult<Category>> GetCategory(int id)
 		{
-			var gig = await _context.Gigs.FindAsync(id);
+			var category = await _context.Catogories.FindAsync(id);
 
-			if (gig == null)
+			if (category == null)
 			{
 				return NotFound();
 			}
 
-			return gig;
+			return category;
 		}
 
-
-		// PUT: api/Gigs/5
+		// PUT: api/Categories/5
 		// To protect from overposting attacks, enable the specific properties you want to bind to, for
 		// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutGig(int id, Gig gig)
+		public async Task<IActionResult> PutCategory(int id, Category category)
 		{
-			if (id != gig.Id)
+			if (id != category.Id)
 			{
 				return BadRequest();
 			}
 
-			_context.Entry(gig).State = EntityState.Modified;
+			_context.Entry(category).State = EntityState.Modified;
 
 			try
 			{
@@ -62,7 +61,7 @@ namespace JobPortal.Api.Controllers
 			}
 			catch (DbUpdateConcurrencyException)
 			{
-				if (!GigExists(id))
+				if (!CategoryExists(id))
 				{
 					return NotFound();
 				}
@@ -75,37 +74,37 @@ namespace JobPortal.Api.Controllers
 			return NoContent();
 		}
 
-		// POST: api/Gigs
+		// POST: api/Categories
 		// To protect from overposting attacks, enable the specific properties you want to bind to, for
 		// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
 		[HttpPost]
-		public async Task<ActionResult<Gig>> PostGig(Gig gig)
+		public async Task<ActionResult<Category>> PostCategory(Category category)
 		{
-			_context.Gigs.Add(gig);
+			_context.Catogories.Add(category);
 			await _context.SaveChangesAsync();
 
-			return CreatedAtAction("GetGig", new { id = gig.Id }, gig);
+			return CreatedAtAction("GetCategory", new { id = category.Id }, category);
 		}
 
-		// DELETE: api/Gigs/5
+		// DELETE: api/Categories/5
 		[HttpDelete("{id}")]
-		public async Task<ActionResult<Gig>> DeleteGig(int id)
+		public async Task<ActionResult<Category>> DeleteCategory(int id)
 		{
-			var gig = await _context.Gigs.FindAsync(id);
-			if (gig == null)
+			var category = await _context.Catogories.FindAsync(id);
+			if (category == null)
 			{
 				return NotFound();
 			}
 
-			_context.Gigs.Remove(gig);
+			_context.Catogories.Remove(category);
 			await _context.SaveChangesAsync();
 
-			return gig;
+			return category;
 		}
 
-		private bool GigExists(int id)
+		private bool CategoryExists(int id)
 		{
-			return _context.Gigs.Any(e => e.Id == id);
+			return _context.Catogories.Any(e => e.Id == id);
 		}
 	}
 }

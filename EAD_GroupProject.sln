@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.Api", "JobPortal.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortal.BusinessModels", "JobPortal.BusinessModels\JobPortal.BusinessModels.csproj", "{693504D8-97D1-4D59-91D9-EAAC9BE7CEC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortal.WebApi", "JobPortal.WebApi\JobPortal.WebApi.csproj", "{0BF4928E-A3E8-43A2-9ABC-B0373AF2EE9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{693504D8-97D1-4D59-91D9-EAAC9BE7CEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{693504D8-97D1-4D59-91D9-EAAC9BE7CEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{693504D8-97D1-4D59-91D9-EAAC9BE7CEC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF4928E-A3E8-43A2-9ABC-B0373AF2EE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF4928E-A3E8-43A2-9ABC-B0373AF2EE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF4928E-A3E8-43A2-9ABC-B0373AF2EE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF4928E-A3E8-43A2-9ABC-B0373AF2EE9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

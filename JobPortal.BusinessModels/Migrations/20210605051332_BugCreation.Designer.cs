@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobPortal.BusinessModels.Migrations
 {
     [DbContext(typeof(JobPortalContext))]
-    [Migration("20210531093649_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210605051332_BugCreation")]
+    partial class BugCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

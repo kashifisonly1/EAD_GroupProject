@@ -6,22 +6,26 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-using JobPortal.Api.Data;
+using JobPortal.BusinessModels;
 using JobPortal.BusinessModels.General;
 
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
-namespace JobPortal.Api.Controllers
+namespace JobPortal.WebApi.Controllers
 {
-	public class TokenController : Controller
+	[Route("api/[controller]")]
+	[ApiController]
+	public class TokenController : ControllerBase
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly JobPortalContext _context;
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly RoleManager<IdentityRole> _roleManager;
 
-		public TokenController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+		public TokenController(JobPortalContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
 		{
 			_context = context;
 			_userManager = userManager;
@@ -30,7 +34,7 @@ namespace JobPortal.Api.Controllers
 
 		[Route("/token")]
 		[HttpPost]
-		public async Task<IActionResult> Create(string username, string password)
+		public async Task<IActionResult> Create(string username, string password, string grant_type)
 		{
 			if (await IsValidUsernameAndPassword(username, password))
 			{
