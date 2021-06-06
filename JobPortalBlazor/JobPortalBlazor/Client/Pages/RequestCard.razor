@@ -1,0 +1,31 @@
+﻿<div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2">
+    <div class="card">
+        <a href="request/@request.RequestID">
+            <img src="/img/@request.ImageUrl" class="card-img-top" />
+            <div class="card-body">
+                <small><img src="/img/download.jpg" width="25" height="25" class="rounded-circle" /> @request.user.UserName</small>
+                <p class="mt-1">@request.Subject</p>
+            </div>
+        </a>
+        <div class="card-footer">
+            <div class="text-right">@request.Price</div>
+        </div>
+        @if (request.UserID == MainLayout.current_user.UserID && dashboard)
+        {
+            <div class="card-footer">
+                <button @onclick="@(()=> { UpdateEvent.InvokeAsync(request); })" class="btn btn-info">Update</button>
+                <button @onclick="@(()=> { DeleteEvent.InvokeAsync(request); })" class="btn btn-danger">Delete</button>
+            </div>
+        }
+    </div>
+</div>
+@code {
+    [Parameter]
+    public bool dashboard { get; set; }
+    [Parameter]
+    public PurchaseRequest request { get; set; }
+    [Parameter]
+    public EventCallback<PurchaseRequest> UpdateEvent { get; set; }
+    [Parameter]
+    public EventCallback<PurchaseRequest> DeleteEvent { get; set; }
+}

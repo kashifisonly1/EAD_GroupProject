@@ -1,0 +1,35 @@
+﻿@page "/register"
+<h3>Register Page</h3>
+<hr />
+<div class="row">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
+        <EditForm Model="@user" OnValidSubmit="SubmitUser">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
+            <label for="name">Your Name</label>
+            <InputText @bind-Value="user.UserName" class="form-control mb-3"></InputText>
+            <label for="email">Your Email</label>
+            <InputText type="email" @bind-Value="user.UserEmail" class="form-control mb-3"></InputText>
+            <label for="password">Your Password</label>
+            <input type="password" @onchange="@((_)=> { password = _.Value.ToString(); })" class="form-control mb-3" />
+            <label for="email">Your Image</label>
+            <InputFile OnChange="handleFileChange" class="form-control mb-3"></InputFile>
+            <input type="submit" value="Register" class="btn btn-primary" />
+        </EditForm>
+    </div>
+</div>
+@code {
+    [Required]
+    public String password="";
+    public Models.User user = new Models.User();
+    public String success = "";
+    public void SubmitUser()
+    {
+        success = "THANKS FOR CONTACTING US, WE WILL RESPOND YOU SOON";
+    }
+    public void handleFileChange(InputFileChangeEventArgs e)
+    {
+        user.Image = e.File;
+    }
+
+}

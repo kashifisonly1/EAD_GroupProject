@@ -1,0 +1,20 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu current_user="@current_user" />
+    </div>
+    <div class="main">
+        <div class="content px-4">
+            @Body
+        </div>
+    </div>
+</div>
+@code{
+    public static User current_user;
+    protected override void OnInitialized()
+    {
+        current_user = new User { RoleName="freelancer"};
+        base.OnInitialized();
+    }
+}

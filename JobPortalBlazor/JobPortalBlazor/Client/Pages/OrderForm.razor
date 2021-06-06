@@ -1,0 +1,21 @@
+﻿<div class="row">
+    <div class="col-12 col-md-8 col-lg-6 mx-auto border p-2">
+        <h3>Place Order</h3>
+        <hr />
+        <EditForm Model="@order" OnValidSubmit="SubmitOrder">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
+            <label for="description">Details</label>
+            <textarea @onchange="@((_)=> { order.Details = _.Value.ToString(); })" class="form-control"></textarea>
+            <input type="submit" value="Place Order" class="btn btn-primary" />
+        </EditForm>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public Order order { get; set; }
+    public void SubmitOrder()
+    {
+        
+    }
+}

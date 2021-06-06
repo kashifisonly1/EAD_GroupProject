@@ -1,0 +1,67 @@
+﻿<div style="display: @show_val;">
+    <div class="row">
+        <div class="col-12 col-md-8 col-lg-6 mx-auto border p-2">
+            <h3>Add Purchase Request</h3>
+            <hr />
+            <EditForm Model="@request" OnValidSubmit="@((_) => { onsubmit.InvokeAsync(request); })">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <ValidationSummary></ValidationSummary>
+                <label for="name" class="font-weight-bold">Request Subject</label>
+                <InputText class="form-control" @bind-Value="request.Subject"></InputText>
+                <br />
+                <label for="image" class="font-weight-bold">Request Image</label>
+                <InputFile class="form-control" OnChange="handleFileChange" @bind-Value="request.Image"></InputFile>
+                <br />
+                <label for="price" class="font-weight-bold">Price</label>
+                <InputNumber class="form-control" OnChange="handleFileChange" @bind-Value="request.Price"></InputNumber>
+                <br />
+                <label for="price-interval" class="font-weight-bold">Price Interval</label>
+                <InputNumber class="form-control" OnChange="handleFileChange" @bind-Value="request.PriceInterval"></InputNumber>
+                <br />
+                <label for="category" class="font-weight-bold">Category</label>
+                <InputSelect class="form-control" @bind-Value="request.CategoryID">
+                    <option value="">-- SELECT VALUE --</option>
+                    @for (int i = 0; i < categories.Count; i++)
+                    {
+                        <option value="@categories[i].ID">@categories[i].Name</option>
+                    }
+                </InputSelect>
+                <label for="description" class="font-weight-bold">Request Description</label>
+                <textarea class="form-control mb-3" @onchange="@((_)=> { request.Description = _.Value.ToString(); })"></textarea>
+                <input type="submit" value="Add Request" class="btn btn-primary" />
+                <input type="reset" class="btn btn-secondary" @onclick="@((_) => { click.InvokeAsync(); })" />
+            </EditForm>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public bool show { get; set; }
+    String show_val = "none";
+    [Parameter]
+    public EventCallback click { get; set; }
+    protected override void OnParametersSet()
+    {
+        if (show)
+            show_val = "";
+        else
+            show_val = "none";
+        base.OnParametersSet();
+    }
+    [Parameter]
+    public PurchaseRequest request { get; set; } = new PurchaseRequest { user=MainLayout.current_user, UserID=MainLayout.current_user.UserID};
+    [Parameter]
+    public EventCallback<PurchaseRequest> onsubmit { get; set; }
+    public void handleFileChange(InputFileChangeEventArgs e)
+    {
+        request.Image = e.File;
+    }
+    List<Category> categories = new List<Category>();
+    protected override void OnInitialized()
+    {
+        categories.Add(new Category { ID = 1, ImageUrl = "2", Name = "kashif", Slug = "1234" });
+        categories.Add(new Category { ID = 2, ImageUrl = "2", Name = "kashif", Slug = "1234" });
+        categories.Add(new Category { ID = 3, ImageUrl = "2", Name = "kashif", Slug = "1234" });
+        base.OnInitialized();
+    }
+}

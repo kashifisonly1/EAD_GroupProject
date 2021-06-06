@@ -1,0 +1,52 @@
+﻿@page "/order/{id}"
+<h3>Order Details</h3>
+<hr />
+<div class="row">
+    <div class="col-6">
+        <div>Freelancer: <img src="/img/@order.Freelancer.ImageUrl" width="30" height="30" class="rounded-circle" /> @order.Freelancer.UserName</div>
+    </div>
+    <div class="col-6">
+        <div>Client: <img src="/img/@order.Client.ImageUrl" width="30" height="30" class="rounded-circle" /> @order.Client.UserName</div>
+    </div>
+    <div class="col-6">Start Date: @order.StartDate.ToString("D")</div>
+    <div class="col-6">End Date: @order.EndDate.ToString("D")</div>
+</div>
+<hr />
+<p>@order.Details</p>
+<hr />
+@if(MainLayout.current_user.RoleName=="freelancer")
+{
+    <DeliveryForm delivery="delivery" onsubmit="@((ord)=> { addDelivery(ord); })"></DeliveryForm>
+}
+<h4 class="col-12 my-3 col-md-8 mx-auto">Deliveries:</h4>
+@foreach(OrderDelivery ord in deliveries)
+{
+<div class="col-12 col-md-8 mx-auto">
+    <div class="card">
+        <div class="card-header">@ord.Date.ToString("D")</div>
+        <div class="card-body">@ord.Details</div>
+        <div class="card-footer">
+            <a href="/img/@ord.FileURL" download>Download</a>
+        </div>
+    </div>
+</div>
+}
+@code {
+    [Parameter]
+    public String id { get; set; }
+    public Order order;
+    List<OrderDelivery> deliveries = new List<OrderDelivery>();
+    OrderDelivery delivery;
+    protected override void OnInitialized()
+    {
+        order = new Order { Freelancer = MainLayout.current_user, Client = MainLayout.current_user, Details = "this is details", StartDate = DateTime.Now, EndDate = DateTime.Now, Status = "pending" };
+        delivery = new OrderDelivery { order = order };
+        deliveries.Add(new OrderDelivery { Date = DateTime.Now, Details = "this is details", FileURL = "" });
+        base.OnInitialized();
+    }
+    public void addDelivery(OrderDelivery or)
+    {
+        deliveries.Add(new OrderDelivery { Date = DateTime.Now, File = or.File, FileURL = or.FileURL, ID = or.ID, order = or.order, OrderID = or.OrderID, Details=or.Details });
+        delivery = new OrderDelivery { order = order };
+    }
+}

@@ -1,0 +1,63 @@
+﻿@page "/become-freelancer"
+
+<h3>Become Freelancer</h3>
+<hr />
+<div class="row">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto border p-2">
+        <EditForm Model="@freelancer" OnValidSubmit="SubmitFreelancer">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
+            <label for="details" class="font-weight-bold">Details</label>
+            <InputText class="form-control" @bind-Value="freelancer.Detail"></InputText>
+            <br />
+            <table class="table w-100">
+                <tr>
+                    <th>Skill Name</th>
+                    <th>Action</th>
+                </tr>
+                @for (int i = 0; i < freelancer.UserSkill.Count; i++)
+                {
+                    int j = i;
+                    <tr>
+                        <td>@freelancer.UserSkill[i].Name</td>
+                        <td><button type="button" class="btn btn-danger" @onclick="@((_)=> {freelancer.UserSkill.RemoveAt(int.Parse(j.ToString())); })">Delete</button></td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <InputSelect class="form-control" @bind-Value="skill_id">
+                            <option value="">-- SELECT VALUE --</option>
+                            @for (int i = 0; i < allSkills.Count; i++)
+                            {
+                                <option value="@i">@allSkills[i].Name</option>
+                            }
+                        </InputSelect>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success" @onclick="@((_)=> { if(skill_id!="") freelancer.UserSkill.Add(allSkills[int.Parse(skill_id)]); })">Add</button>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Become Freelancer" />
+        </EditForm>
+    </div>
+</div>
+@code {
+    public List<Skill> allSkills;
+    public string skill_id="";
+    protected override void OnInitialized()
+    {
+        allSkills = new List<Skill>();
+        allSkills.Add(new Skill { ID = 1, Name = "Web Engineering" });
+        allSkills.Add(new Skill { ID = 2, Name = "dev " });
+        allSkills.Add(new Skill { ID = 3, Name = "apple" });
+        allSkills.Add(new Skill { ID = 4, Name = "Web Engineering" });
+        allSkills.Add(new Skill { ID = 5, Name = "Web Engineering" });
+        base.OnInitialized();
+    }
+    public Models.Freelancer freelancer = new Models.Freelancer();
+    public void SubmitFreelancer()
+    {
+
+    }
+}

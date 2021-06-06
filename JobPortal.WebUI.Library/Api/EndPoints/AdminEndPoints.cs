@@ -19,7 +19,6 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
 		{
 			ApiHelper = new ApiHelper();
 		}
-
 		public async Task PostContactUsMessage(string token, ContactUsModel form)
 		{
 			ApiHelper.ApiClient.DefaultRequestHeaders.Clear();

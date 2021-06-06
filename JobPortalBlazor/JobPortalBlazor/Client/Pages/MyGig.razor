@@ -1,0 +1,49 @@
+﻿@page "/freelancer/my-gig"
+<FreelancerHeader></FreelancerHeader>
+<h3 class="my-2">My Gigs</h3>
+<a @onclick="@((_)=> { show = true; })" class="btn btn-primary my-2">Add Gig</a>
+<GigForm show="@show" click="@((_)=> { show = false; })" request="@req" onsubmit="@((request)=> { AddGig(request); })"></GigForm>
+<div class="row">
+    @foreach (Gig cat in gigs)
+    {
+        <GigCard dashboard="true" request="@cat" UpdateEvent="@((r) => { UpdateBtnClick(r); })" DeleteEvent="DeleteGig"></GigCard>
+    }
+</div>
+@code {
+    List<Gig> gigs = new List<Gig>();
+    bool show = false;
+    Gig req = new Gig { user = MainLayout.current_user, UserID = MainLayout.current_user.UserID };
+    public void AddGig(Gig request)
+    {
+        if (request.ID == 0)
+            gigs.Add(new Gig { ID = request.ID, Title = request.Title, CategoryID = request.CategoryID, Description = request.Description, Image = request.Image, ImageUrl = request.ImageUrl, Price = request.Price, PriceInterval = request.PriceInterval, user = request.user, UserID = request.UserID });
+        else
+        {
+            for (int i = 0; i < gigs.Count; i++)
+            {
+                if (gigs[i].ID == request.ID)
+                {
+                    gigs[i] = new Gig { ID = request.ID, Title = request.Title, CategoryID = request.CategoryID, Description = request.Description, Image = request.Image, ImageUrl = request.ImageUrl, Price = request.Price, PriceInterval = request.PriceInterval, user = request.user, UserID = request.UserID };
+                    break;
+                }
+            }
+        }
+        req = new Gig { user = MainLayout.current_user, UserID = MainLayout.current_user.UserID };
+        show = false;
+    }
+    public void DeleteGig(Gig request)
+    {
+        gigs.Remove(request);
+    }
+    public void UpdateBtnClick(Gig request)
+    {
+        show = true;
+        req = new Gig { ID = request.ID, Title=request.Title, CategoryID=request.CategoryID, Description=request.Description, Image=request.Image, ImageUrl=request.ImageUrl, Price=request.Price, PriceInterval=request.PriceInterval, user=request.user, UserID=request.UserID};
+    }
+    protected override void OnInitialized()
+    {
+        gigs = new List<Gig>();
+        base.OnInitialized();
+    }
+
+}

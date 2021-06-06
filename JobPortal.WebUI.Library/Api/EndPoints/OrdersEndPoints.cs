@@ -14,7 +14,7 @@ namespace JobPortal.WebUI.Library.Api.EndPoints
         {
             ApiHelper = new ApiHelper();
         }
-        public async Task<List<Order>> GetAllOrders()
+        public async Task<List<Order>> GetAllOrders(String userID)
         {
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
             ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Clear();

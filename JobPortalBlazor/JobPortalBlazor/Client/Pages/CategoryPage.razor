@@ -1,0 +1,41 @@
+﻿@page "/category/{name}"
+<h3>Category: @cat.Name</h3>
+<hr />
+@if (MainLayout.current_user.RoleName == "freelancer")
+{
+    <h4 class="my-3">Purchase Requests</h4>
+    <div class="row">
+        @foreach (PurchaseRequest r in bids)
+        {
+            <RequestCard dashboard="false" request="@r"></RequestCard>
+        }
+    </div>
+}
+else
+{
+    <h4 class="my-3">Gigs</h4>
+    <div class="row">
+        @foreach (Gig r in gigs)
+        {
+            <GigCard dashboard="false" request="@r"></GigCard>
+        }
+    </div>
+}
+@code {
+    [Parameter]
+    public String name { get; set; }
+    Category cat = new Category();
+    List<Gig> gigs;
+    List<PurchaseRequest> bids;
+    protected override void OnInitialized()
+    {
+        cat = new Category { Name = "web dev" };
+        gigs = new List<Gig>();
+        bids = new List<PurchaseRequest>();
+        gigs.Add(new Gig { Title = "title", Price = 12, PriceInterval = "daily", ImageUrl="download.jpg", user = MainLayout.current_user });
+        gigs.Add(new Gig { Title = "title", Price = 12, PriceInterval = "daily", ImageUrl="download.jpg", user = MainLayout.current_user });
+        bids.Add(new PurchaseRequest { Subject = "title", Price = 12, PriceInterval = 1, ImageUrl = "download.jpg", user = MainLayout.current_user });
+        bids.Add(new PurchaseRequest { Subject = "title", Price = 12, PriceInterval = 1, ImageUrl = "download.jpg", user = MainLayout.current_user });
+        base.OnInitialized();
+    }
+}

@@ -1,0 +1,29 @@
+﻿@page "/login"
+<h3>Login Page</h3>
+<hr />
+<div class="row">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
+        <EditForm Model="@user" OnValidSubmit="SubmitUser">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
+            <label for="email">Email</label>
+            <InputText type="email" @bind-Value="user.email" class="form-control mb-3"></InputText>
+            <label for="password">Password</label>
+            <InputText type="password" @bind-Value="user.password" class="form-control mb-3"></InputText>
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </EditForm>
+    </div>
+</div>
+@code {
+    LoginModel user = new LoginModel();
+    public void SubmitUser()
+    {
+    }
+    public class LoginModel
+    {
+        [Required]
+        public String email { get; set; }
+        [Required]
+        public String password { get; set; }    
+    }
+}

@@ -1,0 +1,28 @@
+﻿@page "/contact"
+<h3>Contact US</h3>
+<hr />
+<div class="row">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
+        <EditForm Model="@contact" OnValidSubmit="SubmitContact">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
+            <label for="name">Your Name</label>
+            <InputText @bind-Value="contact.Name" class="form-control"></InputText>
+            <label for="email">Your Email</label>
+            <InputText type="email" @bind-Value="contact.Email" class="form-control"></InputText>
+            <label for="name">Your Subject</label>
+            <InputText @bind-Value="contact.Subject" class="form-control"></InputText>
+            <label for="name">Your Message</label>
+            <textarea @onchange="@((_)=> { contact.Message=_.Value.ToString(); })" class="form-control"></textarea>
+            <input type="submit" value="SEND" class="btn btn-primary" />
+        </EditForm>
+    </div>
+</div>
+@code {
+    public Models.Contact contact = new Models.Contact();
+    public String success = "";
+    public void SubmitContact()
+    {
+        success = "THANKS FOR CONTACTING US, WE WILL RESPOND YOU SOON";
+    }
+}

@@ -1,0 +1,43 @@
+﻿<div style="display: @show_val;">
+    <div class="row">
+        <div class="col-12 col-md-8 col-lg-6 mx-auto border p-2">
+            <h3>Add Category</h3>
+            <hr />
+            <EditForm Model="@category" OnValidSubmit="@((_) => { onsubmit.InvokeAsync(category); })">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <ValidationSummary></ValidationSummary>
+                <label for="name" class="font-weight-bold">Category Name</label>
+                <InputText class="form-control" @bind-Value="category.Name"></InputText>
+                <br />
+                <label for="image" class="font-weight-bold">Category Image</label>
+                <InputFile class="form-control" OnChange="handleFileChange" @bind-Value="category.Image"></InputFile>
+                <br />
+                <input type="submit" value="Add Category" class="btn btn-primary" />
+                <input type="reset" class="btn btn-secondary" @onclick="@((_) => { click.InvokeAsync(); })" />
+            </EditForm>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public bool show{ get; set; }
+    String show_val = "none";
+    [Parameter]
+    public EventCallback click { get; set; }
+    protected override void OnParametersSet()
+    {
+        if (show)
+            show_val = "";
+        else
+            show_val = "none";
+        base.OnParametersSet();
+    }
+    [Parameter]
+    public Category category { get; set; } = new Category();
+    [Parameter]
+    public EventCallback<Category> onsubmit { get; set; }
+    public void handleFileChange(InputFileChangeEventArgs e)
+    {
+        category.Image = e.File;
+    }
+}

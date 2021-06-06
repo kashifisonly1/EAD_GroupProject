@@ -1,0 +1,20 @@
+﻿@page "/"
+<h1>WELCOME TO JOB PORTAL</h1>
+<hr />
+<div class="row my-3">
+    @foreach(Category cat in allcats)
+    {
+        <CategoryCard category="@cat" isAdmin="false"></CategoryCard>
+    }
+</div>
+@code{
+    List<Category> allcats = new List<Category>();
+    protected override void OnInitialized()
+    {
+        allcats.Add(new Category { Name = "web dev", ID = 1, ImageUrl = "download.jpg", Slug = "web-dev" });
+        allcats.Add(new Category { Name = "web dev", ID = 1, ImageUrl = "download.jpg", Slug = "web-dev" });
+        allcats.Add(new Category { Name = "web dev", ID = 1, ImageUrl = "download.jpg", Slug = "web-dev" });
+        allcats.Add(new Category { Name = "web dev", ID = 1, ImageUrl = "download.jpg", Slug = "web-dev" });
+        base.OnInitialized();
+    }
+}

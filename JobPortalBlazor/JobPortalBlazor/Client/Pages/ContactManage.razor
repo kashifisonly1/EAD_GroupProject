@@ -1,0 +1,43 @@
+﻿@page "/admin/contacts"
+<AdminHeader />
+<h3 class="my-2">Contact Manage</h3>
+<hr />
+<table class="table w-100 table-dark table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(int i =0; i<contacts.Count; i++)
+        {
+            int j = i;
+            <tr>
+                <td>@contacts[i].Name</td>
+                <td>@contacts[i].Subject</td>
+                <td>@contacts[i].Email</td>
+                <td>@contacts[i].Message</td>
+                <td><button class="btn btn-danger" @onclick="@((_) => { DeleteContact(j.ToString()); })">Delete</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+@code {
+    public List<Models.Contact> contacts = new List<Models.Contact>();
+    protected override void OnInitialized()
+    {
+        contacts.Add(new Models.Contact { Email = "kashif1@gmail.com", Name = "name", Message = "message", Subject = "subject" });
+        contacts.Add(new Models.Contact { Email = "kashif2@gmail.com", Name = "name", Message = "message", Subject = "subject" });
+        contacts.Add(new Models.Contact { Email = "kashif3@gmail.com", Name = "name", Message = "message", Subject = "subject" });
+        contacts.Add(new Models.Contact { Email = "kashif4@gmail.com", Name = "name", Message = "message", Subject = "subject" });
+        base.OnInitialized();
+    }
+    public void DeleteContact(String i)
+    {
+        contacts.RemoveAt(int.Parse(i));
+    }
+}

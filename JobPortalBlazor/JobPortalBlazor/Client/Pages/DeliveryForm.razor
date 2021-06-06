@@ -1,0 +1,33 @@
+﻿<div class="row">
+    <div class="col-12 col-md-8 mx-auto border p-2">
+        <h3>Add Delivery</h3>
+        <hr />
+        <EditForm Model="@delivery" OnValidSubmit="@((_) => { onsubmit.InvokeAsync(delivery); })">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
+            <label for="name" class="font-weight-bold">Description</label>
+            <InputText class="form-control" @bind-Value="delivery.Details"></InputText>
+            <br />
+            <label for="image" class="font-weight-bold">Category Image</label>
+            <InputFile class="form-control" OnChange="handleFileChange" @bind-Value="delivery.File"></InputFile>
+            <br />
+            <input type="submit" value="Add" class="btn btn-primary" />
+        </EditForm>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public EventCallback click { get; set; }
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+    [Parameter]
+    public OrderDelivery delivery { get; set; } = new OrderDelivery();
+    [Parameter]
+    public EventCallback<OrderDelivery> onsubmit { get; set; }
+    public void handleFileChange(InputFileChangeEventArgs e)
+    {
+        delivery.File = e.File;
+    }
+}
