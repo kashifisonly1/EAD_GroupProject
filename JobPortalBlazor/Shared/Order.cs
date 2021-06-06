@@ -18,8 +18,6 @@ namespace JobPortalBlazor.Shared
 
 		public DateTime EndDate { get; set; }
 
-		public ApplicationUser Freelancer { get; set; } // FK-User
-
 		public ApplicationUser Client { get; set; } // FK-User
 
 		public Gig Gig { get; set; } // FK-Gig

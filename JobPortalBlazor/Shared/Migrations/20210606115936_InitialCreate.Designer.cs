@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobPortalBlazor.Shared.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210606103130_InitialCreate")]
+    [Migration("20210606115936_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -229,9 +229,6 @@ namespace JobPortalBlazor.Shared.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FreelancerId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int?>("GigId")
                         .HasColumnType("int");
 
@@ -244,8 +241,6 @@ namespace JobPortalBlazor.Shared.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
-
-                    b.HasIndex("FreelancerId");
 
                     b.HasIndex("GigId");
 
@@ -503,17 +498,11 @@ namespace JobPortalBlazor.Shared.Migrations
                         .WithMany()
                         .HasForeignKey("ClientId");
 
-                    b.HasOne("JobPortalBlazor.Shared.ApplicationUser", "Freelancer")
-                        .WithMany()
-                        .HasForeignKey("FreelancerId");
-
                     b.HasOne("JobPortalBlazor.Shared.Gig", "Gig")
                         .WithMany()
                         .HasForeignKey("GigId");
 
                     b.Navigation("Client");
-
-                    b.Navigation("Freelancer");
 
                     b.Navigation("Gig");
                 });

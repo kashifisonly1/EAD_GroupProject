@@ -306,7 +306,6 @@ namespace JobPortalBlazor.Shared.Migrations
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FreelancerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ClientId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     GigId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -316,12 +315,6 @@ namespace JobPortalBlazor.Shared.Migrations
                     table.ForeignKey(
                         name: "FK_Orders_AspNetUsers_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_AspNetUsers_FreelancerId",
-                        column: x => x.FreelancerId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -423,11 +416,6 @@ namespace JobPortalBlazor.Shared.Migrations
                 name: "IX_Orders_ClientId",
                 table: "Orders",
                 column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_FreelancerId",
-                table: "Orders",
-                column: "FreelancerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_GigId",

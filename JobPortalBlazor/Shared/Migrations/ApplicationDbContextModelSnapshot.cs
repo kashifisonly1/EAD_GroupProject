@@ -227,9 +227,6 @@ namespace JobPortalBlazor.Shared.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FreelancerId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int?>("GigId")
                         .HasColumnType("int");
 
@@ -242,8 +239,6 @@ namespace JobPortalBlazor.Shared.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
-
-                    b.HasIndex("FreelancerId");
 
                     b.HasIndex("GigId");
 
@@ -501,17 +496,11 @@ namespace JobPortalBlazor.Shared.Migrations
                         .WithMany()
                         .HasForeignKey("ClientId");
 
-                    b.HasOne("JobPortalBlazor.Shared.ApplicationUser", "Freelancer")
-                        .WithMany()
-                        .HasForeignKey("FreelancerId");
-
                     b.HasOne("JobPortalBlazor.Shared.Gig", "Gig")
                         .WithMany()
                         .HasForeignKey("GigId");
 
                     b.Navigation("Client");
-
-                    b.Navigation("Freelancer");
 
                     b.Navigation("Gig");
                 });
