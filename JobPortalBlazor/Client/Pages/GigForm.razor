@@ -1,4 +1,5 @@
-﻿<div style="display: @show_val;">
+﻿@inject CategoryServices catService
+<div style="display: @show_val;">
     <div class="row">
         <div class="col-12 col-md-8 col-lg-6 mx-auto border p-2">
             <h3>Add Gig</h3>
@@ -57,11 +58,9 @@
         request.Image = e.File;
     }
     List<Category> categories = new List<Category>();
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        categories.Add(new Category { ID = 1, ImageUrl = "2", Name = "kashif", Slug = "1234" });
-        categories.Add(new Category { ID = 2, ImageUrl = "2", Name = "kashif", Slug = "1234" });
-        categories.Add(new Category { ID = 3, ImageUrl = "2", Name = "kashif", Slug = "1234" });
-        base.OnInitialized();
+        categories = await catService.getAllCategories();
+        await base.OnInitializedAsync();
     }
 }

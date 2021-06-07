@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JobPortalBlazor.Shared;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace JobPortalBlazor.Server.Controllers
 {
@@ -26,7 +27,6 @@ namespace JobPortalBlazor.Server.Controllers
 		{
 			return await _context.Catogories.ToListAsync();
 		}
-
 		// GET: api/Categories/5
 		[HttpGet("{id}")]
 		public async Task<ActionResult<Category>> GetCategory(int id)

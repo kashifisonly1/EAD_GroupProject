@@ -1,3 +1,4 @@
+using JobPortalBlazor.Client.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +19,15 @@ namespace JobPortalBlazor.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
+            builder.Services.AddTransient<CategoryServices>();
+            builder.Services.AddTransient<UserServices>();
+            builder.Services.AddTransient<Uploader>();
+            builder.Services.AddTransient<GigServices>();
+            builder.Services.AddTransient<RequestServices>();
+            builder.Services.AddTransient<OrderServices>();
+            builder.Services.AddTransient<OrderDeliveryService>();
+            builder.Services.AddTransient<ContactService>();
+            builder.Services.AddTransient<SkillService>();
             await builder.Build().RunAsync();
         }
     }

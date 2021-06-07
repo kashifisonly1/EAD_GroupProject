@@ -1,7 +1,8 @@
-﻿<h3 class="my-2">Manage Categories</h3>
+﻿@inject CategoryServices catService
+<h3 class="my-2">Manage Categories</h3>
 <hr />
 <a @onclick="@((_)=> { show = true; })" class="btn btn-primary my-2">Add Category</a>
-<CategoryForm show="@show" click="@((_)=> { show = false; })" category="@cat"  onsubmit="@((category)=> { AddCategory(category); })"></CategoryForm>
+<CategoryForm show="@show" click="@((_)=> { show = false; })" category="@cat"  onsubmit="@(async (category)=> { await AddCategory(category); })"></CategoryForm>
 <div class="row">
     @foreach (Category cat in categories)
     {
@@ -10,19 +11,23 @@
 </div>
 @code{
     bool show=false;
-    List<Category> categories;
+    List<Category> categories = new List<Category>();
     Category cat = new Category();
-    public void AddCategory(Category category)
+    public async Task AddCategory(Category category)
     {
         if (category.ID == 0)
-            categories.Add(new Category { ID = category.ID, Slug = category.Slug, Image = category.Image, ImageUrl = category.ImageUrl, Name = category.Name });
+        {
+            Category received = await catService.addCategory(category);
+            categories.Add(new Category { ID = received.ID, Slug = received.Slug, Image = received.Image, ImageUrl = received.ImageUrl, Name = received.Name });
+        }
         else
         {
+            Category received = await catService.updateCategory(category);
             for(int i = 0;i<categories.Count; i++)
             {
-                if(categories[i].ID == category.ID)
+                if(categories[i].ID == received.ID)
                 {
-                    categories[i] = new Category { Name = category.Name, ImageUrl = category.ImageUrl, Slug = category.Slug, ID = category.ID };
+                    categories[i] = new Category { Name = received.Name, ImageUrl = received.ImageUrl, Slug = received.Slug, ID = received.ID };
                     break;
                 }
             }
@@ -30,8 +35,9 @@
         cat = new Category();
         show = false;
     }
-    public void DeleteCategory(Category category)
+    public async Task DeleteCategory(Category category)
     {
+        await catService.deleteCategory(category);
         categories.Remove(category);
     }
     public void UpdateBtnClick(Category category)
@@ -39,15 +45,9 @@
         show = true;
         cat = new Category { Name = category.Name, ImageUrl = category.ImageUrl, Slug = category.Slug, ID = category.ID };
     }
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        categories = new List<Category>();
-        categories.Add(new Category { ID = 1, ImageUrl = "download.jpg", Name = "name", Slug = "name" });
-        categories.Add(new Category { ID = 2, ImageUrl = "download.jpg", Name = "name", Slug = "name" });
-        categories.Add(new Category { ID = 3, ImageUrl = "download.jpg", Name = "name", Slug = "name" });
-        categories.Add(new Category { ID = 4, ImageUrl = "download.jpg", Name = "name", Slug = "name" });
-        categories.Add(new Category { ID = 5, ImageUrl = "download.jpg", Name = "name", Slug = "name" });
-        categories.Add(new Category { ID = 6, ImageUrl = "download.jpg", Name = "name", Slug = "name" });
-        base.OnInitialized();
+        categories = await catService.getAllCategories();
+        await base.OnInitializedAsync();
     }
 }

@@ -1,4 +1,5 @@
 ﻿@page "/category/{name}"
+@inject CategoryServices catService
 <h3>Category: @cat.Name</h3>
 <hr />
 @if (MainLayout.current_user.RoleName == "freelancer")
@@ -25,17 +26,11 @@ else
     [Parameter]
     public String name { get; set; }
     Category cat = new Category();
-    List<Gig> gigs;
-    List<PurchaseRequest> bids;
-    protected override void OnInitialized()
+    List<Gig> gigs = new List<Gig>();
+    List<PurchaseRequest> bids = new List<PurchaseRequest>();
+    protected async override Task OnInitializedAsync()
     {
-        cat = new Category { Name = "web dev" };
-        gigs = new List<Gig>();
-        bids = new List<PurchaseRequest>();
-        gigs.Add(new Gig { Title = "title", Price = 12, PriceInterval = "daily", ImageUrl="download.jpg", user = MainLayout.current_user });
-        gigs.Add(new Gig { Title = "title", Price = 12, PriceInterval = "daily", ImageUrl="download.jpg", user = MainLayout.current_user });
-        bids.Add(new PurchaseRequest { Subject = "title", Price = 12, PriceInterval = 1, ImageUrl = "download.jpg", user = MainLayout.current_user });
-        bids.Add(new PurchaseRequest { Subject = "title", Price = 12, PriceInterval = 1, ImageUrl = "download.jpg", user = MainLayout.current_user });
-        base.OnInitialized();
+        cat = await catService.getCategoryBySlug(int.Parse(name));
+        await base.OnInitializedAsync();
     }
 }

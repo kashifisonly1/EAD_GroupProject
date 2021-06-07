@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject CategoryServices catService
 <h1>WELCOME TO JOB PORTAL</h1>
 <hr />
 <div class="row my-3">
@@ -9,12 +10,10 @@
 </div>
 @code{
     List<Category> allcats = new List<Category>();
-    protected override void OnInitialized()
+
+    protected async override Task OnInitializedAsync()
     {
-        allcats.Add(new Category { Name = "web dev", ID = 1, ImageUrl = "download.jpg", Slug = "web-dev" });
-        allcats.Add(new Category { Name = "web dev", ID = 1, ImageUrl = "download.jpg", Slug = "web-dev" });
-        allcats.Add(new Category { Name = "web dev", ID = 1, ImageUrl = "download.jpg", Slug = "web-dev" });
-        allcats.Add(new Category { Name = "web dev", ID = 1, ImageUrl = "download.jpg", Slug = "web-dev" });
-        base.OnInitialized();
+        allcats = await catService.getAllCategories();
+        return;
     }
 }
