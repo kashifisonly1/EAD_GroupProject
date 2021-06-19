@@ -15,5 +15,9 @@ namespace JobPortalBlazor.Client.Services
         {
             this.httpClient = httpClient;
         }
+        public async Task<Models.User> GetUserByID(String id)
+        {
+            return null;
+        }
     }
 }

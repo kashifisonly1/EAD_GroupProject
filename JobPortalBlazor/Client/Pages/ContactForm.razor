@@ -1,4 +1,5 @@
-﻿@page "/contact"
+﻿@inject ContactService contactService
+@page "/contact"
 <h3>Contact US</h3>
 <hr />
 <div class="row">
@@ -21,8 +22,9 @@
 @code {
     public Models.Contact contact = new Models.Contact();
     public String success = "";
-    public void SubmitContact()
+    public async Task SubmitContact()
     {
-        success = "THANKS FOR CONTACTING US, WE WILL RESPOND YOU SOON";
+        if(await contactService.addCategory(contact) != null)
+            success = "THANKS FOR CONTACTING US, WE WILL RESPOND YOU SOON";
     }
 }

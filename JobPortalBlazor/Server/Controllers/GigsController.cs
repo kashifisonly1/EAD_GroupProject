@@ -30,7 +30,25 @@ namespace JobPortalBlazor.Server.Controllers
 				.ThenInclude(g => g.User)
 				.ToListAsync();
 		}
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<Gig>>> GetMyGigs(String userID)
+        {
+			return await _context.Gigs
+				.Include(g => g.Category)
+				.Include(g => g.Freelancer)
+				.ThenInclude(g => g.User)
+				.ToListAsync();
+		}
 
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<Gig>>> GetGigsByCategory(int catID)
+		{
+			return await _context.Gigs
+				.Include(g => g.Category)
+				.Include(g => g.Freelancer)
+				.ThenInclude(g => g.User)
+				.ToListAsync();
+		}
 		// GET: api/Gigs/5
 		[HttpGet("{id}")]
 		public async Task<ActionResult<Gig>> GetGig(int id)

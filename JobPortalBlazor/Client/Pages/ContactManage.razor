@@ -1,4 +1,5 @@
-﻿@page "/admin/contacts"
+﻿@inject ContactService contactService
+@page "/admin/contacts"
 <AdminHeader />
 <h3 class="my-2">Contact Manage</h3>
 <hr />
@@ -21,23 +22,21 @@
                 <td>@contacts[i].Subject</td>
                 <td>@contacts[i].Email</td>
                 <td>@contacts[i].Message</td>
-                <td><button class="btn btn-danger" @onclick="@((_) => { DeleteContact(j.ToString()); })">Delete</button></td>
+                <td><button class="btn btn-danger" @onclick="@(async(_) => { await DeleteContact(contacts[j]); })">Delete</button></td>
             </tr>
         }
     </tbody>
 </table>
 @code {
     public List<Models.Contact> contacts = new List<Models.Contact>();
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        contacts.Add(new Models.Contact { Email = "kashif1@gmail.com", Name = "name", Message = "message", Subject = "subject" });
-        contacts.Add(new Models.Contact { Email = "kashif2@gmail.com", Name = "name", Message = "message", Subject = "subject" });
-        contacts.Add(new Models.Contact { Email = "kashif3@gmail.com", Name = "name", Message = "message", Subject = "subject" });
-        contacts.Add(new Models.Contact { Email = "kashif4@gmail.com", Name = "name", Message = "message", Subject = "subject" });
-        base.OnInitialized();
+        contacts = await contactService.getAllContacts();
+        await base.OnInitializedAsync();
     }
-    public void DeleteContact(String i)
+    public async Task DeleteContact(Contact contact)
     {
-        contacts.RemoveAt(int.Parse(i));
+        await contactService.deleteContact(contact);
+        contacts.Remove(contact);
     }
 }
