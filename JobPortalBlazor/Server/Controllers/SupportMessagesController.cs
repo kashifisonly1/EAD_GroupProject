@@ -13,9 +13,9 @@ namespace JobPortalBlazor.Server.Controllers
 	[ApiController]
 	public class SupportMessagesController : ControllerBase
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly JobPortalDBContext _context;
 
-		public SupportMessagesController(ApplicationDbContext context)
+		public SupportMessagesController(JobPortalDBContext context)
 		{
 			_context = context;
 		}

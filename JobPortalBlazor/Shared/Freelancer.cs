@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace JobPortalBlazor.Shared
 {
-	public class Freelancer
+	public partial class Freelancer
 	{
+		public Freelancer()
+		{
+			Gigs = new HashSet<Gig>();
+			Skills = new HashSet<Skill>();
+		}
+
 		public int Id { get; set; }
-		public ApplicationUser User { get; set; }
+		public string UserId { get; set; }
 		public string Detail { get; set; }
-		public List<Skill> Skills { get; set; }
+
+		public virtual AspNetUser User { get; set; }
+		public virtual ICollection<Gig> Gigs { get; set; }
+		public virtual ICollection<Skill> Skills { get; set; }
 	}
 }

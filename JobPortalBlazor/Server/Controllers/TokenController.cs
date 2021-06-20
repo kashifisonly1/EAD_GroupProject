@@ -19,11 +19,11 @@ namespace JobPortalBlazor.Server.Controllers
 	[ApiController]
 	public class TokenController : ControllerBase
 	{
-		private readonly ApplicationDbContext _context;
-		private readonly UserManager<ApplicationUser> _userManager;
+		private readonly JobPortalDBContext _context;
+		private readonly UserManager<AspNetUser> _userManager;
 		private readonly RoleManager<IdentityRole> _roleManager;
 
-		public TokenController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+		public TokenController(JobPortalDBContext context, UserManager<AspNetUser> userManager, RoleManager<IdentityRole> roleManager)
 		{
 			_context = context;
 			_userManager = userManager;
