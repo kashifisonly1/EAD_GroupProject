@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace JobPortalBlazor.Shared
 {
-	public class Order
+	public partial class Order
 	{
-		public int Id { get; set; } // PK
+		public Order()
+		{
+			OrderDeliveries = new HashSet<OrderDelivery>();
+		}
 
+		public int Id { get; set; }
 		public string Details { get; set; }
-
 		public string Status { get; set; }
-
 		public DateTime StartDate { get; set; }
-
 		public DateTime EndDate { get; set; }
+		public string ClientId { get; set; }
+		public int? GigId { get; set; }
 
-		public ApplicationUser Client { get; set; } // FK-User
-
-		public Gig Gig { get; set; } // FK-Gig
-
+		public virtual AspNetUser Client { get; set; }
+		public virtual Gig Gig { get; set; }
+		public virtual ICollection<OrderDelivery> OrderDeliveries { get; set; }
 	}
 }

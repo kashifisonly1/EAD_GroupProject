@@ -5,14 +5,12 @@ using System.Collections.Generic;
 
 namespace JobPortalBlazor.Shared
 {
-	public partial class SupportMessage
+	public partial class AspNetUserClaim
 	{
 		public int Id { get; set; }
 		public string UserId { get; set; }
-		public DateTime MessageDate { get; set; }
-		public string Subject { get; set; }
-		public string Message { get; set; }
-		public bool IsResponded { get; set; }
+		public string ClaimType { get; set; }
+		public string ClaimValue { get; set; }
 
 		public virtual AspNetUser User { get; set; }
 	}

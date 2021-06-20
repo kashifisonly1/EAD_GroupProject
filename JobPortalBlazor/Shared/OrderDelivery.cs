@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace JobPortalBlazor.Shared
 {
-	public class OrderDelivery
+	public partial class OrderDelivery
 	{
-		public int Id { get; set; } // PK
-
-		public Order Order { get; set; } // FK-Order
-
+		public int Id { get; set; }
+		public int? OrderId { get; set; }
 		public string Details { get; set; }
-
 		public string FileUrl { get; set; }
-
 		public DateTime DeliveryDate { get; set; }
 
+		public virtual Order Order { get; set; }
 	}
 }

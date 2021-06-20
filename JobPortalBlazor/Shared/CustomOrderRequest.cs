@@ -1,29 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace JobPortalBlazor.Shared
 {
-	public class CustomOrderRequest
+	public partial class CustomOrderRequest
 	{
-		public int Id { get; set; } // PK
-
-		public ApplicationUser Client { get; set; } // FK-User
-
+		public int Id { get; set; }
+		public string ClientId { get; set; }
 		public string Title { get; set; }
-
 		public string Description { get; set; }
-
 		public int Duration { get; set; }
-
 		public double Budget { get; set; }
-
 		public DateTime RequestDate { get; set; }
-
-		public Category Category { get; set; } // FK-Category
-
+		public int? CategoryId { get; set; }
 		public string ImageUrl { get; set; }
+
+		public virtual Category Category { get; set; }
+		public virtual AspNetUser Client { get; set; }
 	}
 }
