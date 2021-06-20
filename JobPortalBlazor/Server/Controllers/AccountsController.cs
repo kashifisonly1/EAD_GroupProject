@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 using JobPortalBlazor.Shared;
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,12 +14,12 @@ namespace JobPortalBlazor.Server.Controllers
 	[ApiController]
 	public class AccountsController : ControllerBase
 	{
-		private readonly SignInManager<ApplicationUser> _signInManager;
-		private readonly ApplicationDbContext _context;
-		private readonly UserManager<ApplicationUser> _userManager;
-		private readonly RoleManager<IdentityRole> _roleManager;
+		private readonly SignInManager<AspNetUser> _signInManager;
+		private readonly JobPortalDBContext _context;
+		private readonly UserManager<AspNetUser> _userManager;
+		private readonly RoleManager<AspNetRole> _roleManager;
 
-		public AccountsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
+		public AccountsController(JobPortalDBContext context, UserManager<AspNetUser> userManager, RoleManager<AspNetRole> roleManager, SignInManager<AspNetUser> signInManager)
 		{
 			_context = context;
 			_userManager = userManager;
@@ -31,14 +29,14 @@ namespace JobPortalBlazor.Server.Controllers
 
 		// GET: api/accounts
 		[HttpGet]
-		public async Task<ActionResult<List<ApplicationUser>>> GetUsers()
+		public async Task<ActionResult<List<AspNetUser>>> GetUsers()
 		{
 			return await _context.Users.AsNoTracking().ToListAsync();
 		}
 
 		// GET: api/Accounts/{email}
 		[HttpGet("{email}")]
-		public async Task<ActionResult<ApplicationUser>> GetUser(string email)
+		public async Task<ActionResult<AspNetUser>> GetUser(string email)
 		{
 			var user = await _userManager.FindByEmailAsync(email);
 
@@ -52,7 +50,7 @@ namespace JobPortalBlazor.Server.Controllers
 
 		// POST: api/Accounts
 		[HttpPost]
-		public async Task<ActionResult<ApplicationUser>> PostUser(ApplicationUser user)
+		public async Task<ActionResult<AspNetUser>> PostUser(AspNetUser user)
 		{
 			var result = await _userManager.CreateAsync(user);
 			if (result.Succeeded)
@@ -69,7 +67,7 @@ namespace JobPortalBlazor.Server.Controllers
 
 		// DELETE: api/Accounts/5
 		[HttpDelete("{id}")]
-		public async Task<ActionResult<ApplicationUser>> DeleteAccount(string id)
+		public async Task<ActionResult<AspNetUser>> DeleteAccount(string id)
 		{
 			var user = await _context.Users.FindAsync(id);
 			if (user == null)

@@ -1,7 +1,9 @@
 ﻿using JobPortalBlazor.Shared;
+
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,12 +16,13 @@ namespace JobPortalBlazor.Server.Controllers
 	[ApiController]
 	public class UploadController : ControllerBase
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly JobPortalDBContext _context;
 
-		public UploadController(ApplicationDbContext context)
+		public UploadController(JobPortalDBContext context)
 		{
 			_context = context;
 		}
+
 		[HttpPost]
 		public async Task<ActionResult<String>> Index(IFormFile file)
 		{

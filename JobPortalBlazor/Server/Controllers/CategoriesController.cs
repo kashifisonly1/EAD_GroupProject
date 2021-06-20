@@ -14,9 +14,9 @@ namespace JobPortalBlazor.Server.Controllers
 	[ApiController]
 	public class CategoriesController : ControllerBase
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly JobPortalDBContext _context;
 
-		public CategoriesController(ApplicationDbContext context)
+		public CategoriesController(JobPortalDBContext context)
 		{
 			_context = context;
 		}

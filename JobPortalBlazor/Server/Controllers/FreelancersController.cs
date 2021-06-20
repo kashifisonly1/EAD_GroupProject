@@ -13,9 +13,9 @@ namespace JobPortalBlazor.Server.Controllers
 	[ApiController]
 	public class FreelancersController : ControllerBase
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly JobPortalDBContext _context;
 
-		public FreelancersController(ApplicationDbContext context)
+		public FreelancersController(JobPortalDBContext context)
 		{
 			_context = context;
 		}
@@ -79,7 +79,7 @@ namespace JobPortalBlazor.Server.Controllers
 		[HttpPost]
 		public async Task<ActionResult<Freelancer>> PostFreelancer(Freelancer freelancer)
 		{
-			ApplicationUser user = await _context.Users.FirstOrDefaultAsync(u => u.Id == freelancer.User.Id);
+			AspNetUser user = await _context.Users.FirstOrDefaultAsync(u => u.Id == freelancer.User.Id);
 			freelancer.User = user;
 			_context.Freelancers.Add(freelancer);
 			await _context.SaveChangesAsync();

@@ -13,9 +13,9 @@ namespace JobPortalBlazor.Server.Controllers
 	[ApiController]
 	public class OrdersController : ControllerBase
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly JobPortalDBContext _context;
 
-		public OrdersController(ApplicationDbContext context)
+		public OrdersController(JobPortalDBContext context)
 		{
 			_context = context;
 		}

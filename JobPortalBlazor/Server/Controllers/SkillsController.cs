@@ -13,9 +13,9 @@ namespace JobPortalBlazor.Server.Controllers
 	[ApiController]
 	public class SkillsController : ControllerBase
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly JobPortalDBContext _context;
 
-		public SkillsController(ApplicationDbContext context)
+		public SkillsController(JobPortalDBContext context)
 		{
 			_context = context;
 		}

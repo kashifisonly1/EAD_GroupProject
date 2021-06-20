@@ -13,9 +13,9 @@ namespace JobPortalBlazor.Server.Controllers
 	[ApiController]
 	public class OrderDeliveriesController : ControllerBase
 	{
-		private readonly ApplicationDbContext _context;
+		private readonly JobPortalDBContext _context;
 
-		public OrderDeliveriesController(ApplicationDbContext context)
+		public OrderDeliveriesController(JobPortalDBContext context)
 		{
 			_context = context;
 		}
@@ -24,7 +24,7 @@ namespace JobPortalBlazor.Server.Controllers
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<OrderDelivery>>> GetOrdersDelivery()
 		{
-			return await _context.OrdersDelivery
+			return await _context.OrderDeliveries
 				.Include(o => o.Order)
 				.ThenInclude(o => o.Gig)
 				.ThenInclude(o => o.Freelancer)
@@ -38,7 +38,7 @@ namespace JobPortalBlazor.Server.Controllers
 		[HttpGet("{id}")]
 		public async Task<ActionResult<OrderDelivery>> GetOrderDelivery(int id)
 		{
-			var orderDelivery = await _context.OrdersDelivery.FindAsync(id);
+			var orderDelivery = await _context.OrderDeliveries.FindAsync(id);
 
 			if (orderDelivery == null)
 			{
@@ -82,7 +82,7 @@ namespace JobPortalBlazor.Server.Controllers
 		[HttpPost]
 		public async Task<ActionResult<OrderDelivery>> PostOrderDelivery(OrderDelivery orderDelivery)
 		{
-			_context.OrdersDelivery.Add(orderDelivery);
+			_context.OrderDeliveries.Add(orderDelivery);
 			await _context.SaveChangesAsync();
 
 			return CreatedAtAction("GetOrderDelivery", new { id = orderDelivery.Id }, orderDelivery);
@@ -92,13 +92,13 @@ namespace JobPortalBlazor.Server.Controllers
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteOrderDelivery(int id)
 		{
-			var orderDelivery = await _context.OrdersDelivery.FindAsync(id);
+			var orderDelivery = await _context.OrderDeliveries.FindAsync(id);
 			if (orderDelivery == null)
 			{
 				return NotFound();
 			}
 
-			_context.OrdersDelivery.Remove(orderDelivery);
+			_context.OrderDeliveries.Remove(orderDelivery);
 			await _context.SaveChangesAsync();
 
 			return NoContent();
@@ -106,7 +106,7 @@ namespace JobPortalBlazor.Server.Controllers
 
 		private bool OrderDeliveryExists(int id)
 		{
-			return _context.OrdersDelivery.Any(e => e.Id == id);
+			return _context.OrderDeliveries.Any(e => e.Id == id);
 		}
 	}
 }
