@@ -16,12 +16,14 @@ namespace BlazorWithIdentity.Server.Controllers
 	public class AuthorizeController : ControllerBase
 	{
 		private readonly UserManager<AspNetUser> _userManager;
+		private readonly RoleManager<IdentityRole> _roleManager;
 		private readonly SignInManager<AspNetUser> _signInManager;
 
-		public AuthorizeController(UserManager<AspNetUser> userManager, SignInManager<AspNetUser> signInManager)
+		public AuthorizeController(UserManager<AspNetUser> userManager, SignInManager<AspNetUser> signInManager, RoleManager<IdentityRole> roleManager)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
+			_roleManager = roleManager;
 		}
 
 		[HttpPost]
@@ -41,6 +43,15 @@ namespace BlazorWithIdentity.Server.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Register(RegisterParameters parameters)
 		{
+			string[] roles = { "Admin", "Freelancer", "Client" };
+			foreach (var item in roles)
+			{
+				if (!await _roleManager.RoleExistsAsync(item))
+				{
+					await _roleManager.CreateAsync(new IdentityRole(item));
+				}
+			}
+
 			var user = new AspNetUser
 			{
 				UserName = parameters.UserName,
@@ -50,6 +61,12 @@ namespace BlazorWithIdentity.Server.Controllers
 			};
 			var result = await _userManager.CreateAsync(user, parameters.Password);
 			if (!result.Succeeded) return BadRequest(result.Errors.FirstOrDefault()?.Description);
+
+			user = await _userManager.FindByEmailAsync(user.Email);
+			if (_userManager.Users.Count() == 0)
+				await _userManager.AddToRoleAsync(user, "Admin");
+			else
+				await _userManager.AddToRoleAsync(user, "Client");
 
 			return await Login(new LoginParameters
 			{
