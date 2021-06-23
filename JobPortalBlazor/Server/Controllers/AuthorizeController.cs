@@ -47,9 +47,7 @@ namespace BlazorWithIdentity.Server.Controllers
 			foreach (var item in roles)
 			{
 				if (!await _roleManager.RoleExistsAsync(item))
-				{
 					await _roleManager.CreateAsync(new IdentityRole(item));
-				}
 			}
 
 			var user = new AspNetUser
@@ -63,7 +61,8 @@ namespace BlazorWithIdentity.Server.Controllers
 			if (!result.Succeeded) return BadRequest(result.Errors.FirstOrDefault()?.Description);
 
 			user = await _userManager.FindByEmailAsync(user.Email);
-			if (_userManager.Users.Count() == 0)
+
+			if (!_userManager.Users.Any())
 				await _userManager.AddToRoleAsync(user, "Admin");
 			else
 				await _userManager.AddToRoleAsync(user, "Client");
