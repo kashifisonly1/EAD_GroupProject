@@ -41,8 +41,13 @@ namespace BlazorWithIdentity.Server.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Register(RegisterParameters parameters)
 		{
-			var user = new AspNetUser();
-			user.UserName = parameters.UserName;
+			var user = new AspNetUser
+			{
+				UserName = parameters.UserName,
+				ProfileImage = parameters.ImageUrl,
+				Email = parameters.UserEmail,
+				FullName = parameters.UserName
+			};
 			var result = await _userManager.CreateAsync(user, parameters.Password);
 			if (!result.Succeeded) return BadRequest(result.Errors.FirstOrDefault()?.Description);
 

@@ -133,12 +133,12 @@ namespace JobPortalBlazor.Server
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-			{
-				//Note: Microsoft recommends to NOT migrate your database at Startup. 
-				//You should consider your migration strategy according to the guidelines
-				serviceScope.ServiceProvider.GetService<JobPortalDBContext>().Database.Migrate();
-			}
+			//using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+			//{
+			//	//Note: Microsoft recommends to NOT migrate your database at Startup. 
+			//	//You should consider your migration strategy according to the guidelines
+			//	serviceScope.ServiceProvider.GetService<JobPortalDBContext>().Database.Migrate();
+			//}
 
 			if (env.IsDevelopment())
 			{
