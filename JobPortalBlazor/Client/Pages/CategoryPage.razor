@@ -1,5 +1,7 @@
 ﻿@page "/category/{name}"
 @inject CategoryServices catService
+@inject RequestServices reqService
+@inject GigServices gigService
 <h3>Category: @cat.Name</h3>
 <hr />
 @if (MainLayout.current_user.RoleName == "freelancer")
@@ -31,6 +33,8 @@ else
     protected async override Task OnInitializedAsync()
     {
         cat = await catService.getCategoryBySlug(int.Parse(name));
+        gigs = await gigService.getGigsByCategory(cat.ID);
+        bids = await reqService.getRequestsByCategory(cat.ID);
         await base.OnInitializedAsync();
     }
 }

@@ -24,14 +24,13 @@ namespace JobPortalBlazor.Client.Services
 			return cats;
 		}
 
-		public async Task<Models.Contact> addCategory(Models.Contact contact)
-		{
-			JobPortalBlazor.Shared.SupportMessage sendCat = new JobPortalBlazor.Shared.SupportMessage { Id = 0, MessageDate = DateTime.Now, Subject = contact.Subject, Message = contact.Message, IsResponded = false, User = new JobPortalBlazor.Shared.AspNetUser() };
-			HttpResponseMessage receivedCat = await this.httpClient.PostAsJsonAsync<JobPortalBlazor.Shared.SupportMessage>("/api/SupportMessages", sendCat);
-			JobPortalBlazor.Shared.SupportMessage cat = await receivedCat.Content.ReadFromJsonAsync<JobPortalBlazor.Shared.SupportMessage>();
-			return new Models.Contact { ID = cat.Id, Name = cat.User.FullName, Subject = cat.Subject, Email = cat.User.Email, Message = cat.Message };
-		}
-
+        public async Task<Models.Contact> addCategory(Models.Contact contact)
+        {
+            JobPortalBlazor.Shared.SupportMessage sendCat = new JobPortalBlazor.Shared.SupportMessage { Id = 0, MessageDate=DateTime.Now, Subject=contact.Subject, Message=contact.Message, IsResponded=false, User=new JobPortalBlazor.Shared.AspNetUser() };
+            HttpResponseMessage receivedCat = await this.httpClient.PostAsJsonAsync<JobPortalBlazor.Shared.SupportMessage>("/api/SupportMessages", sendCat);
+            JobPortalBlazor.Shared.SupportMessage cat = await receivedCat.Content.ReadFromJsonAsync<JobPortalBlazor.Shared.SupportMessage>();
+            return new Models.Contact { ID = cat.Id, Name = cat.User.FullName, Subject = cat.Subject, Email = cat.User.Email, Message = cat.Message };
+        }
 		public async Task<int> deleteContact(Models.Contact contact)
 		{
 			await this.httpClient.DeleteAsync("/api/SupportMessages/" + contact.ID);

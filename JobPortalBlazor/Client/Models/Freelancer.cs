@@ -17,5 +17,24 @@ namespace JobPortalBlazor.Client.Models
         {
             UserSkill.Add(s);
         }
+
+        public Freelancer() { }
+
+        public Freelancer(JobPortalBlazor.Shared.Freelancer f) : base(f.User)
+        {
+            foreach (JobPortalBlazor.Shared.Skill skill in f.Skills)
+                UserSkill.Add(new Skill(skill));
+            this.Detail = f.Detail;
+        }
+
+        public static implicit operator JobPortalBlazor.Shared.Freelancer(Freelancer f)
+        {
+            JobPortalBlazor.Shared.Freelancer t = new JobPortalBlazor.Shared.Freelancer();
+            foreach (Skill skill in f.UserSkill)
+                t.Skills.Add(skill);
+            t.Detail = f.Detail;
+            t.UserId = f.UserID;
+            return t;
+        }
     }
 }

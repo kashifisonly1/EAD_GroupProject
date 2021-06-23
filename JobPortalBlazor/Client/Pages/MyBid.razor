@@ -1,8 +1,9 @@
 ﻿@page "/client/my-request"
+@inject RequestServices reqService
 <ClientHeader></ClientHeader>
 <h3 class="my-2">My Requests</h3>
 <a @onclick="@((_)=> { show = true; })" class="btn btn-primary my-2">Add request</a>
-<RequestForm show="@show" click="@((_)=> { show = false; })" request="@req" onsubmit="@((request)=> { AddRequest(request); })"></RequestForm>
+<RequestForm show="@show" click="@((_)=> { show = false; })" request="@req" onsubmit="@(async(request)=> { await AddRequest(request); })"></RequestForm>
 <div class="row">
     @foreach (PurchaseRequest cat in purchaseRequests)
     {
@@ -13,17 +14,20 @@
     List<PurchaseRequest> purchaseRequests = new List<PurchaseRequest>();
     bool show = false;
     PurchaseRequest req = new PurchaseRequest { user = MainLayout.current_user, UserID = MainLayout.current_user.UserID };
-    public void AddRequest(PurchaseRequest request)
+    public  async Task AddRequest(PurchaseRequest request)
     {
         if (request.RequestID == 0)
-            purchaseRequests.Add(new PurchaseRequest { RequestID = request.RequestID, category = request.category, Image = request.Image, CategoryID = request.CategoryID, Description = request.Description, ImageUrl = request.ImageUrl, Price = request.Price, user = request.user, UserID = request.UserID, PriceInterval = request.PriceInterval, Subject = request.Subject });
+        {
+            PurchaseRequest g = await reqService.addRequest(request);
+            purchaseRequests.Add(g);
+        }
         else
         {
             for (int i = 0; i < purchaseRequests.Count; i++)
             {
                 if (purchaseRequests[i].RequestID == request.RequestID)
                 {
-                    purchaseRequests[i] = new PurchaseRequest { RequestID = request.RequestID, category = request.category, Image = request.Image, CategoryID = request.CategoryID, Description = request.Description, ImageUrl = request.ImageUrl, Price = request.Price, user = request.user, UserID = request.UserID, PriceInterval = request.PriceInterval, Subject = request.Subject };
+                    purchaseRequests[i] = await reqService.updateRequest(request);
                     break;
                 }
             }
@@ -31,8 +35,9 @@
         req = new PurchaseRequest { user = MainLayout.current_user, UserID = MainLayout.current_user.UserID };
         show = false;
     }
-    public void DeleteRequest(PurchaseRequest request)
+    public async Task DeleteRequest(PurchaseRequest request)
     {
+        await reqService.deleteRequest(request);
         purchaseRequests.Remove(request);
     }
     public void UpdateBtnClick(PurchaseRequest request)
@@ -40,10 +45,10 @@
         show = true;
         req = new PurchaseRequest { RequestID = request.RequestID, category = request.category, Image = request.Image, CategoryID = request.CategoryID, Description = request.Description, ImageUrl = request.ImageUrl, Price = request.Price, user = request.user, UserID = request.UserID, PriceInterval = request.PriceInterval, Subject = request.Subject };
     }
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        purchaseRequests = new List<PurchaseRequest>();
-        base.OnInitialized();
+        purchaseRequests = await reqService.getMyRequest(MainLayout.current_user.UserID);
+        await base.OnInitializedAsync();
     }
 
 }

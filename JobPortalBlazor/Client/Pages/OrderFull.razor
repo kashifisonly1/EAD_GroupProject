@@ -1,4 +1,6 @@
 ﻿@page "/order/{id}"
+@inject OrderServices orderService
+@inject OrderDeliveryService odService
 <h3>Order Details</h3>
 <hr />
 <div class="row">
@@ -37,16 +39,17 @@
     public Order order;
     List<OrderDelivery> deliveries = new List<OrderDelivery>();
     OrderDelivery delivery;
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        order = new Order { Freelancer = MainLayout.current_user, Client = MainLayout.current_user, Details = "this is details", StartDate = DateTime.Now, EndDate = DateTime.Now, Status = "pending" };
+        order = await orderService.getOrderByID(int.Parse(id));
         delivery = new OrderDelivery { order = order };
-        deliveries.Add(new OrderDelivery { Date = DateTime.Now, Details = "this is details", FileURL = "" });
-        base.OnInitialized();
+        deliveries = await odService.getAllOrderDeliviries(int.Parse(id));
+        await base.OnInitializedAsync();
     }
-    public void addDelivery(OrderDelivery or)
+    public async Task addDelivery(OrderDelivery or)
     {
-        deliveries.Add(new OrderDelivery { Date = DateTime.Now, File = or.File, FileURL = or.FileURL, ID = or.ID, order = or.order, OrderID = or.OrderID, Details=or.Details });
+        OrderDelivery d = await odService.addOrderDelivery(or);
+        deliveries.Add(d);
         delivery = new OrderDelivery { order = order };
     }
 }
