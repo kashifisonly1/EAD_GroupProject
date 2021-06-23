@@ -1,5 +1,5 @@
 ﻿@inherits LayoutComponentBase
-
+@inject UserServices userService
 <div class="page">
     <div class="sidebar">
         <NavMenu current_user="@current_user" />
@@ -11,10 +11,5 @@
     </div>
 </div>
 @code{
-    public static User current_user;
-    protected override void OnInitialized()
-    {
-        current_user = new User { RoleName="admin"};
-        base.OnInitialized();
-    }
+    public static User current_user = null;
 }

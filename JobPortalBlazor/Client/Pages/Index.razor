@@ -13,6 +13,7 @@
 
     protected async override Task OnInitializedAsync()
     {
+        Console.WriteLine("----------------------category--------------------");
         allcats = await catService.getAllCategories();
         return;
     }

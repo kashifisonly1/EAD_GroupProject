@@ -16,6 +16,12 @@ namespace JobPortalBlazor.Client.Services
 		{
 			this.httpClient = httpClient;
 		}
+		public async Task<Models.User> GetCurrentUser()
+        {
+			Models.User user =
+			await this.httpClient.GetFromJsonAsync<Models.User>("/api/Authorize/CurrentUser");
+			return user;
+		}
 		public async Task<Models.User> GetUserByID(String id)
 		{
 			await Task.Delay(1);

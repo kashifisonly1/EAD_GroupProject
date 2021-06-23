@@ -9,15 +9,10 @@ namespace JobPortalBlazor.Client.Services
 {
     public class OrderDeliveryService
     {
-        [inject]
         Uploader uploader { get; set; }
-        [inject]
-        CategoryServices catService;
-        [inject]
-        UserServices userServices;
         private readonly HttpClient httpClient;
 
-        public OrderDeliveryService(HttpClient httpClient) => this.httpClient = httpClient;
+        public OrderDeliveryService(HttpClient httpClient) { this.httpClient = httpClient; uploader = new Uploader(httpClient); }
 
         public async Task<List<Models.OrderDelivery>> getAllOrderDeliviries(int id)
         {
@@ -31,6 +26,7 @@ namespace JobPortalBlazor.Client.Services
         public async Task<Models.OrderDelivery> addOrderDelivery(Models.OrderDelivery gig)
         {
             gig.ID = 0;
+            gig.FileURL = await uploader.UploadFile(gig.File);
             HttpResponseMessage receivedCat = await this.httpClient.PostAsJsonAsync<JobPortalBlazor.Shared.OrderDelivery>("/api/OrderDeliveries", gig);
             JobPortalBlazor.Shared.OrderDelivery cat = await receivedCat.Content.ReadFromJsonAsync<JobPortalBlazor.Shared.OrderDelivery>();
             return new Models.OrderDelivery(cat);

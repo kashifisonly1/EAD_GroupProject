@@ -14,11 +14,10 @@ namespace JobPortalBlazor.Client.Services
 {
     public class CategoryServices
     {
-        [inject]
         Uploader uploader { get; set; }
         private readonly HttpClient httpClient;
         
-        public CategoryServices(HttpClient httpClient) => this.httpClient = httpClient;
+        public CategoryServices(HttpClient httpClient) { this.httpClient = httpClient; uploader = new Uploader(httpClient); }
         public async Task< List<Models.Category> > getAllCategories()
         {
             JobPortalBlazor.Shared.Category[] catList = 

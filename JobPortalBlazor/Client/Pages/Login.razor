@@ -1,5 +1,6 @@
 ﻿@page "/login"
 @using JobPortalBlazor.Shared
+@inject UserServices userService
 @inject NavigationManager navigationManager
 @inject IdentityAuthenticationStateProvider authStateProvider
 <h3>Login Page</h3>
@@ -30,6 +31,7 @@
         try
         {
             await authStateProvider.Login(loginParameters);
+            MainLayout.current_user = await userService.GetCurrentUser();
             navigationManager.NavigateTo("");
         }
         catch (Exception ex)

@@ -9,8 +9,6 @@ namespace JobPortalBlazor.Client.Services
 {
 	public class ContactService
 	{
-		[inject]
-		Uploader uploader { get; set; }
 		private readonly HttpClient httpClient;
 
 		public ContactService(HttpClient httpClient) => this.httpClient = httpClient;

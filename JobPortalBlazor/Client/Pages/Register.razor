@@ -1,5 +1,6 @@
 ﻿@page "/register"
 @using JobPortalBlazor.Shared
+@inject UserServices userService
 @inject NavigationManager navigationManager
 @inject IdentityAuthenticationStateProvider authStateProvider
 <h3>Register Page</h3>
@@ -44,6 +45,7 @@
             registerParameters.UserEmail = user.UserEmail;
 
             await authStateProvider.Register(registerParameters);
+            MainLayout.current_user = await userService.GetCurrentUser();
             navigationManager.NavigateTo("");
         }
         catch (Exception ex)
@@ -52,11 +54,6 @@
         }
     }
 
-    public void SubmitUser()
-    {
-        //--------------------------------------
-        success = "THANKS FOR CONTACTING US, WE WILL RESPOND YOU SOON";
-    }
     public void handleFileChange(InputFileChangeEventArgs e)
     {
         user.Image = e.File;

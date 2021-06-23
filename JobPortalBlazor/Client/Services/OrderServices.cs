@@ -9,12 +9,6 @@ namespace JobPortalBlazor.Client.Services
 {
     public class OrderServices
     {
-        [inject]
-        Uploader uploader { get; set; }
-        [inject]
-        CategoryServices catService;
-        [inject]
-        UserServices userServices;
         private readonly HttpClient httpClient;
 
         public OrderServices(HttpClient httpClient) => this.httpClient = httpClient;

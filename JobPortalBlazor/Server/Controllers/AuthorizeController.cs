@@ -84,12 +84,23 @@ namespace BlazorWithIdentity.Server.Controllers
 		}
 
 		[HttpGet]
-		public async Task<AuthUserData> CurrentUser()
+		public async Task<ActionResult<JobPortalBlazor.Client.Models.User>> CurrentUser()
 		{
 			var user = await _userManager.GetUserAsync(HttpContext.User);
-			await Task.Delay(3000);
+			if (user == null)
+				return new JobPortalBlazor.Client.Models.User();
 			var roles = await _userManager.GetRolesAsync(user);
-			return new AuthUserData { roles = roles, user = user };
+			JobPortalBlazor.Client.Models.User user_data = new JobPortalBlazor.Client.Models.User { 
+				UserID=user.Id,
+				UserName=user.FullName,
+				UserEmail=user.Email,
+				ImageUrl=user.ProfileImage,
+				RoleName="Client"
+			};
+			foreach (string s in roles)
+				if (s != "Client")
+					user_data.RoleName = s;
+			return user_data;
 		}
 
 		[HttpGet]

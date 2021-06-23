@@ -9,15 +9,10 @@ namespace JobPortalBlazor.Client.Services
 {
     public class RequestServices
     {
-        [inject]
         Uploader uploader { get; set; }
-        [inject]
-        CategoryServices catService;
-        [inject]
-        UserServices userServices;
         private readonly HttpClient httpClient;
 
-        public RequestServices(HttpClient httpClient) => this.httpClient = httpClient;
+        public RequestServices(HttpClient httpClient) { this.httpClient = httpClient; uploader = new Uploader(httpClient); }
 
         public async Task<List<Models.PurchaseRequest>> getMyRequest(String userID)
         {
