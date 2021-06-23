@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BlazorWithIdentity.Server.Controllers
@@ -83,12 +84,20 @@ namespace BlazorWithIdentity.Server.Controllers
 		}
 
 		[HttpGet]
+		public async Task<AspNetUser> CurrentUser()
+		{
+			var user = await _userManager.GetUserAsync(HttpContext.User);
+			await Task.Delay(3000);
+			var roles = await _userManager.GetRolesAsync(user);
+			return user;
+		}
+
+		[HttpGet]
 		public UserInfo UserInfo()
 		{
 			//var user = await _userManager.GetUserAsync(HttpContext.User);
 			return BuildUserInfo();
 		}
-
 
 		private UserInfo BuildUserInfo()
 		{

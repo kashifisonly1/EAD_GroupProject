@@ -35,9 +35,10 @@ namespace JobPortalBlazor.Server
 		{
 			services.AddDbContext<JobPortalDBContext>();
 
-			services.AddDefaultIdentity<AspNetUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddRoles<IdentityRole>()
-				.AddEntityFrameworkStores<JobPortalDBContext>();
+			services.AddIdentity<AspNetUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+				//.AddRoles<IdentityRole>()
+				.AddEntityFrameworkStores<JobPortalDBContext>()
+				.AddDefaultTokenProviders();
 
 			services.Configure<IdentityOptions>(options =>
 			{
@@ -68,26 +69,26 @@ namespace JobPortalBlazor.Server
 				};
 			});
 
-			services.AddControllersWithViews();
-			services.AddRazorPages();
+			services.AddControllers();
+			//services.AddRazorPages();
 
-			services.AddAuthentication(options =>
-			{
-				options.DefaultAuthenticateScheme = "JwtBearer";
-				options.DefaultChallengeScheme = "JwtBearer";
-			})
-				.AddJwtBearer("JwtBearer", jwtBearerOptions =>
-				{
-					jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
-					{
-						ValidateIssuerSigningKey = true,
-						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsMySuperSecretSecurityKeyDoNotShare")),
-						ValidateIssuer = false,
-						ValidateAudience = false,
-						ValidateLifetime = true,
-						ClockSkew = TimeSpan.FromMinutes(5)
-					};
-				});
+			//services.AddAuthentication(options =>
+			//{
+			//	options.DefaultAuthenticateScheme = "JwtBearer";
+			//	options.DefaultChallengeScheme = "JwtBearer";
+			//})
+			//	.AddJwtBearer("JwtBearer", jwtBearerOptions =>
+			//	{
+			//		jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+			//		{
+			//			ValidateIssuerSigningKey = true,
+			//			IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsMySuperSecretSecurityKeyDoNotShare")),
+			//			ValidateIssuer = false,
+			//			ValidateAudience = false,
+			//			ValidateLifetime = true,
+			//			ClockSkew = TimeSpan.FromMinutes(5)
+			//		};
+			//	});
 
 			services.AddSwaggerGen(setup =>
 			{
@@ -176,8 +177,8 @@ namespace JobPortalBlazor.Server
 
 			app.UseEndpoints(endpoints =>
 			{
-				endpoints.MapRazorPages();
-				endpoints.MapControllers();
+				endpoints.MapDefaultControllerRoute();
+				//endpoints.MapControllers();
 				endpoints.MapFallbackToFile("index.html");
 			});
 		}
