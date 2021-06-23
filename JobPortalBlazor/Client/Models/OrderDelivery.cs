@@ -21,6 +21,27 @@ namespace JobPortalBlazor.Client.Models
         [Required]
         public IBrowserFile File { get; set; }
         public DateTime Date;
+        
+        public OrderDelivery() { }
 
+        public OrderDelivery(JobPortalBlazor.Shared.OrderDelivery o)
+        {
+            ID = o.Id;
+            OrderID = (int)o.OrderId;
+            this.order = new Order(o.Order);
+            Details = o.Details;
+            FileURL = o.FileUrl;
+            Date = o.DeliveryDate;
+        }
+        public static implicit operator JobPortalBlazor.Shared.OrderDelivery(OrderDelivery o)
+        {
+            JobPortalBlazor.Shared.OrderDelivery d = new JobPortalBlazor.Shared.OrderDelivery();
+            d.Id = o.ID;
+            d.OrderId = o.OrderID;
+            d.Details = o.Details;
+            d.FileUrl = o.FileURL;
+            d.DeliveryDate = o.Date;
+            return d;
+        }
     }
 }

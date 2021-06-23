@@ -1,11 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace JobPortalBlazor.Client.Services
 {
     public class RequestServices
     {
+        [inject]
+        Uploader uploader { get; set; }
+        [inject]
+        CategoryServices catService;
+        [inject]
+        UserServices userServices;
+        private readonly HttpClient httpClient;
+
+        public RequestServices(HttpClient httpClient) => this.httpClient = httpClient;
+
+        public async Task<List<Models.PurchaseRequest>> getMyRequest(String userID)
+        {
+            List<Models.PurchaseRequest> req = new List<Models.PurchaseRequest>();
+            JobPortalBlazor.Shared.CustomOrderRequest[] fList =
+                await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest[]>("/api/CustomOrderRequests");
+            foreach (JobPortalBlazor.Shared.CustomOrderRequest f in fList)
+                if (userID == f.Client.Id)
+                    req.Add(new Models.PurchaseRequest(f));
+            return req;
+        }
+
+        public async Task<List<Models.PurchaseRequest>> getRequestsByCategory(int catID)
+        {
+            List<Models.PurchaseRequest> gigs = new List<Models.PurchaseRequest>();
+            JobPortalBlazor.Shared.Category cat = await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Category>("/api/Categories/" + catID);
+            foreach (JobPortalBlazor.Shared.CustomOrderRequest g in cat.CustomOrderRequests)
+                gigs.Add(new Models.PurchaseRequest(g));
+            return gigs;
+        }
+
+        public async Task<Models.PurchaseRequest> getRequestByID(int id)
+        {
+            JobPortalBlazor.Shared.CustomOrderRequest cat = await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest>("/api/CustomOrderRequests/" + id);
+            return new Models.PurchaseRequest(cat);
+        }
+
+        public async Task<Models.PurchaseRequest> addRequest(Models.PurchaseRequest gig)
+        {
+            gig.RequestID = 0;
+            gig.ImageUrl = await uploader.UploadFile(gig.Image);
+            HttpResponseMessage receivedCat = await this.httpClient.PostAsJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest>("/api/CustomOrderRequests", gig);
+            JobPortalBlazor.Shared.CustomOrderRequest cat = await receivedCat.Content.ReadFromJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest>();
+            return new Models.PurchaseRequest(cat);
+        }
+
+        public async Task<Models.PurchaseRequest> updateRequest(Models.PurchaseRequest category)
+        {
+            category.ImageUrl = await uploader.UploadFile(category.Image);
+            HttpResponseMessage receivedCat = await this.httpClient.PutAsJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest>("/api/CustomOrderRequests/" + category.RequestID, category);
+            return category;
+        }
+
+        public async Task<int> deleteRequest(Models.PurchaseRequest category)
+        {
+            await this.httpClient.DeleteAsync("/api/CustomOrderRequests/" + category.RequestID);
+            return category.RequestID;
+        }
     }
 }

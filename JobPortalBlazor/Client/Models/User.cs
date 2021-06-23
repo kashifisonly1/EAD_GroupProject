@@ -19,5 +19,23 @@ namespace JobPortalBlazor.Client.Models
         public string RoleName { get; set; }
         [Required]
         public IBrowserFile Image { get; set; }
+
+        public User() { }
+        public User(JobPortalBlazor.Shared.AspNetUser u)
+        {
+            UserID = u.Id;
+            UserEmail = u.Email;
+            UserName = u.FullName;
+            ImageUrl = u.ProfileImage;
+        }
+        public static implicit operator JobPortalBlazor.Shared.AspNetUser (User u)
+        {
+            JobPortalBlazor.Shared.AspNetUser a = new JobPortalBlazor.Shared.AspNetUser();
+            a.Id = u.UserID;
+            a.FullName = u.UserName;
+            a.Email = u.UserEmail;
+            a.ProfileImage = u.ImageUrl;
+            return a;
+        }
     }
 }

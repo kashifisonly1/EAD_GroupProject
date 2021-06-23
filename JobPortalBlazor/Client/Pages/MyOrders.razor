@@ -1,4 +1,5 @@
 ﻿@page "/user/my-order"
+@inject OrderServices orderService
 @if (MainLayout.current_user.RoleName == "client") { 
 <ClientHeader></ClientHeader>
 }
@@ -29,9 +30,9 @@ else{
 @code{
     bool show = false;
     List<Order> orders = new List<Order>();
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        orders.Add(new Order { Freelancer=MainLayout.current_user, Client=MainLayout.current_user, Details="this is details", Status="pending"});
-        base.OnInitialized();
+        orders = await orderService.getMyOrders(MainLayout.current_user.UserID);
+        await base.OnInitializedAsync();
     }
 }

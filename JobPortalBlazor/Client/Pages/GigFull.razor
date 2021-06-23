@@ -1,4 +1,5 @@
 ﻿@page "/gig/{id}"
+@inject GigServices gigService
 <h3 class="my-2">@gig.Title</h3>
 <hr />
 <h5>@gig.Price</h5>
@@ -13,10 +14,10 @@
     public String id { get; set; }
     Gig gig = new Gig();
     Order order;
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        gig = new Gig { Title = "this is title", Description = "this is my descriotin", ImageUrl = "download.jpg", Price = 10, PriceInterval = "daily", user = MainLayout.current_user };
-        order = new Order { Freelancer = MainLayout.current_user, Client = gig.user, Status = "pending" };
-        base.OnInitialized();
+        gig = await gigService.getGigByID(int.Parse(id));
+        order = new Order { Freelancer = gig.user, Client = MainLayout.current_user, Status = "pending", Gig = gig };
+        await base.OnInitializedAsync();
     }
 }

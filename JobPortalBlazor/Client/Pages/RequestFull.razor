@@ -1,4 +1,5 @@
 ﻿@page "/request/{id}"
+@inject RequestServices rs
 <h3 class="my-2">@gig.Subject</h3>
 <hr />
 <h5>@gig.Price</h5>
@@ -14,10 +15,10 @@
     public String id { get; set; }
     PurchaseRequest gig = new PurchaseRequest();
     Order order;
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        gig = new PurchaseRequest { Subject = "this is title", Description = "this is my descriotin", ImageUrl = "download.jpg", Price = 10, user = MainLayout.current_user };
+        gig = await rs.getRequestByID(int.Parse(id));
         order = new Order { Client = MainLayout.current_user, Freelancer = gig.user, Status = "pending" };
-        base.OnInitialized();
+        await base.OnInitializedAsync();
     }
 }
