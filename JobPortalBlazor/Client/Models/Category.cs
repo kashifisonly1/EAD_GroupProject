@@ -33,6 +33,7 @@ namespace JobPortalBlazor.Client.Models
             c.ImageLink = cat.ImageUrl;
             c.Name = cat.Name;
             c.Slug = cat.Slug;
+            return c;
         }
     }
 }
