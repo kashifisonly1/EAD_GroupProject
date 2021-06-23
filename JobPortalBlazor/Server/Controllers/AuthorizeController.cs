@@ -27,7 +27,7 @@ namespace BlazorWithIdentity.Server.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Login(LoginParameters parameters)
 		{
-			var user = await _userManager.FindByNameAsync(parameters.UserName);
+			var user = await _userManager.FindByEmailAsync(parameters.UserName);
 			if (user == null) return BadRequest("User does not exist");
 			var singInResult = await _signInManager.CheckPasswordSignInAsync(user, parameters.Password, false);
 			if (!singInResult.Succeeded) return BadRequest("Invalid password");

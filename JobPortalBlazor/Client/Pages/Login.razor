@@ -1,29 +1,40 @@
 ﻿@page "/login"
+@using JobPortalBlazor.Shared
+@inject NavigationManager navigationManager
+@inject IdentityAuthenticationStateProvider authStateProvider
 <h3>Login Page</h3>
 <hr />
 <div class="row">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
-        <EditForm Model="@user" OnValidSubmit="SubmitUser">
+        <EditForm Model="@loginParameters" OnValidSubmit="OnSubmit">
             <DataAnnotationsValidator></DataAnnotationsValidator>
             <ValidationSummary></ValidationSummary>
             <label for="email">Email</label>
-            <InputText type="email" @bind-Value="user.email" class="form-control mb-3"></InputText>
+            <InputText type="email" @bind-Value="loginParameters.UserName" class="form-control mb-3"></InputText>
             <label for="password">Password</label>
-            <InputText type="password" @bind-Value="user.password" class="form-control mb-3"></InputText>
+            <InputText type="password" @bind-Value="loginParameters.Password" class="form-control mb-3"></InputText>
             <input type="submit" value="Login" class="btn btn-primary" />
+
+            <label class="text-danger">@error</label>
         </EditForm>
     </div>
 </div>
 @code {
-    LoginModel user = new LoginModel();
-    public void SubmitUser()
+
+    LoginParameters loginParameters { get; set; } = new LoginParameters();
+    string error { get; set; }
+
+    async Task OnSubmit()
     {
-    }
-    public class LoginModel
-    {
-        [Required]
-        public String email { get; set; }
-        [Required]
-        public String password { get; set; }    
+        error = null;
+        try
+        {
+            await authStateProvider.Login(loginParameters);
+            navigationManager.NavigateTo("");
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
     }
 }

@@ -55,6 +55,7 @@ namespace JobPortalBlazor.Server
 
 				// User settings
 				options.User.RequireUniqueEmail = false;
+				options.SignIn.RequireConfirmedEmail = false;
 			});
 
 			services.ConfigureApplicationCookie(options =>
