@@ -15,6 +15,8 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace JobPortalBlazor.Server
 {
@@ -36,6 +38,34 @@ namespace JobPortalBlazor.Server
 			services.AddDefaultIdentity<AspNetUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddRoles<IdentityRole>()
 				.AddEntityFrameworkStores<JobPortalDBContext>();
+
+			services.Configure<IdentityOptions>(options =>
+			{
+				// Password settings
+				options.Password.RequireDigit = false;
+				options.Password.RequiredLength = 5;
+				options.Password.RequireNonAlphanumeric = true;
+				options.Password.RequireUppercase = false;
+				options.Password.RequireLowercase = true;
+
+				// Lockout settings
+				options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+				options.Lockout.MaxFailedAccessAttempts = 10;
+				options.Lockout.AllowedForNewUsers = true;
+
+				// User settings
+				options.User.RequireUniqueEmail = false;
+			});
+
+			services.ConfigureApplicationCookie(options =>
+			{
+				options.Cookie.HttpOnly = true;
+				options.Events.OnRedirectToLogin = context =>
+				{
+					context.Response.StatusCode = 401;
+					return Task.CompletedTask;
+				};
+			});
 
 			services.AddControllersWithViews();
 			services.AddRazorPages();
@@ -103,6 +133,13 @@ namespace JobPortalBlazor.Server
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
+			using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+			{
+				//Note: Microsoft recommends to NOT migrate your database at Startup. 
+				//You should consider your migration strategy according to the guidelines
+				serviceScope.ServiceProvider.GetService<JobPortalDBContext>().Database.Migrate();
+			}
+
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
