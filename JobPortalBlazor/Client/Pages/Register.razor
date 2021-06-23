@@ -1,9 +1,12 @@
 ﻿@page "/register"
+@using JobPortalBlazor.Shared
+@inject NavigationManager navigationManager
+@inject IdentityAuthenticationStateProvider authStateProvider
 <h3>Register Page</h3>
 <hr />
 <div class="row">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
-        <EditForm Model="@user" OnValidSubmit="SubmitUser">
+        <EditForm Model="@user" OnValidSubmit="OnSubmit">
             <DataAnnotationsValidator></DataAnnotationsValidator>
             <ValidationSummary></ValidationSummary>
             <label for="name">Your Name</label>
@@ -15,14 +18,40 @@
             <label for="email">Your Image</label>
             <InputFile OnChange="handleFileChange" class="form-control mb-3"></InputFile>
             <input type="submit" value="Register" class="btn btn-primary" />
+
+            <label class="text-danger">@error</label>
         </EditForm>
     </div>
 </div>
 @code {
     [Required]
-    public String password="";
+    public String password = "";
     public Models.User user = new Models.User();
     public String success = "";
+
+    RegisterParameters registerParameters { get; set; } = new RegisterParameters();
+
+    string error { get; set; }
+
+    async Task OnSubmit()
+    {
+        error = null;
+        try
+        {
+            registerParameters.UserName = user.UserName;
+            registerParameters.Password = password;
+            registerParameters.ImageUrl = user.ImageUrl;
+            registerParameters.UserEmail = user.UserEmail;
+
+            await authStateProvider.Register(registerParameters);
+            navigationManager.NavigateTo("");
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+    }
+
     public void SubmitUser()
     {
         //--------------------------------------

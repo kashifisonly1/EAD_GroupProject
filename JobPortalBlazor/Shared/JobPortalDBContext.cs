@@ -1,5 +1,6 @@
 ﻿using System;
 
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace JobPortalBlazor.Shared
 {
-	public partial class JobPortalDBContext : DbContext
+	public partial class JobPortalDBContext : IdentityDbContext<AspNetUser>
 	{
 		public JobPortalDBContext()
 		{
@@ -16,15 +17,16 @@ namespace JobPortalBlazor.Shared
 		public JobPortalDBContext(DbContextOptions<JobPortalDBContext> options)
 			: base(options)
 		{
+
 		}
 
-		public virtual DbSet<AspNetRole> Roles { get; set; }
-		public virtual DbSet<AspNetRoleClaim> RoleClaims { get; set; }
-		public virtual DbSet<AspNetUser> Users { get; set; }
-		public virtual DbSet<AspNetUserClaim> UserClaims { get; set; }
-		public virtual DbSet<AspNetUserLogin> UserLogins { get; set; }
-		public virtual DbSet<AspNetUserRole> UserRoles { get; set; }
-		public virtual DbSet<AspNetUserToken> UserTokens { get; set; }
+		//public virtual DbSet<AspNetRole> Roles { get; set; }
+		//public virtual DbSet<AspNetRoleClaim> RoleClaims { get; set; }
+		//public virtual DbSet<AspNetUser> Users { get; set; }
+		//public virtual DbSet<AspNetUserClaim> UserClaims { get; set; }
+		//public virtual DbSet<AspNetUserLogin> UserLogins { get; set; }
+		//public virtual DbSet<AspNetUserRole> UserRoles { get; set; }
+		//public virtual DbSet<AspNetUserToken> UserTokens { get; set; }
 		public virtual DbSet<Category> Catogories { get; set; }
 		public virtual DbSet<CustomOrderRequest> CustomOrderRequests { get; set; }
 		public virtual DbSet<Freelancer> Freelancers { get; set; }
@@ -45,6 +47,8 @@ namespace JobPortalBlazor.Shared
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			base.OnModelCreating(modelBuilder);
+
 			modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
 			modelBuilder.Entity<AspNetRole>(entity =>

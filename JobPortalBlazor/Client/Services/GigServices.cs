@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace JobPortalBlazor.Client.Services
 {
-    public class GigServices
-    {
-        [inject]
-        Uploader uploader { get; set; }
-        [inject]
-        CategoryServices catService;
-        [inject]
-        UserServices userServices;
-        private readonly HttpClient httpClient;
+	public class GigServices
+	{
+		[inject]
+		Uploader uploader { get; set; }
+		[inject]
+		CategoryServices catService;
+		[inject]
+		UserServices userServices;
+		private readonly HttpClient httpClient;
 
-        public GigServices(HttpClient httpClient) => this.httpClient = httpClient;
+		public GigServices(HttpClient httpClient) => this.httpClient = httpClient;
 
         public async Task<List<Models.Gig>> getMyGigs(String userID)
         {
