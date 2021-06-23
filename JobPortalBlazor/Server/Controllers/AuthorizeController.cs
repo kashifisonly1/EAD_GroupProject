@@ -53,7 +53,7 @@ namespace BlazorWithIdentity.Server.Controllers
 
 			var user = new AspNetUser
 			{
-				UserName = parameters.UserName,
+				UserName = parameters.UserEmail,
 				ProfileImage = parameters.ImageUrl,
 				Email = parameters.UserEmail,
 				FullName = parameters.UserName
@@ -70,7 +70,7 @@ namespace BlazorWithIdentity.Server.Controllers
 
 			return await Login(new LoginParameters
 			{
-				UserName = parameters.UserName,
+				UserName = parameters.UserEmail,
 				Password = parameters.Password
 			});
 		}
@@ -84,12 +84,12 @@ namespace BlazorWithIdentity.Server.Controllers
 		}
 
 		[HttpGet]
-		public async Task<AspNetUser> CurrentUser()
+		public async Task<AuthUserData> CurrentUser()
 		{
 			var user = await _userManager.GetUserAsync(HttpContext.User);
 			await Task.Delay(3000);
 			var roles = await _userManager.GetRolesAsync(user);
-			return user;
+			return new AuthUserData { roles = roles, user = user };
 		}
 
 		[HttpGet]
