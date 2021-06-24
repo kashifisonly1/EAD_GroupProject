@@ -1,5 +1,6 @@
 using JobPortalBlazor.Client.Services;
 using JobPortalBlazor.Client.Shared;
+
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +38,7 @@ namespace JobPortalBlazor.Client
 			builder.Services.AddTransient<OrderDeliveryService>();
 			builder.Services.AddTransient<ContactService>();
 			builder.Services.AddTransient<SkillService>();
+			builder.Services.AddTransient<FreelancerService>();
 			UserServices u = new UserServices(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 			MainLayout.current_user = await u.GetCurrentUser();
 			await builder.Build().RunAsync();

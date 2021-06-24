@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JobPortalBlazor.Shared;
+using Microsoft.AspNetCore.Identity;
 
 namespace JobPortalBlazor.Server.Controllers
 {
@@ -14,10 +15,13 @@ namespace JobPortalBlazor.Server.Controllers
 	public class FreelancersController : ControllerBase
 	{
 		private readonly JobPortalDBContext _context;
+		private readonly UserManager<AspNetUser> _userManager;
 
-		public FreelancersController(JobPortalDBContext context)
+
+		public FreelancersController(JobPortalDBContext context, UserManager<AspNetUser> userManager)
 		{
 			_context = context;
+			_userManager = userManager;
 		}
 
 		// GET: api/Freelancers
@@ -79,13 +83,13 @@ namespace JobPortalBlazor.Server.Controllers
 		[HttpPost]
 		public async Task<ActionResult<Freelancer>> PostFreelancer(Freelancer freelancer)
 		{
-			AspNetUser user = await _context.Users.FirstOrDefaultAsync(u => u.Id == freelancer.User.Id);
+			AspNetUser user = await _context.Users.FirstOrDefaultAsync(u => u.Id == freelancer.UserId);
 			freelancer.User = user;
 			_context.Freelancers.Add(freelancer);
 			await _context.SaveChangesAsync();
 
-			//_context.Freelancers.Add(freelancer);
-			//await _context.SaveChangesAsync();
+			await _userManager.RemoveFromRoleAsync(user, "Client");
+			await _userManager.AddToRoleAsync(user, "Freelancer");
 
 			return CreatedAtAction("GetFreelancer", new { id = freelancer.Id }, freelancer);
 		}

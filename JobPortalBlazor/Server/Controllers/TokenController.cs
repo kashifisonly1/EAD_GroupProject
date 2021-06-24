@@ -74,7 +74,6 @@ namespace JobPortalBlazor.Server.Controllers
 				new Claim(ClaimTypes.Name, username),
 				new Claim(ClaimTypes.NameIdentifier, user.Id),
 				new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds().ToString()),
-				new Claim(JwtRegisteredClaimNames.Exp, new DateTimeOffset(DateTime.Now.AddMinutes(10)).ToUnixTimeSeconds().ToString()) // HACK -- Update Token properties (expiration time)
 			};
 
 			var roled = await _userManager.GetRolesAsync(user);
@@ -104,7 +103,6 @@ namespace JobPortalBlazor.Server.Controllers
 				Access_Token = accessToken,
 				Username = username,
 				Expires_On = DateTime.Now.AddMinutes(10)
-				// HACK -- Add other fields to token (if needed)
 			};
 
 			return output;

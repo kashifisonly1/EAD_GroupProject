@@ -1,4 +1,6 @@
 ﻿@page "/become-freelancer"
+@inject FreelancerService service
+@inject UserServices userService
 
 <h3>Become Freelancer</h3>
 <hr />
@@ -44,7 +46,7 @@
 </div>
 @code {
     public List<Skill> allSkills;
-    public string skill_id="";
+    public string skill_id = "";
     protected override void OnInitialized()
     {
         allSkills = new List<Skill>();
@@ -56,8 +58,22 @@
         base.OnInitialized();
     }
     public Models.Freelancer freelancer = new Models.Freelancer();
-    public void SubmitFreelancer()
+    public async Task SubmitFreelancer()
     {
 
+        // IMPORTANT: Dont send Skill id, it'll be assigned by identity
+
+        foreach (var skill in freelancer.UserSkill)
+        {
+            skill.ID = 0;
+        }
+
+        User current = await userService.GetCurrentUser();
+        freelancer.UserID = current?.UserID;
+        freelancer.UserName = current?.UserName;
+        freelancer.UserEmail = current?.UserEmail;
+        freelancer.ImageUrl = current?.ImageUrl;
+        freelancer.Image = current?.Image;
+        await service.AddFreelancer(freelancer);
     }
 }
