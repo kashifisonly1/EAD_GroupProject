@@ -8,9 +8,13 @@
     <small><img src="/img/@gig.user.ImageUrl" width="30" height="30" class="rounded-circle" /> @gig.user.UserName</small>
     <img class="w-100 my-3" src="/img/@gig.ImageUrl" />
     <p>@gig.Description</p>
-    <div class="my-4">
-        <OrderForm order="@order"></OrderForm>
-    </div>
+    <AuthorizeView Roles="Client">
+        <Authorized>
+            <div class="my-4">
+                <OrderForm order="@order"></OrderForm>
+            </div>
+        </Authorized>
+    </AuthorizeView>
 }
 @code {
     [Parameter]

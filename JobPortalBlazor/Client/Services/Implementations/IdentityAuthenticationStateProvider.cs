@@ -49,7 +49,10 @@ namespace JobPortalBlazor.Client
 			_userInfoCache = await _authorizeApi.GetUserInfo();
 			return _userInfoCache;
 		}
-
+		public async Task ResetState()
+        {
+			_userInfoCache = await _authorizeApi.GetUserInfo();
+        }
 		public override async Task<AuthenticationState> GetAuthenticationStateAsync()
 		{
 			var identity = new ClaimsIdentity();

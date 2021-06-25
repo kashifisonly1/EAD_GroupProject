@@ -1,32 +1,39 @@
 ﻿@page "/user/my-order"
 @inject OrderServices orderService
-@if (MainLayout.current_user.RoleName == "Client") { 
-<ClientHeader></ClientHeader>
-}
-else{
-    <FreelancerHeader></FreelancerHeader>
-}
-<h3 class="my-2">My Orders</h3>
-<hr />
-<table class="table table-dark table-striped">
-    <tr>
-        <th>Client</th>
-        <th>Freelancer</th>
-        <th>Details</th>
-        <th>Status</th>
-        <th>View</th>
-    </tr>
-    @foreach (Order cat in orders)
-    {
-        <tr>
-            <td>@cat.Client.UserName</td>
-            <td>@cat.Freelancer.UserName</td>
-            <td>@cat.Details</td>
-            <td>@cat.Status</td>
-            <td><a href="order/@cat.ID" class="btn btn-link">View</a></td>
-        </tr>
-    }
-</table>
+<AuthorizeView Roles="Client, Freelancer">
+    <Authorized>
+        @if(context.User.IsInRole("Client"))
+        {
+            <ClientHeader></ClientHeader>
+        }
+        else
+        {
+            <FreelancerHeader></FreelancerHeader>
+        }
+        <h3 class="my-2">My Orders</h3>
+        <hr />
+        <table class="table table-dark table-striped">
+            <tr>
+                <th>Client</th>
+                <th>Freelancer</th>
+                <th>Details</th>
+                <th>Status</th>
+                <th>View</th>
+            </tr>
+            @foreach (Order cat in orders)
+            {
+                <tr>
+                    <td>@cat.Client.UserName</td>
+                    <td>@cat.Freelancer.UserName</td>
+                    <td>@cat.Details</td>
+                    <td>@cat.Status</td>
+                    <td><a href="order/@cat.ID" class="btn btn-link">View</a></td>
+                </tr>
+            }
+        </table>
+    </Authorized>
+    <NotAuthorized><Index></Index></NotAuthorized>
+</AuthorizeView>
 @code{
     bool show = false;
     List<Order> orders = new List<Order>();

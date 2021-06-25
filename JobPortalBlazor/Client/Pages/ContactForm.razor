@@ -1,28 +1,35 @@
 ﻿@inject ContactService contactService
 @page "/contact"
-<h3>Contact US</h3>
-<hr />
-<div class="row">
-    <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
-        @if (success != "")
-        {<div class="alert alert-danger">@success</div>}
-        <EditForm Model="@contact" OnValidSubmit="SubmitContact">
-            <DataAnnotationsValidator></DataAnnotationsValidator>
-            <ValidationSummary></ValidationSummary>
-            <label for="name">Your Name</label>
-            <InputText @bind-Value="contact.Name" class="form-control mb-3"></InputText>
-            <label for="email">Your Email</label>
-            <InputText type="email" @bind-Value="contact.Email" class="form-control mb-3"></InputText>
-            <label for="name">Your Subject</label>
-            <InputText @bind-Value="contact.Subject" class="form-control mb-3"></InputText>
-            <label for="name">Your Message</label>
-            <textarea @onchange="@((_)=> { contact.Message=_.Value.ToString(); })" class="form-control mb-3"></textarea>
-            <input type="submit" value="SEND" class="btn btn-primary" />
-        </EditForm>
-    </div>
-</div>
+<AuthorizeView>
+    <Authorized>
+        <h3>Contact US</h3>
+        <hr />
+        <div class="row">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
+                @if (success != "")
+                {<div class="alert alert-danger">@success</div>}
+                <EditForm Model="@contact" OnValidSubmit="SubmitContact">
+                    <ChildContent Context="new_name">
+                        <DataAnnotationsValidator></DataAnnotationsValidator>
+                        <ValidationSummary></ValidationSummary>
+                        <label for="name">Your Name</label>
+                        <InputText @bind-Value="contact.Name" class="form-control mb-3"></InputText>
+                        <label for="email">Your Email</label>
+                        <InputText type="email" @bind-Value="contact.Email" class="form-control mb-3"></InputText>
+                        <label for="name">Your Subject</label>
+                        <InputText @bind-Value="contact.Subject" class="form-control mb-3"></InputText>
+                        <label for="name">Your Message</label>
+                        <textarea @onchange="@((_)=> { contact.Message=_.Value.ToString(); })" class="form-control mb-3"></textarea>
+                        <input type="submit" value="SEND" class="btn btn-primary" />
+                    </ChildContent>
+                </EditForm>
+            </div>
+        </div>
+    </Authorized>
+    <NotAuthorized><Login></Login></NotAuthorized>
+</AuthorizeView>
 @code {
-    public Models.Contact contact = new Models.Contact { Email=MainLayout.current_user.UserEmail, Name=MainLayout.current_user.UserName};
+    public Models.Contact contact = new Models.Contact { Email = MainLayout.current_user.UserEmail, Name = MainLayout.current_user.UserName };
     public String success = "";
     public async Task SubmitContact()
     {

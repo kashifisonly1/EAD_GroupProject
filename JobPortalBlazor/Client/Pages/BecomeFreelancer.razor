@@ -1,21 +1,30 @@
 ﻿@page "/become-freelancer"
 @inject FreelancerService service
 @inject UserServices userService
+@inject IdentityAuthenticationStateProvider identityState 
 @inject NavigationManager navigationManager
-
-<h3>Become Freelancer</h3>
-<hr />
-<div class="row">
-    <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto border p-2">
-        <EditForm Model="@freelancer" OnValidSubmit="SubmitFreelancer">
-            <DataAnnotationsValidator></DataAnnotationsValidator>
-            <ValidationSummary></ValidationSummary>
-            <label for="details" class="font-weight-bold">Details</label>
-            <InputText class="form-control" @bind-Value="freelancer.Detail"></InputText>
-            <input type="submit" class="btn btn-primary mt-3" value="Become Freelancer" />
-        </EditForm>
-    </div>
-</div>
+<AuthorizeView Roles="Client">
+    <Authorized>
+        <h3>Become Freelancer</h3>
+        <hr />
+        <div class="row">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto border p-2">
+                <EditForm Model="@freelancer" OnValidSubmit="SubmitFreelancer">
+                    <ChildContent Context="new_name">
+                        <DataAnnotationsValidator></DataAnnotationsValidator>
+                        <ValidationSummary></ValidationSummary>
+                        <label for="details" class="font-weight-bold">Details</label>
+                        <InputText class="form-control" @bind-Value="freelancer.Detail"></InputText>
+                        <input type="submit" class="btn btn-primary mt-3" value="Become Freelancer" />
+                    </ChildContent>
+                </EditForm>
+            </div>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <Index></Index>
+    </NotAuthorized>
+</AuthorizeView>
 @code {
     protected override void OnInitialized()
     {
@@ -34,5 +43,6 @@
         await service.AddFreelancer(freelancer);
         MainLayout.current_user = await userService.GetCurrentUser();
         navigationManager.NavigateTo("");
+        await identityState.ResetState();
     }
 }

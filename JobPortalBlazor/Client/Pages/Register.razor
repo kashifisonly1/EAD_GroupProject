@@ -4,27 +4,34 @@
 @inject UserServices userService
 @inject NavigationManager navigationManager
 @inject IdentityAuthenticationStateProvider authStateProvider
-<h3>Register Page</h3>
-<hr />
-<div class="row">
-    <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
-        <EditForm Model="@user" OnValidSubmit="OnSubmit">
-            <DataAnnotationsValidator></DataAnnotationsValidator>
-            <ValidationSummary></ValidationSummary>
-            <label for="name">Your Name</label>
-            <InputText @bind-Value="user.UserName" class="form-control mb-3"></InputText>
-            <label for="email">Your Email</label>
-            <InputText type="email" @bind-Value="user.UserEmail" class="form-control mb-3"></InputText>
-            <label for="password">Your Password</label>
-            <input type="password" @onchange="@((_)=> { password = _.Value.ToString(); })" class="form-control mb-3" />
-            <label for="email">Your Image</label>
-            <InputFile OnChange="handleFileChange" class="form-control mb-3"></InputFile>
-            <input type="submit" value="Register" class="btn btn-primary" />
+<AuthorizeView>
+    <NotAuthorized>
+        <h3>Register Page</h3>
+        <hr />
+        <div class="row">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
+                <EditForm Model="@user" OnValidSubmit="OnSubmit">
+                    <ChildContent Context="new_name">
+                        <DataAnnotationsValidator></DataAnnotationsValidator>
+                        <ValidationSummary></ValidationSummary>
+                        <label for="name">Your Name</label>
+                        <InputText @bind-Value="user.UserName" class="form-control mb-3"></InputText>
+                        <label for="email">Your Email</label>
+                        <InputText type="email" @bind-Value="user.UserEmail" class="form-control mb-3"></InputText>
+                        <label for="password">Your Password</label>
+                        <input type="password" @onchange="@((_)=> { password = _.Value.ToString(); })" class="form-control mb-3" />
+                        <label for="email">Your Image</label>
+                        <InputFile OnChange="handleFileChange" class="form-control mb-3"></InputFile>
+                        <input type="submit" value="Register" class="btn btn-primary" />
 
-            <label class="text-danger">@error</label>
-        </EditForm>
-    </div>
-</div>
+                        <label class="text-danger">@error</label>
+                    </ChildContent>
+                </EditForm>
+            </div>
+        </div>
+    </NotAuthorized>
+    <Authorized><Index></Index></Authorized>
+</AuthorizeView>
 @code {
     [Required]
     public String password = "";

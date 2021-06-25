@@ -4,26 +4,28 @@
 @inject GigServices gigService
 <h3>Category: @cat.Name</h3>
 <hr />
-@if (MainLayout.current_user.RoleName != "Client")
-{
-    <h4 class="my-3">Purchase Requests</h4>
-    <div class="row">
-        @foreach (PurchaseRequest r in bids)
-        {
-            <RequestCard dashboard="false" request="@r"></RequestCard>
-        }
-    </div>
-}
-@if(MainLayout.current_user.RoleName != "Freelancer")
-{
-    <h4 class="my-3">Gigs</h4>
-    <div class="row">
-        @foreach (Gig r in gigs)
-        {
-            <GigCard dashboard="false" request="@r"></GigCard>
-        }
-    </div>
-}
+<AuthorizeView Roles="Freelancer, Admin">
+    <Authorized>
+        <h4 class="my-3">Purchase Requests</h4>
+        <div class="row">
+            @foreach (PurchaseRequest r in bids)
+            {
+                <RequestCard dashboard="false" request="@r"></RequestCard>
+            }
+        </div>
+    </Authorized>
+</AuthorizeView>
+<AuthorizeView Roles="Admin, Client">
+    <Authorized>
+        <h4 class="my-3">Gigs</h4>
+        <div class="row">
+            @foreach (Gig r in gigs)
+            {
+                <GigCard dashboard="false" request="@r"></GigCard>
+            }
+        </div>
+    </Authorized>
+</AuthorizeView>
 @code {
     [Parameter]
     public String name { get; set; }

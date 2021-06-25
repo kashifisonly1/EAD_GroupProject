@@ -1,9 +1,12 @@
 ﻿@page "/admin"
-<AuthorizeView>
+<AuthorizeView Roles="Admin">
     <Authorized>
         <AdminHeader />
         <CategoryManage />
     </Authorized>
+    <NotAuthorized>
+        <Index></Index>
+    </NotAuthorized>
 </AuthorizeView>
 @code {
     [CascadingParameter]

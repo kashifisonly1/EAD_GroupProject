@@ -1,32 +1,37 @@
 ﻿@inject ContactService contactService
 @page "/admin/contacts"
-<AdminHeader />
-<h3 class="my-2">Contact Manage</h3>
-<hr />
-<table class="table w-100 table-dark table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Subject</th>
-            <th>Email</th>
-            <th>Message</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for(int i =0; i<contacts.Count; i++)
-        {
-            int j = i;
-            <tr>
-                <td>@contacts[i].Name</td>
-                <td>@contacts[i].Subject</td>
-                <td>@contacts[i].Email</td>
-                <td>@contacts[i].Message</td>
-                <td><button class="btn btn-danger" @onclick="@(async(_) => { await DeleteContact(contacts[j]); })">Delete</button></td>
-            </tr>
-        }
-    </tbody>
-</table>
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <AdminHeader />
+        <h3 class="my-2">Contact Manage</h3>
+        <hr />
+        <table class="table w-100 table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < contacts.Count; i++)
+                {
+                    int j = i;
+                    <tr>
+                        <td>@contacts[i].Name</td>
+                        <td>@contacts[i].Subject</td>
+                        <td>@contacts[i].Email</td>
+                        <td>@contacts[i].Message</td>
+                        <td><button class="btn btn-danger" @onclick="@(async(_) => { await DeleteContact(contacts[j]); })">Delete</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Authorized>
+    <NotAuthorized><Index></Index></NotAuthorized>
+</AuthorizeView>
 @code {
     public List<Models.Contact> contacts = new List<Models.Contact>();
     protected async override Task OnInitializedAsync()

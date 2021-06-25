@@ -6,12 +6,14 @@
                 @category.Name
             </div>
         </a>
-        @if (isAdmin) { 
-            <div class="card-footer">
-                <button @onclick ="@(()=> { UpdateEvent.InvokeAsync(category); })" class="btn btn-info">Update</button>
-                <button @onclick="@(()=> { DeleteEvent.InvokeAsync(category); })" class="btn btn-danger">Delete</button>
-            </div>
-        }
+        <AuthorizeView Roles="Admin">
+            <Authorized>
+                <div class="card-footer">
+                    <button @onclick="@(()=> { UpdateEvent.InvokeAsync(category); })" class="btn btn-info">Update</button>
+                    <button @onclick="@(()=> { DeleteEvent.InvokeAsync(category); })" class="btn btn-danger">Delete</button>
+                </div>
+            </Authorized>
+        </AuthorizeView>
     </div>
 </div>
 @code {

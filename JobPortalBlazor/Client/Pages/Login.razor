@@ -3,23 +3,30 @@
 @inject UserServices userService
 @inject NavigationManager navigationManager
 @inject IdentityAuthenticationStateProvider authStateProvider
-<h3>Login Page</h3>
-<hr />
-<div class="row">
-    <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
-        <EditForm Model="@loginParameters" OnValidSubmit="OnSubmit">
-            <DataAnnotationsValidator></DataAnnotationsValidator>
-            <ValidationSummary></ValidationSummary>
-            <label for="email">Email</label>
-            <InputText type="email" @bind-Value="loginParameters.UserName" class="form-control mb-3"></InputText>
-            <label for="password">Password</label>
-            <InputText type="password" @bind-Value="loginParameters.Password" class="form-control mb-3"></InputText>
-            <input type="submit" value="Login" class="btn btn-primary" />
+<AuthorizeView>
+    <NotAuthorized>
+        <h3>Login Page</h3>
+        <hr />
+        <div class="row">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-2 mx-auto border">
+                <EditForm Model="@loginParameters" OnValidSubmit="OnSubmit">
+                    <ChildContent Context="new_name">
+                        <DataAnnotationsValidator></DataAnnotationsValidator>
+                        <ValidationSummary></ValidationSummary>
+                        <label for="email">Email</label>
+                        <InputText type="email" @bind-Value="loginParameters.UserName" class="form-control mb-3"></InputText>
+                        <label for="password">Password</label>
+                        <InputText type="password" @bind-Value="loginParameters.Password" class="form-control mb-3"></InputText>
+                        <input type="submit" value="Login" class="btn btn-primary" />
 
-            <label class="text-danger">@error</label>
-        </EditForm>
-    </div>
-</div>
+                        <label class="text-danger">@error</label>
+                    </ChildContent>
+                </EditForm>
+            </div>
+        </div>
+    </NotAuthorized>
+    <Authorized><Index></Index></Authorized>
+</AuthorizeView>
 @code {
 
     LoginParameters loginParameters { get; set; } = new LoginParameters();

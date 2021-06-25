@@ -1,5 +1,9 @@
 ﻿@page "/client"
-<MyBid></MyBid>
-@code {
-    
-}
+<AuthorizeView Roles="Client">
+    <Authorized>
+        <MyBid></MyBid>
+    </Authorized>
+    <NotAuthorized>
+        <Index></Index>
+    </NotAuthorized>
+</AuthorizeView>

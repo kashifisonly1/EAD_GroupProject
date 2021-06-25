@@ -1,20 +1,25 @@
 ﻿@page "/client/my-request"
 @inject RequestServices reqService
-<ClientHeader></ClientHeader>
-<h3 class="my-2">My Requests</h3>
-<a @onclick="@((_)=> { show = true; })" class="btn btn-primary my-2">Add request</a>
-<RequestForm show="@show" click="@((_)=> { show = false; })" request="@req" onsubmit="@(async(request)=> { await AddRequest(request); })"></RequestForm>
-<div class="row">
-    @foreach (PurchaseRequest cat in purchaseRequests)
-    {
-        <RequestCard dashboard="true" request="@cat" UpdateEvent="@((r) => { UpdateBtnClick(r); })" DeleteEvent="DeleteRequest"></RequestCard>
-    }
-</div>
+<AuthorizeView Roles="Client">
+    <Authorized>
+        <ClientHeader></ClientHeader>
+        <h3 class="my-2">My Requests</h3>
+        <a @onclick="@((_)=> { show = true; })" class="btn btn-primary my-2">Add request</a>
+        <RequestForm show="@show" click="@((_)=> { show = false; })" request="@req" onsubmit="@(async(request)=> { await AddRequest(request); })"></RequestForm>
+        <div class="row">
+            @foreach (PurchaseRequest cat in purchaseRequests)
+            {
+                <RequestCard dashboard="true" request="@cat" UpdateEvent="@((r) => { UpdateBtnClick(r); })" DeleteEvent="DeleteRequest"></RequestCard>
+            }
+        </div>
+    </Authorized>
+    <NotAuthorized><Index></Index></NotAuthorized>
+</AuthorizeView>
 @code {
     List<PurchaseRequest> purchaseRequests = new List<PurchaseRequest>();
     bool show = false;
     PurchaseRequest req = new PurchaseRequest { user = MainLayout.current_user, UserID = MainLayout.current_user.UserID };
-    public  async Task AddRequest(PurchaseRequest request)
+    public async Task AddRequest(PurchaseRequest request)
     {
         if (request.RequestID == 0)
         {

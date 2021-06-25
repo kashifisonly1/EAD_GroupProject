@@ -1,5 +1,12 @@
 ﻿@page "/freelancer"
-<MyGig></MyGig>
+<AuthorizeView Roles="Freelancer">
+    <Authorized>
+        <MyGig></MyGig>
+    </Authorized>
+    <NotAuthorized>
+        <Index></Index>
+    </NotAuthorized>
+</AuthorizeView>
 @code {
 
 }

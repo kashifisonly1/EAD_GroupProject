@@ -2,57 +2,68 @@
 @inject OrderServices orderService
 @inject OrderDeliveryService odService
 @inject NavigationManager navigationManager
-@if (init) {
-<h3>Order Details</h3>
-@if (order.Status!="COMPLETE") {
-<button class="btn btn-primary my-3" @onclick="@(async () => { await mark_complete(); })">Mark as Complete</button>
-}
-<hr />
-<div class="row">
-    <div class="col-6">
-        <div>Freelancer: <img src="/img/@order.Freelancer.ImageUrl" width="30" height="30" class="rounded-circle" /> @order.Freelancer.UserName</div>
-    </div>
-    <div class="col-6">
-        <div>Client: <img src="/img/@order.Client.ImageUrl" width="30" height="30" class="rounded-circle" /> @order.Client.UserName</div>
-    </div>
-    <div class="col-6">Start Date: @order.StartDate.ToString("D")</div>
-    @if (order.EndDate>=order.StartDate) {<div class="col-6">End Date: @order.EndDate.ToString("D")</div>}
-</div>
-<hr />
-<p>@order.Details</p>
-<hr />
-@if(MainLayout.current_user.UserID==order.Freelancer.UserID && order.Status!="COMPLETE")
-{
-    <DeliveryForm delivery="delivery" success="@success" onsubmit="@(async(ord)=> { await addDelivery(ord); })"></DeliveryForm>
-}
-<h4 class="col-12 my-3 col-md-8 mx-auto">Deliveries:</h4>
-@foreach (OrderDelivery ord in deliveries)
-{
-<div class="col-12 col-md-8 mx-auto">
-    <div class="card">
-        <div class="card-header">@ord.Date.ToString("D")</div>
-        <div class="card-body">@ord.Details</div>
-        <div class="card-footer">
-            <a href="/img/@ord.FileURL" download>Download</a>
-        </div>
-    </div>
-</div>
-   }
-}
+<AuthorizeView Roles="Freelancer, Client">
+    <Authorized>
+        @if (init)
+        {
+            <h3>Order Details</h3>
+            @if (context.User.IsInRole("Client") && order.Status != "COMPLETE")
+            {
+                <button class="btn btn-primary my-3" @onclick="@(async () => { await mark_complete(); })">Mark as Complete</button>
+            }
+            <hr />
+            <div class="row">
+                <div class="col-6">
+                    <div>Freelancer: <img src="/img/@order.Freelancer.ImageUrl" width="30" height="30" class="rounded-circle" /> @order.Freelancer.UserName</div>
+                </div>
+                <div class="col-6">
+                    <div>Client: <img src="/img/@order.Client.ImageUrl" width="30" height="30" class="rounded-circle" /> @order.Client.UserName</div>
+                </div>
+                <div class="col-6">Start Date: @order.StartDate.ToString("D")</div>
+                @if (order.EndDate >= order.StartDate)
+                {<div class="col-6">End Date: @order.EndDate.ToString("D")</div>}
+            </div>
+            <hr />
+            <p>@order.Details</p>
+            <hr />
+            @if (context.User.IsInRole("Freelancer") && order.Status != "COMPLETE")
+            {
+                <DeliveryForm delivery="delivery" success="@success" onsubmit="@(async(ord)=> { await addDelivery(ord); })"></DeliveryForm>
+            }
+            <h4 class="col-12 my-3 col-md-8 mx-auto">Deliveries:</h4>
+            @foreach (OrderDelivery ord in deliveries)
+            {
+                <div class="col-12 col-md-8 mx-auto">
+                    <div class="card">
+                        <div class="card-header">@ord.Date.ToString("D")</div>
+                        <div class="card-body">@ord.Details</div>
+                        <div class="card-footer">
+                            <a href="/img/@ord.FileURL" download>Download</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </Authorized>
+    <NotAuthorized><Index></Index></NotAuthorized>
+</AuthorizeView>
 @code {
-    [Parameter]
-    public String id { get; set; }
-    bool init = false;
-    string success = "";
+        [Parameter]
+        public String id { get; set; }
+        bool init = false;
+        string success = "";
     public Order order;
     List<OrderDelivery> deliveries = new List<OrderDelivery>();
     OrderDelivery delivery;
     protected async override Task OnInitializedAsync()
     {
         order = await orderService.getOrderByID(int.Parse(id));
-        delivery = new OrderDelivery { order = order, OrderID=order.ID };
-        deliveries = await odService.getAllOrderDeliviries(int.Parse(id));
-        init = true;
+        if (order.Client.UserID == MainLayout.current_user.UserID || order.Freelancer.UserID == MainLayout.current_user.UserID)
+        {
+            delivery = new OrderDelivery { order = order, OrderID = order.ID };
+            deliveries = await odService.getAllOrderDeliviries(int.Parse(id));
+            init = true;
+        }
         await base.OnInitializedAsync();
     }
     public async Task addDelivery(OrderDelivery or)
