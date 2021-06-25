@@ -4,7 +4,7 @@
 @inject GigServices gigService
 <h3>Category: @cat.Name</h3>
 <hr />
-@if (MainLayout.current_user.RoleName == "freelancer")
+@if (MainLayout.current_user.RoleName != "Client")
 {
     <h4 class="my-3">Purchase Requests</h4>
     <div class="row">
@@ -14,7 +14,7 @@
         }
     </div>
 }
-else
+@if(MainLayout.current_user.RoleName != "Freelancer")
 {
     <h4 class="my-3">Gigs</h4>
     <div class="row">

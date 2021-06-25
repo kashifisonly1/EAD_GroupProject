@@ -19,7 +19,7 @@ namespace JobPortalBlazor.Client.Services
             JobPortalBlazor.Shared.Order[] fList =
                 await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Order[]>("/api/Orders");
             foreach (JobPortalBlazor.Shared.Order f in fList)
-                if (userID == f.Client.Id)
+                if (userID == f.Client.Id || userID == f.Gig.Freelancer.User.Id)
                     req.Add(new Models.Order(f));
             return req;
         }
@@ -36,11 +36,13 @@ namespace JobPortalBlazor.Client.Services
             gig.ID = 0;
             HttpResponseMessage receivedCat = await this.httpClient.PostAsJsonAsync<JobPortalBlazor.Shared.Order>("/api/Orders", gig);
             JobPortalBlazor.Shared.Order cat = await receivedCat.Content.ReadFromJsonAsync<JobPortalBlazor.Shared.Order>();
-            return new Models.Order(cat);
+            return cat.Id!=0?gig:null;
         }
 
         public async Task<Models.Order> updateOrder(Models.Order category)
         {
+            category.Status = "COMPLETE";
+            category.EndDate = DateTime.UtcNow;
             HttpResponseMessage receivedCat = await this.httpClient.PutAsJsonAsync<JobPortalBlazor.Shared.Order>("/api/Orders/" + category.ID, category);
             return category;
         }

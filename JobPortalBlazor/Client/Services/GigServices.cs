@@ -17,14 +17,13 @@ namespace JobPortalBlazor.Client.Services
         public async Task<List<Models.Gig>> getMyGigs(String userID)
         {
             List<Models.Gig> gigs = new List<Models.Gig>();
-            JobPortalBlazor.Shared.Freelancer[] fList =
-                await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Freelancer[]>("/api/Freelancers");
-            foreach(JobPortalBlazor.Shared.Freelancer f in fList)
+            JobPortalBlazor.Shared.Gig[] fList =
+                await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Gig[]>("/api/Gigs");
+            foreach(JobPortalBlazor.Shared.Gig f in fList)
             {
-                if(userID == f.User.Id)
+                if(userID == f.Freelancer.User.Id)
                 {
-                    foreach (JobPortalBlazor.Shared.Gig g in f.Gigs)
-                        gigs.Add(new Models.Gig(g));
+                    gigs.Add(new Models.Gig(f));
                     break;
                 }
             }
@@ -36,14 +35,18 @@ namespace JobPortalBlazor.Client.Services
             List<Models.Gig> gigs = new List<Models.Gig>();
             JobPortalBlazor.Shared.Category cat = await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Category>("/api/Categories/" + catID);
             foreach (JobPortalBlazor.Shared.Gig g in cat.Gigs)
+            {
+                g.Category = cat;
                 gigs.Add(new Models.Gig(g));
+            }
             return gigs;
         }
 
         public async Task<Models.Gig> getGigByID(int id)
         {
-            List<Models.Gig> gigs = new List<Models.Gig>();
             JobPortalBlazor.Shared.Gig cat = await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Gig>("/api/Gigs/" + id);
+            var f = await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Freelancer>("api/Freelancers/" + cat.Freelancer.Id);
+            cat.Freelancer = f;
             return new Models.Gig(cat);
         }
 

@@ -42,9 +42,9 @@ namespace JobPortalBlazor.Server.Controllers
 			{
 				return NotFound();
 			}
-
+			await _context.Entry(order).Collection(o => o.OrderDeliveries).LoadAsync();
 			await _context.Entry(order).Reference(o => o.Client).LoadAsync();
-			await _context.Entry(order).Reference(o => o.Gig).LoadAsync();
+			await _context.Entry(order).Reference(o => o.Gig).Query().Include(e=>e.Freelancer).Include(x=>x.Freelancer.User).Include(y=>y.Category).LoadAsync();
 
 			return order;
 		}

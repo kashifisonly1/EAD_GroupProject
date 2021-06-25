@@ -1,22 +1,51 @@
 ﻿@inject OrderServices orderService
+@inject NavigationManager nagivationManager
+@inject GigServices gigSerivce
 <div class="row">
     <div class="col-12 col-md-8 col-lg-6 mx-auto border p-2">
         <h3>Place Order</h3>
         <hr />
+        @if (success!="") { <div class="alert alert-danger">@success</div> }
         <EditForm Model="@order" OnValidSubmit="SubmitOrder">
             <DataAnnotationsValidator></DataAnnotationsValidator>
             <ValidationSummary></ValidationSummary>
             <label for="description">Details</label>
-            <textarea @onchange="@((_)=> { order.Details = _.Value.ToString(); })" class="form-control"></textarea>
-            <input type="submit" value="Place Order" class="btn btn-primary" />
+            <textarea @onchange="@((_)=> { order.Details = _.Value.ToString(); })" class="form-control mb-3"></textarea>
+            <label for="gig">Gig</label>
+            <InputSelect class="form-control" @bind-Value="order.GigID">
+                @for (int i = 0; i < gigs.Count; i++)
+                {
+                    <option value="@gigs[i].ID">@gigs[i].Title</option>
+                }
+            </InputSelect>
+            <input type="submit" value="Place Order" class="btn btn-primary mt-3" />
         </EditForm>
     </div>
 </div>
 @code {
-    [Parameter]
-    public Order order { get; set; }
+        [Parameter]
+        public Order order { get; set; }
+    public string success = "";
+    public List<Gig> gigs = new List<Gig>();
     public async Task SubmitOrder()
     {
-        await orderService.addOrder(order);
+        if (order.GigID == 0)
+        {
+            success = "Please select gig";
+            return;
+        }
+        if (await orderService.addOrder(order) != null)
+            nagivationManager.NavigateTo("/user/my-order");
+        else
+            success = "Could not place order";
+    }
+    protected async override Task OnInitializedAsync()
+    {
+        await GetFreelancerGigs();
+        await base.OnInitializedAsync();
+    }
+    public async Task GetFreelancerGigs()
+    {
+        gigs = await gigSerivce.getMyGigs(MainLayout.current_user.UserID);
     }
 }

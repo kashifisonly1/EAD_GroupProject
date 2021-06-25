@@ -1,24 +1,29 @@
 ﻿@page "/request/{id}"
 @inject RequestServices rs
+@if (init) { 
 <h3 class="my-2">@gig.Subject</h3>
 <hr />
-<h5>@gig.Price</h5>
+<h5>@gig.Price $</h5>
 <small><img src="/img/@gig.user.ImageUrl" width="30" height="30" class="rounded-circle" /> @gig.user.UserName</small>
 <img class="w-100 my-3" src="/img/@gig.ImageUrl" />
 <p>@gig.Description</p>
+<hr />
 <div class="my-4">
     <OrderForm order="@order"></OrderForm>
 </div>
+}
 @code {
 
     [Parameter]
     public String id { get; set; }
-    PurchaseRequest gig = new PurchaseRequest();
+    bool init = false;
+    PurchaseRequest gig;
     Order order;
     protected async override Task OnInitializedAsync()
     {
         gig = await rs.getRequestByID(int.Parse(id));
-        order = new Order { Client = MainLayout.current_user, Freelancer = gig.user, Status = "pending" };
+        order = new Order { Client = gig.user, Freelancer = MainLayout.current_user, Status = "PENDING" };
+        init = true;
         await base.OnInitializedAsync();
     }
 }

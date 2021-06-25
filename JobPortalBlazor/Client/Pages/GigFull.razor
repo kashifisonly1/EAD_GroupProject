@@ -1,23 +1,28 @@
 ﻿@page "/gig/{id}"
 @inject GigServices gigService
-<h3 class="my-2">@gig.Title</h3>
-<hr />
-<h5>@gig.Price</h5>
-<small><img src="/img/@gig.user.ImageUrl" width="30" height="30" class="rounded-circle" /> @gig.user.UserName</small>
-<img class="w-100 my-3" src="/img/@gig.ImageUrl" />
-<p>@gig.Description</p>
-<div class="my-4">
-    <OrderForm order="@order"></OrderForm>
-</div>
+@if (init)
+{
+    <h3 class="my-2">@gig.Title</h3>
+    <hr />
+    <h5>@gig.Price $</h5>
+    <small><img src="/img/@gig.user.ImageUrl" width="30" height="30" class="rounded-circle" /> @gig.user.UserName</small>
+    <img class="w-100 my-3" src="/img/@gig.ImageUrl" />
+    <p>@gig.Description</p>
+    <div class="my-4">
+        <OrderForm order="@order"></OrderForm>
+    </div>
+}
 @code {
     [Parameter]
     public String id { get; set; }
+    bool init = false;
     Gig gig = new Gig();
     Order order;
     protected override async Task OnInitializedAsync()
     {
         gig = await gigService.getGigByID(int.Parse(id));
-        order = new Order { Freelancer = gig.user, Client = MainLayout.current_user, Status = "pending", Gig = gig };
+        order = new Order { Freelancer = gig.user, Client = MainLayout.current_user, Status = "PENDING", Gig = gig, GigID=gig.ID };
+        init = true;
         await base.OnInitializedAsync();
     }
 }

@@ -29,6 +29,8 @@ namespace JobPortalBlazor.Server.Controllers
 			String file_ext = Path.GetExtension(file.FileName);
 			String unique_name = Guid.NewGuid() + file_ext;
 			String filepath = Path.Combine("wwwroot", "img");
+			filepath = Path.Combine("client", filepath);
+			filepath = Path.Combine("..", filepath);
 			String fileurl = Path.Combine(filepath, unique_name);
 			try
 			{

@@ -1,5 +1,6 @@
 ﻿@page "/register"
 @using JobPortalBlazor.Shared
+@inject Uploader uploader
 @inject UserServices userService
 @inject NavigationManager navigationManager
 @inject IdentityAuthenticationStateProvider authStateProvider
@@ -41,7 +42,7 @@
         {
             registerParameters.UserName = user.UserName;
             registerParameters.Password = password;
-            registerParameters.ImageUrl = user.ImageUrl;
+            registerParameters.ImageUrl = await uploader.UploadFile(user.Image);
             registerParameters.UserEmail = user.UserEmail;
 
             await authStateProvider.Register(registerParameters);

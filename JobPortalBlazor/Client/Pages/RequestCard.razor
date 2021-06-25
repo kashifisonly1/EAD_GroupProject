@@ -3,12 +3,12 @@
         <a href="request/@request.RequestID">
             <img src="/img/@request.ImageUrl" class="card-img-top" />
             <div class="card-body">
-                <small><img src="/img/download.jpg" width="25" height="25" class="rounded-circle" /> @request.user.UserName</small>
+                <small><img src="/img/@request.user.ImageUrl" width="25" height="25" class="rounded-circle" /> @request.user.UserName</small>
                 <p class="mt-1">@request.Subject</p>
             </div>
         </a>
         <div class="card-footer">
-            <div class="text-right">@request.Price</div>
+            <div class="text-right">@request.Price $</div>
         </div>
         @if (request.UserID == MainLayout.current_user.UserID && dashboard)
         {

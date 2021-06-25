@@ -27,9 +27,10 @@ namespace JobPortalBlazor.Client.Services
         {
             gig.ID = 0;
             gig.FileURL = await uploader.UploadFile(gig.File);
+            gig.Date = DateTime.UtcNow;
             HttpResponseMessage receivedCat = await this.httpClient.PostAsJsonAsync<JobPortalBlazor.Shared.OrderDelivery>("/api/OrderDeliveries", gig);
             JobPortalBlazor.Shared.OrderDelivery cat = await receivedCat.Content.ReadFromJsonAsync<JobPortalBlazor.Shared.OrderDelivery>();
-            return new Models.OrderDelivery(cat);
+            return cat.Id>0?gig:null;
         }
     }
 }

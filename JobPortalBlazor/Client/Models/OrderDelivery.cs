@@ -28,7 +28,7 @@ namespace JobPortalBlazor.Client.Models
         {
             ID = o.Id;
             OrderID = (int)o.OrderId;
-            this.order = new Order(o.Order);
+            this.order = o.Order==null? null:new Order(o.Order);
             Details = o.Details;
             FileURL = o.FileUrl;
             Date = o.DeliveryDate;

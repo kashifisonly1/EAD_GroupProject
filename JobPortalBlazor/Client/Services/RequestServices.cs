@@ -30,14 +30,18 @@ namespace JobPortalBlazor.Client.Services
             List<Models.PurchaseRequest> gigs = new List<Models.PurchaseRequest>();
             JobPortalBlazor.Shared.Category cat = await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Category>("/api/Categories/" + catID);
             foreach (JobPortalBlazor.Shared.CustomOrderRequest g in cat.CustomOrderRequests)
+            {
+                g.Category = cat;
                 gigs.Add(new Models.PurchaseRequest(g));
+            }
             return gigs;
         }
 
         public async Task<Models.PurchaseRequest> getRequestByID(int id)
         {
             JobPortalBlazor.Shared.CustomOrderRequest cat = await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest>("/api/CustomOrderRequests/" + id);
-            return new Models.PurchaseRequest(cat);
+            Models.PurchaseRequest t = new Models.PurchaseRequest(cat);
+            return t;
         }
 
         public async Task<Models.PurchaseRequest> addRequest(Models.PurchaseRequest gig)
@@ -45,8 +49,16 @@ namespace JobPortalBlazor.Client.Services
             gig.RequestID = 0;
             gig.ImageUrl = await uploader.UploadFile(gig.Image);
             HttpResponseMessage receivedCat = await this.httpClient.PostAsJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest>("/api/CustomOrderRequests", gig);
-            JobPortalBlazor.Shared.CustomOrderRequest cat = await receivedCat.Content.ReadFromJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest>();
-            return new Models.PurchaseRequest(cat);
+            JobPortalBlazor.Shared.CustomOrderRequest cat = null;
+            try
+            {
+                cat = await receivedCat.Content.ReadFromJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest>();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return await getRequestByID(cat.Id);
         }
 
         public async Task<Models.PurchaseRequest> updateRequest(Models.PurchaseRequest category)

@@ -25,14 +25,16 @@ namespace JobPortalBlazor.Server.Controllers
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<Category>>> GetCatogories()
 		{
-			return await _context.Catogories.ToListAsync();
+			var categories = await _context.Catogories.ToListAsync();
+			return categories;
 		}
 		// GET: api/Categories/5
 		[HttpGet("{id}")]
 		public async Task<ActionResult<Category>> GetCategory(int id)
 		{
 			var category = await _context.Catogories.FindAsync(id);
-
+			await _context.Entry(category).Collection(g => g.Gigs).Query().Include(e=>e.Freelancer).LoadAsync();
+			await _context.Entry(category).Collection(g => g.CustomOrderRequests).Query().Include(e=>e.Client).LoadAsync();
 			if (category == null)
 			{
 				return NotFound();

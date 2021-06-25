@@ -1,7 +1,12 @@
 ﻿@page "/order/{id}"
 @inject OrderServices orderService
 @inject OrderDeliveryService odService
+@inject NavigationManager navigationManager
+@if (init) {
 <h3>Order Details</h3>
+@if (order.Status!="COMPLETE") {
+<button class="btn btn-primary my-3" @onclick="@(async () => { await mark_complete(); })">Mark as Complete</button>
+}
 <hr />
 <div class="row">
     <div class="col-6">
@@ -11,17 +16,17 @@
         <div>Client: <img src="/img/@order.Client.ImageUrl" width="30" height="30" class="rounded-circle" /> @order.Client.UserName</div>
     </div>
     <div class="col-6">Start Date: @order.StartDate.ToString("D")</div>
-    <div class="col-6">End Date: @order.EndDate.ToString("D")</div>
+    @if (order.EndDate>=order.StartDate) {<div class="col-6">End Date: @order.EndDate.ToString("D")</div>}
 </div>
 <hr />
 <p>@order.Details</p>
 <hr />
-@if(MainLayout.current_user.RoleName=="freelancer")
+@if(MainLayout.current_user.UserID==order.Freelancer.UserID && order.Status!="COMPLETE")
 {
-    <DeliveryForm delivery="delivery" onsubmit="@((ord)=> { addDelivery(ord); })"></DeliveryForm>
+    <DeliveryForm delivery="delivery" success="@success" onsubmit="@(async(ord)=> { await addDelivery(ord); })"></DeliveryForm>
 }
 <h4 class="col-12 my-3 col-md-8 mx-auto">Deliveries:</h4>
-@foreach(OrderDelivery ord in deliveries)
+@foreach (OrderDelivery ord in deliveries)
 {
 <div class="col-12 col-md-8 mx-auto">
     <div class="card">
@@ -32,24 +37,41 @@
         </div>
     </div>
 </div>
+   }
 }
 @code {
     [Parameter]
     public String id { get; set; }
+    bool init = false;
+    string success = "";
     public Order order;
     List<OrderDelivery> deliveries = new List<OrderDelivery>();
     OrderDelivery delivery;
     protected async override Task OnInitializedAsync()
     {
         order = await orderService.getOrderByID(int.Parse(id));
-        delivery = new OrderDelivery { order = order };
+        delivery = new OrderDelivery { order = order, OrderID=order.ID };
         deliveries = await odService.getAllOrderDeliviries(int.Parse(id));
+        init = true;
         await base.OnInitializedAsync();
     }
     public async Task addDelivery(OrderDelivery or)
     {
         OrderDelivery d = await odService.addOrderDelivery(or);
-        deliveries.Add(d);
-        delivery = new OrderDelivery { order = order };
+        if (d != null)
+        {
+            deliveries.Add(d);
+            delivery = new OrderDelivery { order = order, OrderID = order.ID };
+            success = "Delivery sent, scroll down to see";
+        }
+        else
+        {
+            success = "Could not add delivery, try again";
+        }
+    }
+    public async Task mark_complete()
+    {
+        await orderService.updateOrder(order);
+        navigationManager.NavigateTo("/user/my-order");
     }
 }

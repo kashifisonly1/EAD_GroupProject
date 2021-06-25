@@ -21,6 +21,7 @@ namespace JobPortalBlazor.Client.Models
         public DateTime EndDate;
         public User Freelancer;
         public User Client;
+        [Required]
         public int GigID;
         public Gig Gig;
         public int BidID;
@@ -45,10 +46,10 @@ namespace JobPortalBlazor.Client.Models
         {
             JobPortalBlazor.Shared.Order or = new JobPortalBlazor.Shared.Order();
             or.Id = o.ID;
-            or.ClientId = o.ClientID;
+            or.ClientId = o.Client.UserID;
             or.Details = o.Details;
             or.EndDate = o.EndDate;
-            or.StartDate = o.StartDate;
+            or.StartDate = DateTime.UtcNow;
             or.Status = o.Status;
             or.GigId = o.GigID;
             return or;

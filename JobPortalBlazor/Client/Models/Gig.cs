@@ -32,7 +32,7 @@ namespace JobPortalBlazor.Client.Models
         public Gig(JobPortalBlazor.Shared.Gig gig)
         {
             this.ID = gig.Id;
-            this.CategoryID = gig.Category.Id.ToString();
+            this.CategoryID = gig.CategoryId.ToString();
             this.ImageUrl = gig.ImageUrl;
             this.Price = gig.Pricing;
             this.PriceInterval = gig.PriceUnit;

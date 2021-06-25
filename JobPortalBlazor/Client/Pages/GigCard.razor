@@ -7,11 +7,11 @@
                 <p class="mt-1">@request.Title</p>
             </div>
         </a>
+        <div class="card-footer">
+            <div class="text-right">@request.Price $</div>
+        </div>
         @if (request.UserID == MainLayout.current_user.UserID && dashboard)
         {
-            <div class="card-footer">
-                <div class="text-right">@request.Price</div>
-            </div>
             <div class="card-footer">
                 <button @onclick="@(()=> { UpdateEvent.InvokeAsync(request); })" class="btn btn-info">Update</button>
                 <button @onclick="@(()=> { DeleteEvent.InvokeAsync(request); })" class="btn btn-danger">Delete</button>
