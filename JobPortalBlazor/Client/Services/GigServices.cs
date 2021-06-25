@@ -17,6 +17,13 @@ namespace JobPortalBlazor.Client.Services
         public async Task<List<Models.Gig>> getMyGigs(String userID)
         {
             List<Models.Gig> gigs = new List<Models.Gig>();
+            /**************************************************************************************/
+            /*******************************APPLY ODATA HERE***************************************/
+            /*
+             * you need to load all gigs that contains freelancers having user of Id = userID(argument received)
+             * you need to know that, gigs table has freelancers, and freelancer table has user
+             * userId is matched with user table Id so keep this in mind
+             */
             JobPortalBlazor.Shared.Gig[] fList =
                 await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Gig[]>("/api/Gigs");
             foreach(JobPortalBlazor.Shared.Gig f in fList)
@@ -27,6 +34,7 @@ namespace JobPortalBlazor.Client.Services
                     break;
                 }
             }
+            /**************************************************************************************/
             return gigs;
         }
 

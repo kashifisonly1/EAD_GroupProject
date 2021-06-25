@@ -16,11 +16,20 @@ namespace JobPortalBlazor.Client.Services
         public async Task<List<Models.Order>> getMyOrders(String userID)
         {
             List<Models.Order> req = new List<Models.Order>();
+            /**************************************************************************************/
+            /*******************************APPLY ODATA HERE***************************************/
+            /*
+             * Load all orders that has freelancer Id is equal to userId or clientId is equal to userId
+             * You need to know that, client is a user object so it directly has Id that need to matched
+             * but in orders table, gigs are linked, and gig has freelancer and freelancer is a user
+             * so, actually, you need to manage it
+             */
             JobPortalBlazor.Shared.Order[] fList =
                 await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Order[]>("/api/Orders");
             foreach (JobPortalBlazor.Shared.Order f in fList)
                 if (userID == f.Client.Id || userID == f.Gig.Freelancer.User.Id)
                     req.Add(new Models.Order(f));
+            /**************************************************************************************/
             return req;
         }
 

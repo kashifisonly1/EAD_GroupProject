@@ -17,11 +17,18 @@ namespace JobPortalBlazor.Client.Services
         public async Task<List<Models.PurchaseRequest>> getMyRequest(String userID)
         {
             List<Models.PurchaseRequest> req = new List<Models.PurchaseRequest>();
+            /**************************************************************************************/
+            /*******************************APPLY ODATA HERE***************************************/
+            /*
+             * You need to load all request of a certain user,
+             * it is simple, customerorderrequests table has client and you just need to load all requests of a particular client
+             */
             JobPortalBlazor.Shared.CustomOrderRequest[] fList =
                 await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest[]>("/api/CustomOrderRequests");
             foreach (JobPortalBlazor.Shared.CustomOrderRequest f in fList)
                 if (userID == f.Client.Id)
                     req.Add(new Models.PurchaseRequest(f));
+            /**************************************************************************************/
             return req;
         }
 
