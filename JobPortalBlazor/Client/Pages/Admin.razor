@@ -1,6 +1,11 @@
 ﻿@page "/admin"
-<AdminHeader/>
-<CategoryManage/>
+<AuthorizeView>
+    <Authorized>
+        <AdminHeader />
+        <CategoryManage />
+    </Authorized>
+</AuthorizeView>
 @code {
-    
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
 }

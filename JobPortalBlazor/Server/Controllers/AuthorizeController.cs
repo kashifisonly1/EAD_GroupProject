@@ -112,14 +112,19 @@ namespace BlazorWithIdentity.Server.Controllers
 
 		private UserInfo BuildUserInfo()
 		{
+			var x = User.Claims.ToList();
+			Dictionary<string, string> claims = new Dictionary<string, string>();
+			foreach(var a in x)
+            {
+				string existed_val = "";
+				if(claims.TryGetValue(a.Type, out existed_val)==false || (existed_val=="Client"))
+					claims[a.Type] = a.Value;
+            }
 			return new UserInfo
 			{
 				IsAuthenticated = User.Identity.IsAuthenticated,
 				UserName = User.Identity.Name,
-				ExposedClaims = User.Claims
-					//Optionally: filter the claims you want to expose to the client
-					//.Where(c => c.Type == "test-claim")
-					.ToDictionary(c => c.Type, c => c.Value)
+				ExposedClaims = claims
 			};
 		}
 	}

@@ -21,7 +21,6 @@ namespace JobPortalBlazor.Client
 		{
 			var builder = WebAssemblyHostBuilder.CreateDefault(args);
 			builder.RootComponents.Add<App>("#app");
-
 			builder.Services.AddOptions();
 			builder.Services.AddAuthorizationCore();
 			builder.Services.AddScoped<IdentityAuthenticationStateProvider>();
@@ -39,6 +38,8 @@ namespace JobPortalBlazor.Client
 			builder.Services.AddTransient<ContactService>();
 			builder.Services.AddTransient<SkillService>();
 			builder.Services.AddTransient<FreelancerService>();
+			builder.Services.AddOptions();
+			builder.Services.AddAuthorizationCore();
 			UserServices u = new UserServices(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 			MainLayout.current_user = await u.GetCurrentUser();
 			await builder.Build().RunAsync();
