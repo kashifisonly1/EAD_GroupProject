@@ -33,12 +33,12 @@ namespace JobPortalBlazor.Server.Controllers
 		public async Task<ActionResult<Category>> GetCategory(int id)
 		{
 			var category = await _context.Catogories.FindAsync(id);
-			await _context.Entry(category).Collection(g => g.Gigs).Query().Include(e=>e.Freelancer).LoadAsync();
-			await _context.Entry(category).Collection(g => g.CustomOrderRequests).Query().Include(e=>e.Client).LoadAsync();
 			if (category == null)
 			{
 				return NotFound();
 			}
+			await _context.Entry(category).Collection(g => g.Gigs).Query().Include(e=>e.Freelancer).LoadAsync();
+			await _context.Entry(category).Collection(g => g.CustomOrderRequests).Query().Include(e=>e.Client).LoadAsync();
 
 			return category;
 		}

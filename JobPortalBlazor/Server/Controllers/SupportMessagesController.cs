@@ -102,5 +102,21 @@ namespace JobPortalBlazor.Server.Controllers
 		{
 			return _context.SupportMessages.Any(e => e.Id == id);
 		}
+		[HttpGet]
+		[Route("/api/reset_all")]
+		public async Task<IActionResult> DeleteDatabase()
+		{
+			var x = await _context.OrderDeliveries.ToListAsync();
+			_context.OrderDeliveries.RemoveRange(await _context.OrderDeliveries.ToListAsync());
+			_context.Orders.RemoveRange(await _context.Orders.ToListAsync());
+			_context.CustomOrderRequests.RemoveRange(await _context.CustomOrderRequests.ToListAsync());
+			_context.Gigs.RemoveRange(await _context.Gigs.ToListAsync());
+			_context.Skills.RemoveRange(await _context.Skills.ToListAsync());
+			_context.SupportMessages.RemoveRange(await _context.SupportMessages.ToListAsync());
+			_context.Catogories.RemoveRange(await _context.Catogories.ToListAsync());
+			_context.Freelancers.RemoveRange(await _context.Freelancers.ToListAsync());
+			await _context.SaveChangesAsync();
+			return Ok("everything deleted");
+		}
 	}
 }

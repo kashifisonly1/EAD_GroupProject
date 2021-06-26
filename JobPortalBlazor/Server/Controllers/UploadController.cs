@@ -45,5 +45,6 @@ namespace JobPortalBlazor.Server.Controllers
 			}
 			return unique_name;
 		}
+
 	}
 }

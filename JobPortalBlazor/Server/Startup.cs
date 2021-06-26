@@ -53,7 +53,7 @@ namespace JobPortalBlazor.Server
 				options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
 				options.Lockout.MaxFailedAccessAttempts = 10;
 				options.Lockout.AllowedForNewUsers = true;
-				options.User.AllowedUserNameCharacters = "0123456789@-.ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+				options.User.AllowedUserNameCharacters = "0123456789@-_~+.ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 				// User settings
 				options.User.RequireUniqueEmail = true;
 				options.SignIn.RequireConfirmedEmail = false;

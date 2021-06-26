@@ -40,10 +40,18 @@ namespace BlazorWithIdentity.Server.Controllers
 			return Ok("Logged In Successfully.");
 		}
 
+		[HttpGet]
+		[Route("/api/[controller]/[action]/{id}")]
+		public async Task<IActionResult> DeleteUser(string id)
+        {
+			await _userManager.DeleteAsync(await _userManager.FindByIdAsync(id));
+			return Ok("Deleted");
+        }
 
 		[HttpPost]
 		public async Task<IActionResult> Register(RegisterParameters parameters)
 		{
+			Console.WriteLine("here");
 			string[] roles = { "Admin", "Freelancer", "Client" };
 			foreach (var item in roles)
 			{

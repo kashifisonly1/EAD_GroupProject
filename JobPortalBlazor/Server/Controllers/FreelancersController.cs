@@ -39,11 +39,11 @@ namespace JobPortalBlazor.Server.Controllers
 		{
 			var freelancer = await _context.Freelancers.FindAsync(id);
 
-			await _context.Entry(freelancer).Reference(f => f.User).LoadAsync();
 			if (freelancer == null)
 			{
 				return NotFound();
 			}
+			await _context.Entry(freelancer).Reference(f => f.User).LoadAsync();
 
 			return freelancer;
 		}
