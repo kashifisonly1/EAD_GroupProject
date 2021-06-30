@@ -32,6 +32,16 @@ namespace JobPortalBlazor.Client.Services
             return req;
         }
 
+        public async Task<List<Models.PurchaseRequest>> searchRequests(string s)
+        {
+            List<Models.PurchaseRequest> req = new List<Models.PurchaseRequest>();
+            JobPortalBlazor.Shared.CustomOrderRequest[] fList =
+                await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.CustomOrderRequest[]>("/api/CustomOrderRequests");
+            foreach (JobPortalBlazor.Shared.CustomOrderRequest f in fList)
+                if (f.Title.IndexOf(s) < 0 || f.Description.IndexOf(s) < 0 || f.Category.Name.IndexOf(s) < 0)
+                    req.Add(new Models.PurchaseRequest(f));
+            return req;
+        }
         public async Task<List<Models.PurchaseRequest>> getRequestsByCategory(int catID)
         {
             List<Models.PurchaseRequest> gigs = new List<Models.PurchaseRequest>();

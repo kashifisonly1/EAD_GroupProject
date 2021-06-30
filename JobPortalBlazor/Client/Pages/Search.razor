@@ -1,5 +1,59 @@
-﻿<h3>Search</h3>
-
+﻿@page "/search"
+@inject RequestServices reqService
+@inject GigServices gigService
+@inject NavigationManager NavManager
+<h3>Search: @search_value</h3>
+<hr />
+<div class="row my-3">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-5 ml-auto">
+        <div class="input-group">
+            <input class="form-control" @onchange="(_)=>{ search_value = (string)_.Value; }" />
+            <div class="input-group-append">
+                <button @onclick="search" class="btn btn-info">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+<AuthorizeView Roles="Freelancer, Admin">
+    <Authorized>
+        <h4 class="my-3">Purchase Requests</h4>
+        <div class="row">
+            @foreach (PurchaseRequest r in bids)
+            {
+                <RequestCard dashboard="false" request="@r"></RequestCard>
+            }
+        </div>
+    </Authorized>
+</AuthorizeView>
+<AuthorizeView Roles="Admin, Client">
+    <Authorized>
+        <h4 class="my-3">Gigs</h4>
+        <div class="row">
+            @foreach (Gig r in gigs)
+            {
+                <GigCard dashboard="false" request="@r"></GigCard>
+            }
+        </div>
+    </Authorized>
+</AuthorizeView>
 @code {
-
+    public String search_value { get; set; }
+    List<Gig> gigs = new List<Gig>();
+    List<PurchaseRequest> bids = new List<PurchaseRequest>();
+    protected async override Task OnInitializedAsync()
+    {
+        var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("search", out var _initial))
+            search_value = _initial;
+        gigs = await gigService.searchGigs(search_value);
+        bids = await reqService.searchRequests(search_value);
+        await base.OnInitializedAsync();
+    }
+    public void search()
+    {
+        if (search_value == "")
+            return;
+        string r = QueryHelpers.AddQueryString("/search", "search", search_value);
+        NavManager.NavigateTo(r);
+    }
 }

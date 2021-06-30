@@ -36,7 +36,7 @@ namespace APITest
             Assert.AreEqual(response.IsSuccessStatusCode, true);
             Category new_category = await response.Content.ReadFromJsonAsync<Category>();
             Assert.AreNotEqual(new_category, null);
-            Assert.AreNotEqual(new_category.Id, category.Id);
+            Assert.AreNotEqual(new_category.Id, 0);
             Assert.AreEqual(new_category.Name, category.Name);
             return new_category;
         }

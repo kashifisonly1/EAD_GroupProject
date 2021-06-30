@@ -38,6 +38,21 @@ namespace JobPortalBlazor.Client.Services
             return gigs;
         }
 
+        public async Task<List<Models.Gig>> searchGigs(string s)
+        {
+            List<Models.Gig> gigs = new List<Models.Gig>();
+            JobPortalBlazor.Shared.Gig[] fList =
+                await this.httpClient.GetFromJsonAsync<JobPortalBlazor.Shared.Gig[]>("/api/Gigs");
+            foreach (JobPortalBlazor.Shared.Gig f in fList)
+            {
+                if (f.Title.IndexOf(s)<0 || f.Description.IndexOf(s)<0 || f.Category.Name.IndexOf(s)<0)
+                {
+                    gigs.Add(new Models.Gig(f));
+                    break;
+                }
+            }
+            return gigs;
+        }
         public async Task<List<Models.Gig>> getGigsByCategory(int catID)
         {
             List<Models.Gig> gigs = new List<Models.Gig>();

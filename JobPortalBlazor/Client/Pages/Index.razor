@@ -1,7 +1,18 @@
 ﻿@page "/"
 @inject CategoryServices catService
+@inject NavigationManager navManager
 <h1>WELCOME TO JOB PORTAL</h1>
 <hr />
+<div class="row my-3">
+    <div class="col-12 col-sm-8 col-md-8 col-lg-5 ml-auto">
+        <div class="input-group">
+            <input class="form-control" value="@search_val" @onchange="(_)=>{ search_val = (string)_.Value; }" />
+            <div class="input-group-append">
+                <button @onclick="search" class="btn btn-info">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row my-3">
     @foreach(Category cat in allcats)
     {
@@ -10,11 +21,17 @@
 </div>
 @code{
     List<Category> allcats = new List<Category>();
-
+    string search_val = "";
     protected async override Task OnInitializedAsync()
     {
-        Console.WriteLine("----------------------category--------------------");
         allcats = await catService.getAllCategories();
         return;
+    }
+    public void search()
+    {
+        if (search_val == "")
+            return;
+        string r = QueryHelpers.AddQueryString("/search", "search", search_val);
+        navManager.NavigateTo(r);
     }
 }
